@@ -15,9 +15,11 @@
                 background-color: red;
               }
             </style>
+            <script src="demo_jsonp.php"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
             <script>
                 
-                //this cookie example works with firefox NOT chrome.... and expires when tab is closed....
+                //cookie works well. not locally but live. 
                 function setCookie(cname,cvalue,exdays) {
                     var d = new Date();
                     d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -102,7 +104,7 @@
 
             </script>
             <script src="myScripts.js"></script>
-            <title>Chaz's HTTP/CSS/JS Tutorial</title>
+            <title>Chaz's HTTP/JS Tutorial</title>
         </head>
             <body onload="checkCookie()">
                 <h1>JavaScript</h1>
@@ -274,10 +276,10 @@
                         <p id="demo5"></p>
 
                         <script>
+                            /*
                         function myDisplayer2(some) {
                         document.getElementById("demo5").innerHTML = some;
                         }
-
                         function getFile2(myCallback) {
                             var oReq = new XMLHttpRequest();
                             oReq.addEventListener("load", reqListener);
@@ -289,8 +291,7 @@
                             document.getElementById("async").innerHTML = "had to install a cors ext \n" + this.responseText;
                             console.log(this.responseText);
                             }
-
-                        getFile2(myDisplayer2); 
+                        getFile2(myDisplayer2); */
                         </script>
                         <p>Find different elements of the DOM</p>
                         <button onclick="playDOM()">DOC.GET</button>
@@ -347,19 +348,128 @@
                     </div>
 
                     <div id="ajaxStuff">
-                        <p id="firstAjax">Change this content using the XMLHttpRequest 
-
-                            GETTING CORS error, thinking we need to have these files be on a SERVER in order for it to work
-                        </p>
+                        <h4>AJAX DEV</h4>
+                        <p id="firstAjax">Change this content using the XMLHttpRequest. This is on AWS server. 
+                        Most likely still getting CORS error :?</p>
+                        <button onclick="loadFile()">Load QFI.txt</button>
                         <p> Not AJAX but just a file reader. for ones local machine aka MINE</p>
                         <input type="file" onchange="readTextFile(this)">
                         <hr/>
                         <h2>The XMLHttpRequest Object</h2>
 
                     </div>
-                    <div id="JSON">
-                        <h2>All About JSON (W3)</h2>
-                        <p id="jsonStuff"></p>
+                    <div id="jsonStuff">
+                        <h4>JSON DEV</h4>
+                        <p id="jsonFirst"> Sending Data --> JSON.stringify() , Receiving data --> JSON. parse()</p>
+                        <p> Below is an example of how to store on your local machine and to store through session, session is lost after browser is closed</p>
+                        <label for="jsonName">Enter Name:  </label><input type="text" id="jsonName" placeholder="John">
+                        <br/>
+                        <label for="jsonAge">Enter age:  </label><input type="number" id="jsonAge" placeholder="33">
+                        <br/>
+                        <label for="jsonCity">Enter city:  </label><input type="text" id="jsonCity" placeholder="Spokane">
+                        <br/>
+                        <label for="jsonKey">Enter JSON name value:  </label><input type="text" id="jsonKey" placeholder="JSON1">
+
+                        <button onclick="JSONstore()">Store Locally</button>
+                        <button onclick="storeSesh()">Store Session</button>
+                        <br/>
+                        <p id="jsonTest">This is where the data should be changed. Will need further tutorials about JSON and PHP </p>
+                        <br/>
+                        <label>Get JSON Object using key/name input above</label>
+                        <button onclick="JSONget()">Get JSON</button>
+                        <button onclick="seshGet()">Get Sesh</button>
+                        <br>
+                        <br/>
+                        <p>Using JSON with PHP Server</p>
+                        <button onclick="jsonPHP()">PHP GET</button>
+                        <script>
+                            function jsonPHP(){
+                                var xmlhttp = new XMLHttpRequest();
+                                xmlhttp.onreadystatechange = function() {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        var myObj = JSON.parse(this.responseText);
+                                        document.getElementById("jsonTest").innerHTML = myObj.name;
+                                    }
+                                };
+                                xmlhttp.open("GET", "php-demo.php", true);
+                                xmlhttp.send();
+                            }
+                        </script>
+                        <br>
+                        <p>Using JSONP, this works around that PESKY CORS. Get the PHP file names jsonp_demo, loaded upon entry</p>
+                        <script>
+                            function myFunc(mObj){
+                                document.getElementById("jsonTest").innerHTML = mObj.name;
+                            }
+                        </script> 
+                        <br/>
+                        <h3>WEB API</h3>
+                        <p>Application Programming Interface</p>
+                        <button onclick="getLocation()">Coordinates</button>
+                        <p id="coords">The browser has a location API built in</p>
+                        <script>
+                            var x = document.getElementById("coords");
+
+                            function getLocation() {
+                              if (navigator.geolocation) {
+                                navigator.geolocation.getCurrentPosition(showPosition);
+                              } else {
+                                x.innerHTML = "Geolocation is not supported by this browser.";
+                              }
+                            }
+                            
+                            function showPosition(position) {
+                              x.innerHTML = "Latitude: " + position.coords.latitude +
+                              "<br>Longitude: " + position.coords.longitude;
+                            }
+                        </script>
+                        <hr/>
+                    <div id="jquery">
+                        <h1>JQUERY</h1>
+                        <h2>Finding HTML Elements by Id</h2>
+                        <p>Using JQUERY to find and maniplate DOM elements</p>
+                        <p id="id01">Hello World!</p>
+                        <p id="id02">Hello Sweden!</p>
+                        <p id="id03">Hello Japan!</p>
+                        <br>
+                        <label>Multiply using JQUERY</label>
+                        <p id="qA">4</p> x <p id="qB">5</p>
+                        <br/>
+                        <button onclick="textSelJQ()">MULT</button>
+
+                        <p id="qOut"> A + B = </p>
+                        Change style using JQUERY
+                        <button onclick="cssJQ()">to 35px</button>
+
+                        <p id="demoJQUERY"></p>
+                        <p id="numJQ"></p>
+                        <script>
+                            function cssJQ(){
+                                var myElement = $("#qOut");
+                                myElement.css("font-size","35px");
+                            }
+                            $(document).ready(function() {
+                                var allParagraphs = $("p");
+                                var allClassesNamedIntro = $(".first");
+                                var allParagraphsInIntro =$("p.first");
+
+                                $("#numJQ").text("The amount of paragprahs in the doc is " + allParagraphs.length);
+                                var myElements = $("#id01");
+                                $("#demoJQUERY").text("The text from the id01 paragraph is: " + myElements[0].innerHTML);
+                            });
+
+                            function textSelJQ(){
+                                var myElementA = $("#qA");
+                                var myElementB = $("#qB");
+                                var numA = parseInt(myElementA.text());
+                                var numB = parseInt(myElementB.text());
+                                var total = myElementA.text() * myElementB.text();
+                                $("#qOut").text("A + B = " + total); 
+                            }
+
+                        </script>
+
+                    </div>
                     </div>
                 
                 </body>
