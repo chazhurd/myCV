@@ -1,0 +1,96 @@
+
+body{
+    background-color: rgb(145, 145, 145);
+    color: rgb(65, 188, 236);
+    animation: mySecond 5s ease 0s infinite alternate;
+}
+#intro{
+  background-image: url('Technology-Watch.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: auto;
+  height: 400px;
+}
+#myCanvas2{
+    animation: myFirst 5s ease 0s infinite alternate;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+h1{
+    z-index: 1;
+    text-align: center;
+}
+@keyframes myFirst {
+    0%   {background-color:#333; border-color: #333}
+    100% {background-color:#333; border-color: #333; }
+  }
+  @keyframes mySecond{
+    0%   {background-color:black;}
+    100% {background-color:white;}
+  }
+
+  /* for nav bar */
+li {
+    float: left;
+  }
+ol {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style-type: none;
+    background-color: #333;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+li.bar {
+    float: left;
+  }
+
+li.bar a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+li.bar a:hover {
+    background-color: rgba(0, 119, 255, 0.658);
+  }
+#myContainer {
+    width: 340px;
+    height: 500px;
+    position: relative;
+    background: yellow;
+  }
+#myAnimation {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 350px;
+    z-index: 1;
+
+  }
+#arrows{
+  position: absolute;
+  width: 100;
+  height: 100;
+
+}
+#shoot{
+  position: absolute;
+  width: 100;
+  height: 100;
+}
+#myShot {
+  position: absolute;
+  z-index: 0;
+}

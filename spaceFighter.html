@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="Keywords" content="Chaz, Hurd, Chaz Hurd, Software, Engineer, Software Engineer"/>
+        <meta lang="us-EN"/>
+
+        <title>Space Fighter</title>
+
+        <link rel="stylesheet" href="HurdCSS.css">
+        <script src="HurdScripts.js"></script>
+    </head>
+    <header>
+
+    </header>
+    <body onload="myMove()">
+        <div style="width: 100%;">
+            <ol class="bar">
+                <li class="bar"> <canvas id="myCanvas2" width="60" height="40" style="border:1px solid #ffffff;"></canvas></li>
+                <li class="bar"><a class="active" href="#intro">My CV</a></li>
+                <li class="bar"><a href="#limit">Projects</a></li>
+                <li class="bar"><a href="#classes">About Me</a></li>
+              
+            </ol>    
+        </div>
+        
+        <div id="myContainer" onload="setComponents()">
+            <div id="shoot"><img src="shoot.svg" alt="shoot" width="100px" height="100px" onmousedown="shoot()"></div>
+            <div id="arrows"><img src="leftright.png" alt="arrows" width="100px" height="100px" usemap="#arrowMap">
+            <map name="arrowMap">
+            <area shape="rect" coords="0,0,40,100" alt="left" onmousedown="moveJetLeft()" onmouseup="stopLeftMove()" style="cursor:crosshair">
+            <area shape="rect" coords="60,0,100,100" alt="right" onmousedown="moveJetRight()" onmouseup="stopRightMove()" style="cursor:crosshair">
+            </map></div>
+            <div id="myAnimation"><img src="idlePlane.png" alt="idlePlane" id="jetImage"></div>
+        </div>
+
+
+
+        <div id="positionOutput">The output shows here</div>
+       
+    <footer>
+
+    </footer>
+</html>
