@@ -10,7 +10,6 @@ var d = 16;
 var timed = 0;
 
 
-
 function traceIt(){
     var can = document.getElementById("myCanvas2");
     var cantx = can.getContext("2d");
@@ -85,6 +84,7 @@ var moveLeft;
 var elem;
 
 function myMove() {
+    drawArrows();
     elem = document.getElementById("myAnimation");
     var pos = 0;
     var arrows = document.getElementById("arrows");
@@ -133,6 +133,7 @@ function myMove() {
  var allShots = [];
  var shotID = "start";
  function shoot(){
+     //unused code
      switch(shotID){
 
         case("start"): shotID = "a";
@@ -146,10 +147,12 @@ function myMove() {
                     break;
      }
      allShots.push(shotID);
+     //unused above
 
+     
      var myContainer = document.getElementById("myContainer");
      var myShot = document.createElement("img");
-     myShot.src = 'theshot.png';
+     myShot.src = 'theShot.png';
      myShot.id = "myShot";
      myContainer.appendChild(myShot);
      myShot.style.top = 340 + 'px';
@@ -157,7 +160,7 @@ function myMove() {
      var myJetCenter = myJet.substr(0,3);
      myJetCenter = parseInt(myJetCenter) + 20; 
      myShot.style.left = myJetCenter + 'px';
-     var posit = 300;
+     var posit = 340;
      var thisShot = setInterval(function(){
          if(posit >= -20){
              posit -= 2;
@@ -168,3 +171,30 @@ function myMove() {
      }, 5);
  }
  
+function drawArrows(){
+    var can = document.getElementById("myLeftArrow");
+    var cant = can.getContext("2d");
+    cant.lineWidth = 1;
+    cant.strokeStyle = 'black';
+    cant.moveTo(5,25);
+    cant.lineTo(40,5);
+    cant.stroke();
+    cant.lineTo(40,45);
+    cant.stroke();
+    cant.lineTo(5,25);
+    cant.stroke();
+
+    var can = document.getElementById("myRightArrow");
+    var cant = can.getContext("2d");
+    cant.lineWidth = 1;
+    cant.strokeStyle = 'black';
+    cant.moveTo(45,25);
+    cant.lineTo(10,5);
+    cant.stroke();
+    cant.lineTo(10,45);
+    cant.stroke();
+    cant.lineTo(45,25);
+    cant.stroke();
+
+
+}

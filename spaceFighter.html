@@ -26,18 +26,16 @@
         
         <div id="myContainer" onload="setComponents()">
             <div id="shoot"><img src="shoot.svg" alt="shoot" width="100px" height="100px" onmousedown="shoot()"></div>
-            <div id="arrows"><img src="leftright.png" alt="arrows" width="100px" height="100px" usemap="#arrowMap">
+            <div id="arrows"> <canvas id="myLeftArrow" width="50" height="50" style="border:1px solid #ffffff;" onmousedown="moveJetLeft()" onmouseup="stopLeftMove()"></canvas><canvas id="myRightArrow" width="50" height="50" style="border:1px solid #ffffff; " onmousedown="moveJetRight()" onmouseup="stopRightMove()"></canvas>
+                <!--<img src="leftright.png" alt="arrows" width="100px" height="100px" usemap="#arrowMap">
             <map name="arrowMap">
             <area shape="rect" coords="0,0,40,100" alt="left" onmousedown="moveJetLeft()" onmouseup="stopLeftMove()" style="cursor:crosshair">
             <area shape="rect" coords="60,0,100,100" alt="right" onmousedown="moveJetRight()" onmouseup="stopRightMove()" style="cursor:crosshair">
-            </map></div>
+            </map>--></div>
             <div id="myAnimation"><img src="idlePlane.png" alt="idlePlane" id="jetImage"></div>
         </div>
 
-
-
-        <div id="positionOutput">The output shows here</div>
-       
+       </body>
     <footer>
 
     </footer>
