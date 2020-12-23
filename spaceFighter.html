@@ -27,16 +27,13 @@
     </div>
 
     <div id="myContainer" onload="setComponents()" style="margin: auto;">
+        <img src="cloud.png" class="clouds" alt="cloud" width="50" height="50">
         <div id="shoot">
-            <img src="shoot.svg" alt="shoot" width="100px" height="100px" onmousedown="shoot()"></div>
+            <img src="shoot.svg" alt="shoot" width="100px" height="100px" ontouchstart="shoot()" onmousedown="shoot()"></div>
         <div id="arrows">
             <canvas id="myLeftArrow" width="50" height="50" style="border:1px solid #ffffff;" ontouchstart="moveJetLeft()" ontouchend="stopLeftMove()" onmousedown="moveJetLeft()" onmouseup="stopLeftMove()">
             </canvas><canvas id="myRightArrow" width="50" height="50" style="border:1px solid #ffffff; " onmousedown="moveJetRight()" onmouseup="stopRightMove()" ontouchstart="moveJetRight()" ontouchend="stopRightMove()"></canvas>
-            <!--<img src="leftright.png" alt="arrows" width="100px" height="100px" usemap="#arrowMap">
-            <map name="arrowMap">
-            <area shape="rect" coords="0,0,40,100" alt="left" onmousedown="moveJetLeft()" onmouseup="stopLeftMove()" style="cursor:crosshair">
-            <area shape="rect" coords="60,0,100,100" alt="right" onmousedown="moveJetRight()" onmouseup="stopRightMove()" style="cursor:crosshair">
-            </map>--></div>
+        </div>
         <div id="myAnimation"><img src="idlePlane.png" alt="idlePlane" id="jetImage"></div>
     </div>
     <div id="debugger"></div>
