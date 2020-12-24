@@ -90,7 +90,6 @@ li.bar a:hover {
     height: 500px;
     position: relative;
     background: skyblue;
-    z-index: -1;
 }
 
 #myAnimation {
@@ -118,9 +117,10 @@ li.bar a:hover {
     z-index: 0;
 }
 
-.clouds {
-    height: 50;
-    width: 50;
-    opacity: .7;
+#myCloud {
+    position: absolute;
     z-index: 0;
+    width: 100px;
+    height: 50px;
+    opacity: .8;
 }

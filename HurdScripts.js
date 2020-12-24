@@ -1,5 +1,5 @@
 var myTimer = setInterval(traceIt, 34);
-
+var cloudMaker = setInterval(startCloud, 500);
 var x = 30;
 var y = 17;
 var a = 37;
@@ -7,7 +7,7 @@ var b = 17;
 var c = 43;
 var d = 16;
 var timed = 0;
-
+alert("Phone Game Only");
 
 function traceIt() {
     var can = document.getElementById("myCanvas2");
@@ -110,6 +110,10 @@ function moveJetLeft() {
 }
 
 function shiftLeft() {
+    debugger;
+    /*if (moveRight != null) {
+        clearInterval(moveRight);
+    }*/
     if (myLeftPos > 2) {
         myLeftPos -= 3;
         elem.style.left = myLeftPos + 'px';
@@ -121,6 +125,9 @@ function moveJetRight() {
 }
 
 function shiftRight() {
+    /*if (moveLeft != null) {
+        clearInterval(moveLeft);
+    }*/
     if (myLeftPos < 300) {
         myLeftPos += 3;
         elem.style.left = myLeftPos + 'px';
@@ -205,6 +212,52 @@ function drawArrows() {
     cant.stroke();
     cant.lineTo(45, 25);
     cant.stroke();
+}
 
+function startCloud() {
+    moveClouds();
+}
 
+function moveClouds() {
+
+    var allowIt = Math.floor(Math.random() * 10);
+    debugger;
+    if (allowIt <= 5) {
+        var myContainer = document.getElementById("myContainer");
+        var cloud = document.createElement("img");
+        debugger;
+        var typeOfCloud = Math.random();
+        if (typeOfCloud <= 0.5) {
+            cloud.src = "cloud.png";
+        } else {
+            cloud.src = "mediumCloud.png";
+        }
+        myContainer.appendChild(cloud);
+        cloud.id = "myCloud";
+        var rando = Math.floor(Math.random() * 260);
+        cloud.style.left = rando + 'px';
+        var posit = 0;
+        var cloudOpac = 0;
+        cloud.style.opacity = 0;
+        var thisCloud = setInterval(function() {
+            if (posit <= 400) {
+                if (cloudOpac <= .8 && posit <= 299) {
+                    cloudOpac += .1;
+                }
+                cloud.style.opacity = cloudOpac;
+                posit += 1;
+                cloud.style.top = posit + 'px';
+            }
+            if (posit >= 300) {
+                if (cloudOpac >= 0) {
+                    cloudOpac -= .05;
+                }
+                cloud.style.opacity = cloudOpac;
+            }
+            if (posit > 380) {
+                myContainer.removeChild(cloud);
+                clearInterval(thisCloud);
+            }
+        }, 5);
+    }
 }
