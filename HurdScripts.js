@@ -194,7 +194,7 @@ function myMove() {
         if (pos >= 150) {
             clearInterval(id);
         } else {
-            pos += 1;
+            pos += 3;
             elem.style.left = pos + 'px';
             myLeftPos = pos;
         }
@@ -290,7 +290,7 @@ function shoot() {
                     st = parseInt(st);
 
                     if (st <= at) {
-                        if (sl >= al && sl <= (al + 60)) {
+                        if (sl >= al && sl <= (al + 60) && st >= (at - 50)) {
                             enemyAhits++;
                             document.getElementById("debugger").innerHTML = "HITTTTTT AAAAAAA num: " + enemyAhits;
                         }
@@ -311,7 +311,7 @@ function shoot() {
                     bt = parseInt(bt);
 
                     if (st <= bt) {
-                        if (sl >= bl && sl <= (bl + 60)) {
+                        if (sl >= bl && sl <= (bl + 60) && st >= (bt - 50)) {
                             enemyBhits++;
                             document.getElementById("debugger").innerHTML = "HITTTTTT BBBBBBBBB num: " + enemyBhits;
                         }
