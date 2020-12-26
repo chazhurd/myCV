@@ -6,10 +6,12 @@
     <meta name="Keywords" content="Chaz, Hurd, Chaz Hurd, Software, Engineer, Software Engineer" />
     <meta lang="us-EN" />
 
-    <title>Space Fighter</title>
+    <title>Azure Fighter</title>
 
     <link rel="stylesheet" href="HurdCSS.css">
     <script src="HurdScripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js" integrity="sha512-8Wy4KH0O+AuzjMm1w5QfZ5j5/y8Q/kcUktK9mPUVaUoBvh3QPUZB822W/vy7ULqri3yR8daH3F58+Y8Z08qzeg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineMax.min.js" integrity="sha512-lJDBw/vKlGO8aIZB8/6CY4lV+EMAL3qzViHid6wXjH/uDrqUl+uvfCROHXAEL0T/bgdAQHSuE68vRlcFHUdrUw==" crossorigin="anonymous"></script>
 </head>
 <header>
 
@@ -29,18 +31,16 @@
 
     <div id="myContainer" onload="setComponents()" style="margin: auto;">
         <div id="shoot">
-            <img src="shoot.svg" alt="shoot" width="100px" height="100px" ontouchstart="shoot()"></div>
-        <div id="arrows">
-            <canvas id="myLeftArrow" width="50" height="50" style="border:1px solid #ffffff;" ontouchstart="moveJetLeft()" ontouchend="stopLeftMove()" onmousedown="moveJetLeft()" onmouseup="stopLeftMove()">
-            </canvas><canvas id="myRightArrow" width="50" height="50" style="border:1px solid #ffffff; " onmousedown="moveJetRight()" onmouseup="stopRightMove()" ontouchstart="moveJetRight()" ontouchend="stopRightMove()"></canvas>
-            <!--<img src="leftright.png" alt="arrows" width="100px" height="100px" usemap="#arrowMap">
-            <map name="arrowMap">
-            <area shape="rect" coords="0,0,40,100" alt="left" onmousedown="moveJetLeft()" onmouseup="stopLeftMove()" style="cursor:crosshair">
-            <area shape="rect" coords="60,0,100,100" alt="right" onmousedown="moveJetRight()" onmouseup="stopRightMove()" style="cursor:crosshair">
-            </map>--></div>
+            <img src="shoot.svg" id="shootButton" alt="shoot" width="100px" height="100px" ontouchstart="shoot()">
+        </div>
         <div id="myAnimation"><img src="idlePlane.png" alt="idlePlane" id="jetImage"></div>
+        <div id="arrows">
+            <canvas id="myLeftArrow" width="50" height="50" style="border:1px solid #ffffff;" ontouchstart="moveJetLeft()" ontouchend="stopLeftMove()" onmousedown="moveJetLeft()" onmouseup="stopLeftMove()"></canvas>
+            <p style="width: 20; display: inline; color: skyblue;">--</p>
+            <canvas id="myRightArrow" width="50" height="50" style="border:1px solid #ffffff; " onmousedown="moveJetRight()" onmouseup="stopRightMove()" ontouchstart="moveJetRight()" ontouchend="stopRightMove()"></canvas>
+        </div>
     </div>
-    <div id="debugger"></div>
+    <div id="debugger" style="background-color: black; color: white;"></div>
 
 </body>
 <footer>
