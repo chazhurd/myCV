@@ -1,39 +1,187 @@
 <!DOCTYPE html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="Keywords" content="Chaz, Hurd, Chaz Hurd, Software, Engineer, Software Engineer"/>
-        <meta lang="us-EN"/>
+<html>
+<title>Chaz Hurd's Website</title>
+<meta charset="UTF-8" />
+<meta name="Keywords" content="Chaz,Hurd,C.V, Software, Engineer" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="stylesheet" href="HurdCSS.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto' />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<script>
+</script>
+<style>
+    html,
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Roboto", sans-serif
+    }
+</style>
 
-        <title>Chaz's Website</title>
+<body class="w3-light-grey">
 
-        <link rel="stylesheet" href="HurdCSS.css">
-        <script src="HurdScripts.js"></script>
-    </head>
-    <header>
+    <!-- Page Container -->
+    <div class="w3-content w3-margin-top" style="max-width:1400px;">
 
-    </header>
-    <body onload="myMove()">
-        <div style="width: 100%;">
-            <ol class="bar">
-                <li class="bar"> <canvas id="myCanvas2" width="60" height="40" style="border:1px solid #ffffff;"></canvas></li>
-                <li class="bar"><a class="active" href="#intro">My CV</a></li>
-                <li class="bar"><a href="#limit">Projects</a></li>
-                <li class="bar"><a href="#classes">About Me</a></li>
-              
-            </ol>    
+        <!-- The Grid -->
+        <div class="w3-row-padding">
+
+            <!-- Left Column -->
+            <div class="w3-third">
+
+                <div class="w3-white w3-text-grey w3-card-4">
+                    <div class="w3-display-container">
+                        <img src="bizproposal.png" style="width:100%" alt="PicOfChazHurd">
+                        <br/><br/>
+                        <br/>
+                        <br/>
+                        <div class="w3-display-bottomleft w3-container w3-text-black">
+                            <h2>Chaz Hurd</h2>
+                        </div>
+                    </div>
+                    <div class="w3-container">
+                        <p class="w3-hover-text-dark-grey" style="cursor:crosshair"><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-hover-text-dark-grey"></i>Entrepreneur & Software Engineer</p>
+                        <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Spokane, WA</p>
+                        <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>1chazhurd@gmail.com</p>
+                        <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1(509)701-8173</p>
+                        <hr>
+
+                        <p class="w3-large"><b><i class="fa fa-code fa-fw w3-margin-right w3-text-teal"></i>Skills</b></p>
+                        <p>Java</p>
+                        <div class="w3-light-grey w3-round-xlarge w3-small">
+                            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>
+                        </div>
+                        <p>C# (.NET Core)</p>
+                        <div class="w3-light-grey w3-round-xlarge w3-small">
+                            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">
+                                <div class="w3-center w3-text-white">80%</div>
+                            </div>
+                        </div>
+                        <p>SQL</p>
+                        <div class="w3-light-grey w3-round-xlarge w3-small">
+                            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:75%">75%</div>
+                        </div>
+                        <a href="ecmaScript.html">
+                            <p>HTML/CSS/Javascript</p>
+                        </a>
+                        <div class="w3-light-grey w3-round-xlarge w3-small">
+                            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:50%">40%</div>
+                        </div>
+                        <br>
+
+                        <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
+                        <p>English</p>
+                        <div class="w3-light-grey w3-round-xlarge">
+                            <div class="w3-round-xlarge w3-teal" style="height:24px;width:100%"></div>
+                        </div>
+                        <p>French</p>
+                        <div class="w3-light-grey w3-round-xlarge">
+                            <div class="w3-round-xlarge w3-teal" style="height:24px;width:55%"></div>
+                        </div>
+                        <p>Spanish</p>
+                        <div class="w3-light-grey w3-round-xlarge">
+                            <div class="w3-round-xlarge w3-teal" style="height:24px;width:25%"></div>
+                        </div>
+                        <br>
+                    </div>
+                </div><br>
+
+                <!-- End Left Column -->
+            </div>
+
+            <!-- Right Column -->
+            <div class="w3-twothird">
+
+                <div class="w3-container w3-card w3-white w3-margin-bottom">
+                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
+                    <div class="w3-container">
+                        <h5 class="w3-opacity"><b>Freelance Painter</b></h5>
+                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
+                        <p>Part time Painter where I was self-employed. I took over as my own boss and would meet, bid, and work on my own jobs. Working with many different contractors and citizens, this position taught me to be very responsible. This position
+                            also required me to hire a helping hand which hours and pay was managed by me. I worked this position while attending College full time, it offered me a way to have flexibility in prioritizing my time properly amongst the two.
+                            During this time, I was also engaging in home theater sales via online platforms, as far as creating a custom ASP.net/JS/CSS + bootstrap website where people could order merchandise from</p>
+                        <hr>
+                    </div>
+                    <div class="w3-container">
+                        <h5 class="w3-opacity"><b>Lead Painter</b></h5>
+                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2012 - Dec 2014</h6>
+                        <p>Full time Painter working directly with the owner of the Company (10 employees), I was a valued employee who was never written up or laid off. This employer would be a great reference to my ability to show up every day on time
+                            with a go to personality</p>
+                        <hr>
+                    </div>
+                    <div class="w3-container">
+                        <h5 class="w3-opacity"><b>Customer Service Rep</b></h5>
+                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
+                        <p>Full time Customer Service Associate who worked directly with Customers, cash, and Management. I opened and closed the entire store, made sales, tendered my cash and reported for weekly reports. On the Ruby and Division store I
+                            achieved the highest sales in the Northwest. This job would be a great reference to my ability to always be on time and try my hardest while also being responsible at a young age </p><br>
+                    </div>
+                </div>
+
+                <div class="w3-container w3-card w3-white">
+                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
+                    <div class="w3-container">
+                        <h5 class="w3-opacity"><b>Eastern Washington University</b></h5>
+                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2017 - 2020</h6>
+                        <h4>Bachelors</h4>
+                        <p>Eastern provided significant formal training of Software Engineering such as OOP design and programming, C and UNIX programming, and an in-depth multi-quarter sequence of Java. Intensive mathematical concepts were taught through
+                            Calculus 2, Discrete Mathematics and Algorithms. Eastern Washington University is an Accredited College by the Computing Accreditation Commission of ABET, there I learned 10 different programming languages and used more than
+                            10 different IDE’s. Waterfall and Agile development principles as well as version control was taught there as well. Professors not only taught different languages and their respective code but also required the understanding
+                            of common coding principles such as the pillars of OOP and Design Patterns. </p>
+                        <hr>
+                    </div>
+                    <div class="w3-container">
+                        <h5 class="w3-opacity"><b>Spokane Falls CC</b></h5>
+                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2014-2017</h6>
+                        <h4>Associates Degree</h4>
+                        <p>Spokane Falls provided a great base start of education. There I learned most of my engineering Mathematics and Sciences. Calculus 2 and all 4 major sciences were learned there. Prior to attending, becoming an Engineer was certain
+                            however which type was unknown. I chose the biological as it was one of the most difficult to understand and was fun to study. I took two years of French, studied various sciences, and took more than the needed amount of general
+                            education to understand what I wanted and be sure of what future I will proceed with. </p><br>
+                    </div>
+                </div>
+
+                <div class="w3-container w3-card w3-white">
+                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-code fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Self learn Projects</h2>
+                    <div class="w3-container">
+                        <h5 class="w3-opacity"><b><a href="spacefighter.html">Azure Fighter</a></b></h5>
+                        <h6 class="w3-text-teal"><i class="fa fa-clock-o fa-fw w3-margin-right"></i>15 hours</h6>
+                        <h4>Ecma Script 6</h4>
+                        <p>Lots of ES6 in this project. My girlfriend said I should make one of my favorite classic games so I did!</p>
+                        <hr>
+                    </div>
+                    <div class="w3-container">
+                        <h5 class="w3-opacity"><b><a href="ecmaScript.html">HTML\CSS\JS W3 Tutorial</a></b></h5>
+                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>150 hours</h6>
+                        <h4>Ecma Script 6</h4>
+                        <p>The W3 schools tutorial taught me much of what I know. These pages were the <code>GOULOASH</code> of what I learned.</p>
+                        <hr>
+                    </div>
+                </div>
+
+                <!-- End Right Column -->
+            </div>
+
+            <!-- End Grid -->
         </div>
-        
-        <div id="myContainer" onload="setComponents()">
-            <div id="shoot"><img src="shoot.svg" alt="shoot" width="100px" height="100px"></div>
-            <div id="arrows"><img src="leftright.png" alt="arrows" width="100px" height="100px"></div>
-            <div id="myAnimation"><img src="idlePlane.png" alt="idlePlane" id="jetImage"></div>
+
+        <!-- End Page Container -->
+    </div>
+
+    <footer class="w3-container w3-teal w3-center w3-margin-top">
+        <p>Find me on social media.</p>
+        <div class="icons">
+            <a href="https://www.facebook.com/chaz.hurd.7"><i class="fa fa-facebook-official w3-hover-opacity" id="fb" style="scale: 2;" ></i></a>
+
+            <a href="https://github.com/chazhurd"><i class="fa fa-github w3-hover-opacity" style="scale: 2;" ></i></a>
+
+            <a href="https://www.linkedin.com/in/chazhurd/"><i class="fa fa-linkedin w3-hover-opacity" id="linked" style="scale: 2;" ></i></a>
         </div>
-
-
-        <div id="positionOutput">The output shows here</div>
-       
-    <footer>
-
     </footer>
+
+</body>
+
 </html>
