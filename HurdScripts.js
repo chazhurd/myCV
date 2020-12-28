@@ -9,12 +9,11 @@
 
 /*
  Side notes:
-Enemy A and B are detected when hit, therefore whats needed next is counting up the amount of hits and adding anim-
-ation to the jets. When getting hit they typically get 60ish damage. Perhaps make a health bar for each fighter.
+Hit Detection needs help badly
  */
 
 var cloudMaker = setInterval(startCloud, 2000);
-var enemyMaker = setInterval(createEnemy, 4000);
+var enemyMaker = setInterval(createEnemy, 3000);
 
 
 var numOfEnemies = 1;
@@ -35,6 +34,9 @@ var enemyBhits = 0;
 function traceIt() {
     var can = document.getElementById("myCanvas2");
     var cantx = can.getContext("2d");
+    if (totalShots <= 9) {
+        document.getElementById("weaponsOverload").style.display = "none";
+    }
 
     var myTimer = setInterval(function() {
         var can = document.getElementById("myCanvas2");
@@ -243,93 +245,100 @@ var shotID = "start";
 function letemKnow() {
     alert("This is a touch game not mouse game");
 }
+var totalShots = 0;
 
 function shoot() {
-    var shotButton = document.getElementById("shootButton");
-    var myContainer = document.getElementById("myContainer");
-    var myShot = document.createElement("img");
-    myShot.src = 'theShot.png';
-    myShot.id = "myShot";
-    myContainer.appendChild(myShot);
-    myShot.style.top = 340 + 'px';
-    var myJet = document.getElementById("myAnimation").style.left;
-    var myJetCenter = myJet.substr(0, 3);
-    myJetCenter = parseInt(myJetCenter) + 20;
-    myShot.style.left = myJetCenter + 'px';
-    var posit = 340;
-    var thisShot = setInterval(function() {
-            shotLeft = myShot.style.left;
-            shotTop = myShot.style.top;
+    if (totalShots <= 9) {
+        totalShots++;
+        var shotButton = document.getElementById("shootButton");
+        var myContainer = document.getElementById("myContainer");
+        var myShot = document.createElement("img");
+        myShot.src = 'theShot.png';
+        myShot.id = "myShot";
+        myContainer.appendChild(myShot);
+        myShot.style.top = 340 + 'px';
+        var myJet = document.getElementById("myAnimation").style.left;
+        var myJetCenter = myJet.substr(0, 3);
+        myJetCenter = parseInt(myJetCenter) + 20;
+        myShot.style.left = myJetCenter + 'px';
+        var posit = 340;
+        var enemyObject = document.getElementById("A");
+        var thisShot = setInterval(function() {
+                shotLeft = myShot.style.left;
+                shotTop = myShot.style.top;
 
-            if (posit >= -20) {
-                posit -= 2;
-                myShot.style.top = posit + 'px';
-                //HIT DETECTION BELOW
-                if (document.getElementById("A") != null) {
-                    var al = document.getElementById("A").style.left.substr(0, 3);
-                    if (al.includes('p')) {
-                        al = al.substr(0, 2);
-                    }
-                    al = parseInt(al);
-                    var at = document.getElementById("A").style.top.substr(0, 3);
-                    if (at.includes('p')) {
-                        at = at.substr(0, 2);
-                    }
-                    at = parseInt(at);
 
-                    var sl = shotLeft.substr(0, 3);
-                    if (sl.includes('p')) {
-                        sl = sl.substr(0, 2);
-                    }
-                    sl = parseInt(sl);
+                if (posit >= -20) {
+                    posit -= 2;
+                    myShot.style.top = posit + 'px';
+                    //HIT DETECTION BELOW
+                    if (document.getElementById("A") != null) {
+                        var al = document.getElementById("A").style.left.substr(0, 3);
+                        if (al.includes('p')) {
+                            al = al.substr(0, 2);
+                        }
+                        al = parseInt(al);
+                        var at = document.getElementById("A").style.top.substr(0, 3);
+                        if (at.includes('p')) {
+                            at = at.substr(0, 2);
+                        }
+                        at = parseInt(at);
 
-                    var st = shotTop.substr(0, 3);
-                    if (st.includes('p')) {
-                        st = st.substr(0, 2);
-                    }
-                    st = parseInt(st);
+                        var sl = shotLeft.substr(0, 3);
+                        if (sl.includes('p')) {
+                            sl = sl.substr(0, 2);
+                        }
+                        sl = parseInt(sl);
 
-                    if (st <= at) {
-                        if (sl >= al && sl <= (al + 60) && st >= (at - 50)) {
-                            enemyAhits++;
-                            document.getElementById("debugger").innerHTML = "HITTTTTT AAAAAAA num: " + enemyAhits;
+                        var st = shotTop.substr(0, 3);
+                        if (st.includes('p')) {
+                            st = st.substr(0, 2);
+                        }
+                        st = parseInt(st);
+
+                        if (st <= at) {
+                            if (sl >= al && sl <= (al + 60) && st <= (at + 50) && st >= at) {
+                                beginExplosion(enemyObject);
+                            }
                         }
                     }
-                }
-                //for B
-                if (document.getElementById("B") != null) {
-                    var bl = document.getElementById("B").style.left.substr(0, 3);
-                    if (bl.includes('p')) {
-                        bl = bl.substr(0, 2);
-                    }
-                    bl = parseInt(bl);
+                    //for B
+                    if (document.getElementById("B") != null) {
+                        var bl = document.getElementById("B").style.left.substr(0, 3);
+                        if (bl.includes('p')) {
+                            bl = bl.substr(0, 2);
+                        }
+                        bl = parseInt(bl);
 
-                    var bt = document.getElementById("B").style.top.substr(0, 3);
-                    if (bt.includes('p')) {
-                        bt = bt.substr(0, 2);
-                    }
-                    bt = parseInt(bt);
+                        var bt = document.getElementById("B").style.top.substr(0, 3);
+                        if (bt.includes('p')) {
+                            bt = bt.substr(0, 2);
+                        }
+                        bt = parseInt(bt);
 
-                    if (st <= bt) {
-                        if (sl >= bl && sl <= (bl + 60) && st >= (bt - 50)) {
-                            enemyBhits++;
-                            document.getElementById("debugger").innerHTML = "HITTTTTT BBBBBBBBB num: " + enemyBhits;
+                        if (st <= bt) {
+                            if (sl >= bl && sl <= (bl + 60) && st <= (bt + 50) && st >= bt) {
+                                beginExplosion(enemyObject);
+                            }
                         }
                     }
-                }
-                //HIT DETECTION ABOVE
+                    //HIT DETECTION ABOVE
 
-                if (posit > 250) {
-                    shotButton.src = "holdingShot.png";
+                    if (posit > 250) {
+                        shotButton.src = "holdingShot.png";
+                    } else {
+                        shotButton.src = "shoot.svg";
+                    }
                 } else {
-                    shotButton.src = "shoot.svg";
+                    myContainer.removeChild(myShot);
+                    totalShots--;
+                    clearInterval(thisShot);
                 }
-            } else {
-                myContainer.removeChild(myShot);
-                clearInterval(thisShot);
-            }
-        },
-        2);
+            },
+            2);
+    } else {
+        document.getElementById("weaponsOverload").style.display = "block";
+    }
 }
 
 function drawArrows() {
@@ -385,6 +394,9 @@ function moveClouds() {
     var cloudOpac = 0;
     cloud.style.opacity = 0;
     var thisCloud = setInterval(function() {
+        if (totalShots <= 9) {
+            document.getElementById("weaponsOverload").style.display = "none"
+        }
         if (posit <= 400) {
             if (cloudOpac <= .8 && posit <= 299) {
                 cloudOpac += .025;
@@ -410,7 +422,6 @@ var start = 0;
 var enemyToggle = 0;
 //creating enemies:
 function createEnemy() {
-
     if (numOfEnemies <= 2) {
         numOfEnemies++;
         var myContainer = document.getElementById("myContainer");
@@ -422,7 +433,6 @@ function createEnemy() {
             enemy.src = "enemyPlane2.png";
         }
         enemy.className += "enemies";
-        debugger;
 
         if (enemyToggle === 0) {
             enemy.id = "A";
@@ -509,10 +519,52 @@ function startShifts(enemy) {
             clearInterval(checkOnIt);
             tl.fromTo(enemy, 0.4, { top: checkTop, opacity: "0.8", height: "60", width: "50" }, { top: "310px", opacity: "0", height: "20", width: "10" });
             var endOfLife = setInterval(function() {
-                document.getElementById("myContainer").removeChild(enemy);
-                numOfEnemies--;
+                if (enemy != null) {
+                    document.getElementById("myContainer").removeChild(enemy);
+                    numOfEnemies--;
+                }
                 clearInterval(endOfLife);
             }, 1000);
         }
     }, rando);
+}
+var sequence = 0;
+
+function beginExplosion(enemyObject) {
+    var myContainer = document.getElementById("myContainer");
+    var explosion = setInterval(function() {
+        document.getElementById("debugger").innerHTML = "SEQ ==== " + sequence;
+        if (enemyObject != null) {
+            sequence++;
+            if (sequence <= 5) {
+                enemyObject.src = "e1.png";
+            } else if (sequence >= 6 && sequence < 12) {
+                enemyObject.src = "e2.png";
+            } else if (sequence >= 12 && sequence < 18) {
+                enemyObject.src = "e3.png";
+            } else if (sequence >= 18 && sequence < 24) {
+                enemyObject.src = "e4.png";
+            } else if (sequence >= 24 && sequence < 30) {
+                enemyObject.src = "e5.png";
+            } else if (sequence >= 30 && sequence < 36) {
+
+                enemyObject.src = "e6.png";
+            } else if (sequence >= 36 && sequence < 42) {
+                enemyObject.src = "e7end.png";
+            } else if (sequence >= 42) {
+                myContainer.removeChild(enemyObject);
+                numOfEnemies = 2;
+                sequence = 0;
+                resetSeq();
+                clearInterval(explosion);
+            } else {
+                clearInterval(explosion);
+                sequence = 0;
+            }
+        }
+    }, 1);
+}
+
+function resetSeq() {
+    sequence = 0;
 }

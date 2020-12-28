@@ -132,3 +132,18 @@ li.bar a:hover {
     position: absolute;
     z-index: 0;
 }
+
+#weaponsOverload {
+    position: absolute;
+    font-size: 20px;
+    font-family: monospace;
+    margin: auto;
+    z-index: 1;
+    color: red;
+    text-shadow: yellow;
+    border: 2px solid red;
+    border-radius: 5px;
+    top: 300px;
+    left: 70px;
+    display: none;
+}
