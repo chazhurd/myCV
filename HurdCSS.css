@@ -113,7 +113,7 @@ li.bar a:hover {
     z-index: 1;
 }
 
-#myShot {
+.myShots {
     position: absolute;
     z-index: 0;
 }
