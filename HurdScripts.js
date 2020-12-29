@@ -31,88 +31,93 @@ var enemyAhits = 0;
 var enemyBhits = 0;
 var enemyAstruck = false;
 var enemyBstruck = 0;
-var myLeftPos;
-var moveLeft;
+var myLeftPos = 150;
+var moveLeft = 0;
+var moveRight = 0;
 var elem;
 var totalShots = 0;
 var cycleShots = -1;
 
 //Banner
-
-var myTimer = setInterval(function() {
+function drawLogo() {
     var can = document.getElementById("myCanvas2");
     var cantx = can.getContext("2d");
     cantx.lineWidth = 1;
     cantx.strokeStyle = 'white';
-    if (timed < 1) {
-        cantx.fillStyle = '#333';
-        cantx.fillRect(0, 0, 60, 40);
-        cantx.beginPath();
-    }
-    if (timed < 5) {
-        cantx.moveTo(x, y);
-        x -= 0.8;
-        y -= 1.4;
-        cantx.lineTo(x, y);
-        cantx.stroke();
-        timed++;
-    }
-    if (timed >= 5 && timed <= 15) {
-        cantx.moveTo(x, y);
-        x -= 0.6;
-        y += 2;
-        cantx.lineTo(x, y);
-        cantx.stroke();
-        timed++;
-    }
-    if (timed > 15 && timed <= 30) {
-        cantx.moveTo(x, y);
-        x += 2.2;
-        y -= .9;
-        cantx.lineTo(x, y);
-        cantx.stroke();
-        timed++;
-    }
 
-    if (timed > 30 && timed <= 37) {
-        cantx.moveTo(a, b);
-        a += 0;
-        b += 2.5;
-        cantx.lineTo(a, b);
-        cantx.stroke();
-        timed++;
-    }
-    if (timed > 37 && timed <= 44) {
-        cantx.moveTo(c, d);
-        c += 0;
-        d += 2.5;
-        cantx.lineTo(c, d);
-        cantx.stroke();
-        timed++;
-
-    }
-    if (timed >= 44 && timed <= 55) {
-        timed++;
-    }
-    if (timed >= 55) {
-        timed++;
-        if (timed >= 65) {
-            x = 30;
-            y = 17;
-            a = 37;
-            b = 17;
-            c = 43;
-            d = 16;
-            timed = 0;
+    var myTimer = setInterval(function() {
+        if (timed < 1) {
+            cantx.fillStyle = '#333';
+            cantx.fillRect(0, 0, 60, 40);
+            cantx.beginPath();
         }
-    }
-}, 34);
+        if (timed < 5) {
+            cantx.moveTo(x, y);
+            x -= 0.8;
+            y -= 1.4;
+            cantx.lineTo(x, y);
+            cantx.stroke();
+            timed++;
+        }
+        if (timed >= 5 && timed <= 15) {
+            cantx.moveTo(x, y);
+            x -= 0.6;
+            y += 2;
+            cantx.lineTo(x, y);
+            cantx.stroke();
+            timed++;
+        }
+        if (timed > 15 && timed <= 30) {
+            cantx.moveTo(x, y);
+            x += 2.2;
+            y -= .9;
+            cantx.lineTo(x, y);
+            cantx.stroke();
+            timed++;
+        }
+
+        if (timed > 30 && timed <= 37) {
+            cantx.moveTo(a, b);
+            a += 0;
+            b += 2.5;
+            cantx.lineTo(a, b);
+            cantx.stroke();
+            timed++;
+        }
+        if (timed > 37 && timed <= 44) {
+            cantx.moveTo(c, d);
+            c += 0;
+            d += 2.5;
+            cantx.lineTo(c, d);
+            cantx.stroke();
+            timed++;
+
+        }
+        if (timed >= 44 && timed <= 55) {
+            timed++;
+        }
+        if (timed >= 55) {
+            timed++;
+            if (timed >= 65) {
+                x = 30;
+                y = 17;
+                a = 37;
+                b = 17;
+                c = 43;
+                d = 16;
+                timed = 0;
+            }
+        }
+    }, 34);
+}
 //Banner above
 
 
 //game below
 function myMove() {
     drawArrows();
+    drawLogo();
+    var moveTl = new TimelineMax();
     elem = document.getElementById("myAnimation");
     var pos = 0;
     var arrows = document.getElementById("arrows");
@@ -121,24 +126,12 @@ function myMove() {
     var shoot = document.getElementById("shoot");
     shoot.style.left = 240 + 'px';
     shoot.style.top = 400 + 'px';;
-    var id = setInterval(frame, 1);
-
-    function frame() {
-        if (pos >= 150) {
-            clearInterval(id);
-        } else {
-            pos += 3;
-            elem.style.left = pos + 'px';
-            myLeftPos = pos;
-        }
-    }
+    moveTl.fromTo(elem, 1, { left: "-30px", opacity: "0" }, { left: "150px", opacity: "1" });
 }
 
 function moveJetLeft() {
-    if (moveRight != null) {
-        stopLeftMove();
-    }
     moveLeft = setInterval(shiftLeft, 10);
+
 }
 
 function shiftLeft() {
@@ -149,9 +142,7 @@ function shiftLeft() {
 }
 
 function moveJetRight() {
-    if (moveLeft != null) {
-        stopLeftMove();
-    }
+
     moveRight = setInterval(shiftRight, 10);
 }
 
@@ -186,7 +177,7 @@ function shoot() {
         } else {
             cycleShots = 0;
         }
-
+        var shotTl = new TimelineMax();
         totalShots++;
         //create shot
         var shotButton = document.getElementById("shootButton");
@@ -197,13 +188,13 @@ function shoot() {
         myShot.className = "myShots";
         myContainer.appendChild(myShot);
         //align center for shot
-        myShot.style.top = 340 + 'px';
+        //myShot.style.top = 340 + 'px';
         var myJet = document.getElementById("myAnimation").style.left;
         var myJetCenter = myJet.substr(0, 3);
         myJetCenter = parseInt(myJetCenter) + 20;
         myShot.style.left = myJetCenter + 'px';
-        var posit = 340;
         //begin flight
+        /* This was removed and replaced with from to as it was more glittchy
         var thisShot = setInterval(function() {
                 shotLeft = myShot.style.left;
                 shotTop = myShot.style.top;
@@ -227,6 +218,58 @@ function shoot() {
             2);
     } else {
         document.getElementById("weaponsOverload").style.display = "block";
+    */
+        var myShotTop, pPos;
+        shotTl.fromTo(myShot, 2, { top: "340px" }, { top: "-100px" });
+        var checkShot = setInterval(function() {
+            myShotTop = myShot.style.top;
+            pPos = myShotTop.indexOf("p");
+            myShotTop = myShotTop.substr(0, pPos);
+            if (myShotTop <= -20) {
+                if (myShot != null) {
+                    myContainer.removeChild(myShot);
+                    totalShots--;
+                    clearInterval(checkShot);
+                }
+            }
+        }, 50);
+    } else {
+        var divTl = new TimelineMax();
+        var oCount = 0;
+        var overloadImage = document.getElementById("weaponsOverload");
+        overloadImage.style.display = "block";
+        overloadImage.style.opacity = "1";
+        var myShootButton = document.getElementById("shootButton");
+        myShootButton.style.display = "none";
+        var overload = setInterval(function() {
+            oCount++;
+            //debugger;
+            if (oCount === 1) {
+                divTl.fromTo(overloadImage, 0.5, { opacity: "0" }, { opacity: "1" });
+
+            }
+            if (oCount === 2) {
+                divTl.fromTo(overloadImage, 0.5, { opacity: "1" }, { opacity: "0" });
+
+
+            }
+            if (oCount === 3) {
+                divTl.fromTo(overloadImage, 0.5, { opacity: "0" }, { opacity: "1" });
+
+
+
+            }
+            if (oCount === 4) {
+                divTl.fromTo(overloadImage, 0.5, { opacity: "1" }, { opacity: "0" });
+
+            }
+            if (oCount >= 5) {
+                myShootButton.style.display = "block";
+                clearInterval(overload);
+            }
+        }, 600);
+
+
     }
 }
 
@@ -283,10 +326,7 @@ function moveClouds() {
     var cloudOpac = 0;
     cloud.style.opacity = 0;
     var thisCloud = setInterval(function() {
-        //a lil extra for shots
-        if (totalShots <= 9) {
-            document.getElementById("weaponsOverload").style.display = "none"
-        }
+
         //opac and movemnt of cloud pretty much the fromTo. 
         if (posit <= 400) {
             if (cloudOpac <= .8 && posit <= 299) {
@@ -411,13 +451,13 @@ function startShifts(enemy) {
         if (numCheckTop >= 200) {
             clearInterval(checkOnIt);
             tl.fromTo(enemy, 0.4, { top: checkTop, opacity: "0.8", height: "60", width: "50" }, { top: "310px", opacity: "0", height: "20", width: "10" });
-            var endOfLife = setInterval(function() {
+            /*var endOfLife = setInterval(function() {
                 if (enemy != null) {
                     document.getElementById("myContainer").removeChild(enemy);
                     numOfEnemies--;
                 }
                 clearInterval(endOfLife);
-            }, 1000);
+            }, 1000);*/
         }
     }, rando);
 }
@@ -468,8 +508,10 @@ function hitDetection() {
                                 enemyAstruck = false;
                                 explosiveCount = 0;
                                 clearInterval(explosiveTimer);
-                                document.getElementById('myContainer').removeChild(enemyA);
-                                numOfEnemies--;
+                                if (enemyA != null) {
+                                    document.getElementById('myContainer').removeChild(enemyA);
+                                    numOfEnemies--;
+                                }
                             }
                         }, 10);
 
@@ -523,8 +565,10 @@ function hitDetection() {
                                 enemyAstruck = false;
                                 explosiveCount = 0;
                                 clearInterval(explosiveTimer);
-                                document.getElementById('myContainer').removeChild(enemyB);
-                                numOfEnemies--;
+                                if (enemyB != null) {
+                                    document.getElementById('myContainer').removeChild(enemyB);
+                                    numOfEnemies--;
+                                }
                             }
                         }, 20);
 
