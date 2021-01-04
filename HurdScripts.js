@@ -1,15 +1,16 @@
 /**
  * Created By Chaz Hurd
  * Classic jet fighting game
- * Hours: 14
+ * Hours: 25
  * First game made using JS/HTML/CSS 
  * 12/25/2020
  * 
  */
 
 /*
- Side notes:
-Hit Detection needs help badly
+Side Notes:
+shooting for enemies
+hit detection for enemy's shots. 
  */
 
 var cloudMaker = setInterval(startCloud, 2000);
@@ -117,6 +118,7 @@ function drawLogo() {
 function myMove() {
     drawArrows();
     drawLogo();
+    enemyAttack();
     var moveTl = new TimelineMax();
     elem = document.getElementById("myAnimation");
     var pos = 0;
@@ -170,9 +172,9 @@ function letemKnow() {
 }
 
 function shoot() {
-    if (totalShots <= 4) {
+    if (totalShots <= 2) {
 
-        if (cycleShots < 5) {
+        if (cycleShots < 2) {
             cycleShots++;
         } else {
             cycleShots = 0;
@@ -322,9 +324,9 @@ function moveClouds() {
     cloud.id = "myCloud";
     var rando = Math.floor(Math.random() * 260);
     cloud.style.left = rando + 'px';
-    var posit = 0;
     var cloudOpac = 0;
-    cloud.style.opacity = 0;
+    cloud.style.opacity = 1;
+    /*
     var thisCloud = setInterval(function() {
 
         //opac and movemnt of cloud pretty much the fromTo. 
@@ -346,8 +348,53 @@ function moveClouds() {
             myContainer.removeChild(cloud);
             clearInterval(thisCloud);
         }
-    }, 5);
+    }, 5);*/
 
+    var cloudTl = new TimelineMax();
+
+
+
+    cloudTl.fromTo(cloud, 2, { top: "0px", opacity: "0.8" }, { top: "350px", opacity: "0.1" });
+    var checkCloud = setInterval(() => {
+
+        var enemyAtop = 0,
+            pIndex = 0,
+            enemyBtop = 0;
+        var enemyA,
+            enemyB;
+
+        var cloudTop = cloud.style.top;
+        var pIndex = cloudTop.indexOf("p");
+        cloudTop = parseInt(cloudTop.substr(0, pIndex));
+
+        if (cloudTop >= 350) {
+            myContainer.removeChild(cloud);
+            clearInterval(checkCloud);
+        }
+
+
+        if (document.getElementById("A") != null) {
+            enemyA = document.getElementById("A");
+            enemyAtop = enemyA.style.top;
+            pIndex = enemyAtop.indexOf("p");
+            enemyAtop = parseInt(enemyAtop.substr(0, pIndex));
+            if (enemyAtop >= 300) {
+                myContainer.removeChild(enemyA);
+                numOfEnemies = 1;
+            }
+        }
+        if (document.getElementById("B") != null) {
+            enemyB = document.getElementById("A");
+            enemyBtop = enemyB.style.top;
+            pIndex = enemyBtop.indexOf("p");
+            enemyBtop = parseInt(enemyBtop.substr(0, pIndex));
+            if (enemyBtop >= 300) {
+                myContainer.removeChild(enemyB);
+                numOfEnemies = 1;
+            }
+        }
+
+    }, 10)
 }
 var start = 0;
 var enemyToggle = 0;
@@ -462,7 +509,7 @@ function startShifts(enemy) {
     }, rando);
 }
 var explosiveCount = 0;
-//justMaker
+
 function hitDetection() {
     if (document.getElementById("A") != null) {
         var enemyA = document.getElementById("A");
@@ -578,4 +625,37 @@ function hitDetection() {
         }
     }
 
+}
+
+
+
+function enemyAttack() {
+    var randomInterval = Math.random() * 500 + 500;
+    var enemyAtop, enemyBtop, enemyAleft, enemyBleft, shotLeft, shotTop;
+    var myContainer = document.getElementById("myContainer");
+    var tl = new TimelineMax();
+
+
+    var fireRandomly = setInterval(function() {
+
+        if (document.getElementById("A") != null) {
+            var enemyA = document.getElementById("A");
+            enemyAtop = enemyA.style.top;
+            enemyAleft = enemyA.style.left;
+            var aShot = document.createElement("img");
+            myContainer.appendChild(aShot);
+            aShot.src = "theShot.png";
+            aShot.style.left = enemyAleft;
+            aShot.className = "myShots";
+            tl.fromTo(aShot, 1, { top: "50px" }, { top: "400px" });
+        }
+        /*
+        if (document.getElementById("B") != null) {
+            var enemyB = document.getElementById("B");
+            enemyBtop = enemyB.style.top + 50;
+            enemyBleft = enemyB.style.left;
+
+        }*/
+
+    }, 2000);
 }
