@@ -17,7 +17,7 @@
 
 </header>
 
-<body onload="myMove()">
+<body onload="myMove()" id="body">
     <div style="width: 100%;">
         <ol class="bar">
             <li class="bar"> <canvas id="myCanvas2" width="60" height="40" style="border:1px solid #ffffff;"></canvas></li>
@@ -31,6 +31,8 @@
 
     <div id="myContainer" onload="setComponents()" style="margin: auto;">
         <div id="weaponsOverload" style="text-align: center;">Weapons Overload!<br>3 Shots Max</div>
+        <div id="damaged" style="text-align: center;"><strong>CAUTION!</strong><br>Damage To Ship</div>
+
         <div id="shoot">
             <img src="shoot.svg" id="shootButton" alt="shoot" width="100px" height="100px" ontouchstart="shoot()">
         </div>
