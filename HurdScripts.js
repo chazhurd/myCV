@@ -9,8 +9,7 @@
 
 /*
 Side Notes:
-flash needs help. make it like health bar
-
+hit detection needs help
  */
 
 var cloudMaker = setInterval(startCloud, 2000);
@@ -42,6 +41,7 @@ var totalShots = 0;
 var cycleShots = -1;
 var shotsTaken = 0;
 var aboveZeroHits = 0;
+var cycleLife = 1;
 
 //Banner
 function drawLogo() {
@@ -549,12 +549,12 @@ function hitDetection() {
             if (top > 450) {
                 myContainer.removeChild(curShot);
             }
-            if (left > userLeft && left < (userLeft + 50) && top > 350 && top < 353) {
+            if (left > userLeft && left < (userLeft + 50) && top === 350) {
                 userShot = true;
+                shotsTaken++;
+                document.getElementById("debugger2").innerHTML += "S:" + shotsTaken + "  ";
                 flashDamage();
-                debugger;
-                lowerHealth();
-                console.log("Hit " + shotsTaken);
+                //lowerHealth();
             }
         }
     }
@@ -765,28 +765,33 @@ function flashDamage() {
 }
 
 function lowerHealth() {
-    var healthTl = new TimelineMax();
     var healthBar = document.getElementById("healthBarImage");
     var myCover = document.getElementById("myCover");
-    shotsTaken++;
-    switch (shotsTaken) {
-        case (1):
-            healthTl.fromTo(healthBar, 0.3, { src: "fullHealth.png" }, { src: "threequartershealth.png" });
-            aboveZeroHits = 0;
-            break;
-        case (2):
+
+    if (shotsTaken > 1) {
+        if (cycleLife === 1) {
+            healthBar.src = "threequartershealth.png";
+            shotsTaken = 0;
+            cycleLife++;
+        }
+
+        if (cycleLife === 2) {
             healthBar.src = "halfhealth.png";
-            aboveZeroHits = 0;
-            break;
-        case (3):
+            shotsTaken = 0;
+            cycleLife++;
+        }
+
+        if (cycleLife === 3) {
             healthBar.src = "quarterhealth.png";
-            aboveZeroHits = 0;
-            break;
-        case (4):
+            shotsTaken = 0;
+            cycleLife++
+        }
+
+        if (cycleLife === 4) {
             healthBar.src = "dead1.png";
-            myCover.removeChild(myContainer);
-            break;
+            shotsTaken = 0;
+            cycleLife++;
+        }
 
     }
-
 }
