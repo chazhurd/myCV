@@ -9,9 +9,7 @@
 
 /*
 Side Notes:
-hit detection for enemy's shots. 
-flash damage sign
-count hits
+flash needs help. make it like health bar
 
  */
 
@@ -19,7 +17,7 @@ var cloudMaker = setInterval(startCloud, 2000);
 var enemyMaker = setInterval(createEnemy, 3000);
 var justiceMaker = setInterval(hitDetection, 5);
 
-var numOfEnemies = 1;
+var numOfEnemies = 0;
 var x = 30;
 var y = 17;
 var a = 37;
@@ -33,6 +31,8 @@ var xy = 0;
 var enemyAhits = 0;
 var enemyBhits = 0;
 var enemyAstruck = false;
+var userShot = false;
+var healthLowered = false;
 var enemyBstruck = 0;
 var myLeftPos = 150;
 var moveLeft = 0;
@@ -40,6 +40,8 @@ var moveRight = 0;
 var elem;
 var totalShots = 0;
 var cycleShots = -1;
+var shotsTaken = 0;
+var aboveZeroHits = 0;
 
 //Banner
 function drawLogo() {
@@ -404,7 +406,7 @@ var start = 0;
 var enemyToggle = 0;
 //creating enemies:
 function createEnemy() {
-    if (numOfEnemies <= 2) {
+    if (numOfEnemies === 1 || numOfEnemies === 0) {
         numOfEnemies++;
         var myContainer = document.getElementById("myContainer");
         var enemy = document.createElement("img");
@@ -515,8 +517,8 @@ function startShifts(enemy) {
 var explosiveCount = 0;
 
 function hitDetection() {
+    //user hit detection
     var thisShot, thisShotTop, thisShotLeft, userTop, userLeft, pIndex, user, damageDiv;
-    var damTimer = 0;
     if (document.getElementById("myAnimation") != null) {
         user = document.getElementById("myAnimation");
         userTop = user.style.top;
@@ -528,29 +530,35 @@ function hitDetection() {
         userLeft = parseInt(userLeft.substr(0, pIndex));
 
     }
+    if (numOfEnemyShots > 0) {
 
-    if (numOfEnemyShots >= 1) {
-        thisShot = document.getElementById("E" + numOfEnemyShots);
-        thisShotTop = thisShot.style.top;
-        thisShotLeft = thisShot.style.left;
+        var shots = document.getElementsByClassName("enemyShots");
+        var top, curShot;
 
-        pIndex = thisShotTop.indexOf("p");
-        thisShotTop = parseInt(thisShotTop.substr(0, pIndex));
+        for (var i = 0; i < shots.length; i++) {
+            curShot = shots.item(i);
+            curShotTop = curShot.style.top;
+            curShotLeft = curShot.style.left;
 
-        pIndex = thisShotLeft.indexOf("p");
-        thisShotLeft = parseInt(thisShotLeft.substr(0, pIndex));
+            pIndex = curShotTop.indexOf("p");
+            top = parseInt(curShotTop.substr(0, pIndex));
 
-        if (thisShotTop === 480) {
-            myContainer.removeChild(thisShot);
-            numOfEnemyShots--;
-        }
-        debugger;
-        if (thisShotLeft > userLeft && thisShotLeft < (userLeft + 50) && thisShotTop > 350) {
-            flashDamage();
+            pIndex = curShotLeft.indexOf("p");
+            left = parseInt(curShotLeft.substr(0, pIndex));
+
+            if (top > 450) {
+                myContainer.removeChild(curShot);
+            }
+            if (left > userLeft && left < (userLeft + 50) && top > 350 && top < 353) {
+                userShot = true;
+                flashDamage();
+                debugger;
+                lowerHealth();
+                console.log("Hit " + shotsTaken);
+            }
         }
     }
-
-
+    //enemy a hit detection
     if (document.getElementById("A") != null) {
         var enemyA = document.getElementById("A");
         var enemyAtop = enemyA.style.top;
@@ -560,7 +568,7 @@ function hitDetection() {
         pLoc = enemyAleft.indexOf("p");
         enemyAleft = parseInt(enemyAleft.substr(0, pLoc));
 
-        for (var i = 0; i < 5; i++) {
+        for (var i = 1; i < 4; i++) {
             if (document.getElementById("myShot" + i) != null) {
                 var thisShot = document.getElementById("myShot" + i);
                 var myShottop = document.getElementById("myShot" + i).style.top;
@@ -573,7 +581,6 @@ function hitDetection() {
 
                 if (myShottop <= enemyAtop + 45) {
                     if (myShotleft >= enemyAleft && myShotleft <= enemyAleft + 40) {
-                        console.log("myShot " + i + "hit enemyA");
                         enemyAstruck = true;
                         var explosiveTimer = setInterval(function() {
                             explosiveCount++;
@@ -607,7 +614,7 @@ function hitDetection() {
             }
         }
     }
-
+    //enemy b hit detection
     if (document.getElementById("B") != null) {
         var enemyB = document.getElementById("B");
         var enemyAtop = enemyB.style.top;
@@ -670,17 +677,16 @@ function hitDetection() {
 var numOfEnemyShots = 0;
 
 function enemyAttack() {
-    var randomInterval = Math.random() * 500 + 500;
-    var enemyAtop, enemyBtop, enemyAleft, enemyBleft, shotLeft, shotTop, pIndex;
+    var randomInterval = Math.random() * 500 + 1000;
+    var enemyAtop, enemyBtop, enemyAleft, enemyBleft, aShotLeft, bShotLeft, pIndex;
     var myContainer = document.getElementById("myContainer");
     var tl = new TimelineMax();
 
 
-    var fireRandomly = setInterval(function() {
+    var fireARandomly = setInterval(function() {
 
         if (document.getElementById("A") != null) {
             numOfEnemyShots++;
-
             var enemyA = document.getElementById("A");
             enemyAtop = enemyA.style.top;
             enemyAleft = enemyA.style.left;
@@ -688,56 +694,99 @@ function enemyAttack() {
             enemyAleft = parseInt(enemyAleft.substr(0, pIndex));
             aShotLeft = enemyAleft + 25;
             var aShot = document.createElement("img");
-            aShot.id = "E" + numOfEnemyShots;
             myContainer.appendChild(aShot);
             aShot.src = "theShot.png";
             aShot.style.left = aShotLeft + "px";
-            aShot.className = "myShots";
-            tl.fromTo(aShot, 1, { top: "50px" }, { top: "490px" });
-
-
-
+            aShot.className = "enemyShots";
+            tl.fromTo(aShot, 1, { top: enemyAtop }, { top: "490px" });
         }
-        /*
-        if (document.getElementById("B") != null) {
-            var enemyB = document.getElementById("B");
-            enemyBtop = enemyB.style.top + 50;
-            enemyBleft = enemyB.style.left;
 
-        }*/
+    }, randomInterval);
 
-    }, 2000);
+    randomInterval = Math.random() * 500 + 1000;
+
+    /*
+        var fireBRandomly = setInterval(function() {
+
+            if (document.getElementById("B") != null) {
+                numOfEnemyShots++;
+                var enemyB = document.getElementById("B");
+                enemyBtop = enemyB.style.top;
+                enemyBleft = enemyB.style.left;
+                pIndex = enemyBleft.indexOf("p");
+                enemyBleft = parseInt(enemyBleft.substr(0, pIndex));
+                bShotLeft = enemyBleft + 25;
+                var bShot = document.createElement("img");
+                myContainer.appendChild(bShot);
+                bShot.src = "theShot.png";
+                bShot.style.left = bShotLeft + "px";
+                bShot.className = "enemyShots";
+                tl.fromTo(bShot, 1, { top: "50px" }, { top: "490px" });
+            }
+
+        }, randomInterval);
+    */
 }
 
 function flashDamage() {
     var damageDiv;
-    var damTimer = 0;
+    var myContainer = document.getElementById("myContainer");
     damageDiv = document.getElementById("damaged");
     var divTl = new TimelineMax();
     //--------------
-    var dam = setInterval(function() {
-        damTimer++;
-        if (damTimer === 1) {
-            divTl.fromTo(damageDiv, 0.1, { opacity: "0" }, { opacity: "1" });
+    if (userShot) {
+        var damTimer = 0;
+        var dam = setInterval(function() {
+            damTimer++;
+            if (damTimer === 1) {
+                divTl.fromTo(damageDiv, 0.1, { opacity: "0" }, { opacity: "1" });
 
-        }
-        if (damTimer === 2) {
-            divTl.fromTo(damageDiv, 0.1, { opacity: "1" }, { opacity: "0" });
-
-
-        }
-        if (damTimer === 3) {
-            divTl.fromTo(damageDiv, 0.1, { opacity: "0" }, { opacity: "1" });
+            }
+            if (damTimer === 2) {
+                divTl.fromTo(damageDiv, 0.1, { opacity: "1" }, { opacity: "0" });
 
 
-        }
-        if (damTmer === 4) {
-            divTl.fromTo(damageDiv, 0.1, { opacity: "1" }, { opacity: "0" });
+            }
+            if (damTimer === 3) {
+                divTl.fromTo(damageDiv, 0.1, { opacity: "0" }, { opacity: "1" });
 
-        }
-        if (damTimer >= 5) {
 
-            clearInterval(dam);
-        }
-    }, 100);
+            }
+            if (damTimer === 4) {
+                divTl.fromTo(damageDiv, 0.1, { opacity: "1" }, { opacity: "0" });
+
+            }
+            if (damTimer >= 5) {
+                userShot = false;
+                clearInterval(dam);
+            }
+        }, 100);
+    }
+}
+
+function lowerHealth() {
+    var healthTl = new TimelineMax();
+    var healthBar = document.getElementById("healthBarImage");
+    var myCover = document.getElementById("myCover");
+    shotsTaken++;
+    switch (shotsTaken) {
+        case (1):
+            healthTl.fromTo(healthBar, 0.3, { src: "fullHealth.png" }, { src: "threequartershealth.png" });
+            aboveZeroHits = 0;
+            break;
+        case (2):
+            healthBar.src = "halfhealth.png";
+            aboveZeroHits = 0;
+            break;
+        case (3):
+            healthBar.src = "quarterhealth.png";
+            aboveZeroHits = 0;
+            break;
+        case (4):
+            healthBar.src = "dead1.png";
+            myCover.removeChild(myContainer);
+            break;
+
+    }
+
 }
