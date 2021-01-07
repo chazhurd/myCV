@@ -9,12 +9,16 @@
 
 /*
 Side Notes:
-hit detection needs help
+time for SQL
  */
 
 var cloudMaker = setInterval(startCloud, 2000);
 var enemyMaker = setInterval(createEnemy, 3000);
 var justiceMaker = setInterval(hitDetection, 5);
+var debuggee = setInterval(hitDetectionHelper, 500);
+
+
+alert("This is a touch game only");
 
 var numOfEnemies = 0;
 var x = 30;
@@ -42,7 +46,9 @@ var cycleShots = -1;
 var shotsTaken = 0;
 var aboveZeroHits = 0;
 var cycleLife = 1;
-
+var endGame = false;
+var noTrig = true;
+var myScore = 0;
 //Banner
 function drawLogo() {
     var can = document.getElementById("myCanvas2");
@@ -119,10 +125,22 @@ function drawLogo() {
 
 
 //game below
+
+function hitDetectionHelper() {
+    if (userShot) {
+        x++;
+        flashDamage();
+        lowerHealth();
+        shotsTaken++;
+        userShot = false;
+    }
+}
+
 function myMove() {
     drawArrows();
     drawLogo();
-    enemyAttack();
+    enemyAAttack();
+    enemyBAttack();
     var moveTl = new TimelineMax();
     elem = document.getElementById("myAnimation");
     var pos = 0;
@@ -518,7 +536,7 @@ var explosiveCount = 0;
 
 function hitDetection() {
     //user hit detection
-    var thisShot, thisShotTop, thisShotLeft, userTop, userLeft, pIndex, user, damageDiv;
+    var userTop, userLeft, pIndex, user;
     if (document.getElementById("myAnimation") != null) {
         user = document.getElementById("myAnimation");
         userTop = user.style.top;
@@ -549,12 +567,9 @@ function hitDetection() {
             if (top > 450) {
                 myContainer.removeChild(curShot);
             }
-            if (left > userLeft && left < (userLeft + 50) && top === 350) {
+            if (left > userLeft && left < (userLeft + 50) && top >= 350 && top <= 375 && userShot == false) {
                 userShot = true;
                 shotsTaken++;
-                document.getElementById("debugger2").innerHTML += "S:" + shotsTaken + "  ";
-                flashDamage();
-                //lowerHealth();
             }
         }
     }
@@ -580,25 +595,29 @@ function hitDetection() {
                 myShotleft = parseInt(myShotleft.substr(0, pLoc));
 
                 if (myShottop <= enemyAtop + 45) {
-                    if (myShotleft >= enemyAleft && myShotleft <= enemyAleft + 40) {
+                    if (myShotleft >= enemyAleft && myShotleft <= enemyAleft + 40 && enemyAstruck == false) {
                         enemyAstruck = true;
                         var explosiveTimer = setInterval(function() {
                             explosiveCount++;
-                            if (explosiveCount < 10)
+                            if (explosiveCount === 1) {
+                                enemyA.style.opacity = "0.7";
                                 enemyA.src = "e1.png";
-                            if (explosiveCount > 20 && explosiveCount < 30)
+                            }
+                            if (explosiveCount === 5)
                                 enemyA.src = "e2.png";
-                            if (explosiveCount > 30 && explosiveCount < 40)
+                            if (explosiveCount === 10) {
+                                enemyA.style.opacity = "1";
                                 enemyA.src = "e3.png";
-                            if (explosiveCount > 40 && explosiveCount < 50)
+                            }
+                            if (explosiveCount === 15)
                                 enemyA.src = "e4.png";
-                            if (explosiveCount > 50 && explosiveCount < 60)
+                            if (explosiveCount === 20)
                                 enemyA.src = "e5.png";
-                            if (explosiveCount > 60 && explosiveCount < 70)
+                            if (explosiveCount === 25)
                                 enemyA.src = "e6.png";
-                            if (explosiveCount > 70 && explosiveCount < 80)
+                            if (explosiveCount === 30)
                                 enemyA.src = "e7end.png";
-                            if (explosiveCount > 80 && explosiveCount < 82) {
+                            if (explosiveCount === 35) {
                                 enemyAstruck = false;
                                 explosiveCount = 0;
                                 clearInterval(explosiveTimer);
@@ -607,13 +626,14 @@ function hitDetection() {
                                     numOfEnemies--;
                                 }
                             }
-                        }, 10);
+                        }, 2);
 
                     }
                 }
             }
         }
     }
+
     //enemy b hit detection
     if (document.getElementById("B") != null) {
         var enemyB = document.getElementById("B");
@@ -636,27 +656,30 @@ function hitDetection() {
                 myShotleft = parseInt(myShotleft.substr(0, pLoc));
 
                 if (myShottop <= enemyAtop + 45) {
-                    if (myShotleft >= enemyAleft && myShotleft <= enemyAleft + 40) {
-                        console.log("myShot " + i + "hit enemyB");
-                        enemyAstruck = true;
+                    if (myShotleft >= enemyAleft && myShotleft <= enemyAleft + 40 && enemyBstruck == false) {
+                        enemyBstruck = true;
                         var explosiveTimer = setInterval(function() {
                             explosiveCount++;
-                            if (explosiveCount < 10)
+                            if (explosiveCount === 1) {
+                                enemyA.style.opacity = "0.7";
                                 enemyB.src = "e1.png";
-                            if (explosiveCount > 20 && explosiveCount < 30)
+                            }
+                            if (explosiveCount === 5)
                                 enemyB.src = "e2.png";
-                            if (explosiveCount > 30 && explosiveCount < 40)
+                            if (explosiveCount === 10) {
+                                enemyB.style.opacity = "1";
                                 enemyB.src = "e3.png";
-                            if (explosiveCount > 40 && explosiveCount < 50)
+                            }
+                            if (explosiveCount === 15)
                                 enemyB.src = "e4.png";
-                            if (explosiveCount > 50 && explosiveCount < 60)
+                            if (explosiveCount === 20)
                                 enemyB.src = "e5.png";
-                            if (explosiveCount > 60 && explosiveCount < 70)
+                            if (explosiveCount === 25)
                                 enemyB.src = "e6.png";
-                            if (explosiveCount > 70 && explosiveCount < 80)
+                            if (explosiveCount === 30)
                                 enemyB.src = "e7end.png";
-                            if (explosiveCount > 80 && explosiveCount < 82) {
-                                enemyAstruck = false;
+                            if (explosiveCount === 35) {
+                                enemyBstruck = false;
                                 explosiveCount = 0;
                                 clearInterval(explosiveTimer);
                                 if (enemyB != null) {
@@ -664,7 +687,7 @@ function hitDetection() {
                                     numOfEnemies--;
                                 }
                             }
-                        }, 20);
+                        }, 2);
 
                     }
                 }
@@ -676,7 +699,7 @@ function hitDetection() {
 
 var numOfEnemyShots = 0;
 
-function enemyAttack() {
+function enemyAAttack() {
     var randomInterval = Math.random() * 500 + 1000;
     var enemyAtop, enemyBtop, enemyAleft, enemyBleft, aShotLeft, bShotLeft, pIndex;
     var myContainer = document.getElementById("myContainer");
@@ -700,33 +723,44 @@ function enemyAttack() {
             aShot.className = "enemyShots";
             tl.fromTo(aShot, 1, { top: enemyAtop }, { top: "490px" });
         }
-
+        if (endGame) {
+            clearInterval(fireARandomly);
+        }
     }, randomInterval);
+}
+
+function enemyBAttack() {
 
     randomInterval = Math.random() * 500 + 1000;
 
-    /*
-        var fireBRandomly = setInterval(function() {
+    var enemyBtop, enemyBleft, bShotLeft, pIndex;
+    var myContainer = document.getElementById("myContainer");
+    var tl = new TimelineMax();
 
-            if (document.getElementById("B") != null) {
-                numOfEnemyShots++;
-                var enemyB = document.getElementById("B");
-                enemyBtop = enemyB.style.top;
-                enemyBleft = enemyB.style.left;
-                pIndex = enemyBleft.indexOf("p");
-                enemyBleft = parseInt(enemyBleft.substr(0, pIndex));
-                bShotLeft = enemyBleft + 25;
-                var bShot = document.createElement("img");
-                myContainer.appendChild(bShot);
-                bShot.src = "theShot.png";
-                bShot.style.left = bShotLeft + "px";
-                bShot.className = "enemyShots";
-                tl.fromTo(bShot, 1, { top: "50px" }, { top: "490px" });
-            }
+    var fireBRandomly = setInterval(function() {
 
-        }, randomInterval);
-    */
+        if (document.getElementById("B") != null) {
+            numOfEnemyShots++;
+            var enemyB = document.getElementById("B");
+            enemyBtop = enemyB.style.top;
+            enemyBleft = enemyB.style.left;
+            pIndex = enemyBleft.indexOf("p");
+            enemyBleft = parseInt(enemyBleft.substr(0, pIndex));
+            bShotLeft = enemyBleft + 25;
+            var bShot = document.createElement("img");
+            myContainer.appendChild(bShot);
+            bShot.src = "theShot.png";
+            bShot.style.left = bShotLeft + "px";
+            bShot.className = "enemyShots";
+            tl.fromTo(bShot, 1, { top: enemyBtop }, { top: "490px" });
+        }
+        if (endGame) {
+            clearInterval(fireBRandomly);
+        }
+
+    }, randomInterval);
 }
+
 
 function flashDamage() {
     var damageDiv;
@@ -767,31 +801,60 @@ function flashDamage() {
 function lowerHealth() {
     var healthBar = document.getElementById("healthBarImage");
     var myCover = document.getElementById("myCover");
-
     if (shotsTaken > 1) {
         if (cycleLife === 1) {
             healthBar.src = "threequartershealth.png";
             shotsTaken = 0;
-            cycleLife++;
-        }
-
-        if (cycleLife === 2) {
+            cycleLife = 2;
+        } else if (cycleLife === 2) {
             healthBar.src = "halfhealth.png";
             shotsTaken = 0;
-            cycleLife++;
-        }
-
-        if (cycleLife === 3) {
+            cycleLife = 3;
+        } else if (cycleLife === 3) {
             healthBar.src = "quarterhealth.png";
             shotsTaken = 0;
-            cycleLife++
-        }
-
-        if (cycleLife === 4) {
+            cycleLife = 4;
+        } else if (cycleLife === 4) {
             healthBar.src = "dead1.png";
             shotsTaken = 0;
-            cycleLife++;
+            cycleLife = 5;
+
+            clearInterval(cloudMaker);
+            clearInterval(enemyMaker);
+            clearInterval(justiceMaker);
+            clearInterval(debuggee);
+            endGame = true;
+            removeItems();
+
+
+
+
         }
 
     }
+}
+
+function removeItems() {
+    var clearItems = setInterval(() => {
+
+        var myContainer = document.getElementById('myContainer');
+        var shots = document.getElementsByClassName("enemyShots");
+
+        if (document.getElementById("A") != null) {
+            var eA = document.getElementById("A");
+            myContainer.removeChild(eA);
+        }
+
+        if (document.getElementById("B")) {
+            var eB = document.getElementById("B");
+            myContainer.removeChild(eB);
+        }
+
+        for (var z = 0; z < shots.length; z++) {
+            //debugger;
+            myContainer.removeChild(shots.item(z));
+        }
+    }, 200)
+
+
 }
