@@ -185,3 +185,71 @@ li.bar a:hover {
     left: 70px;
     opacity: 0;
 }
+
+#restartGame {
+    background-color: black;
+    position: absolute;
+    z-index: 1;
+    opacity: 0.7;
+    width: 340px;
+    top: 180px;
+    color: red;
+}
+
+#restartButtonYes {
+    position: relative;
+    left: 220px;
+    top: 50px;
+    background-color: blue;
+    z-index: 1;
+    opacity: 0;
+}
+
+#restartButtonNo {
+    position: relative;
+    left: 270px;
+    top: 50px;
+    background-color: darkblue;
+    z-index: 1;
+    opacity: 0;
+}
+
+#restartQuestion {
+    position: relative;
+    width: 200px;
+    height: 20px;
+    top: 20px;
+    color: red;
+    background-color: black;
+    opacity: 0;
+    text-align: center;
+}
+
+#restartGame {
+    position: relative;
+    left: 75px;
+    width: 0px;
+}
+
+.buttons {
+    position: relative;
+    background-color: cornflowerblue;
+    margin: auto;
+    color: white;
+    border-radius: 8px;
+    height: 30px;
+}
+
+#startGame {
+    background-color: black;
+    opacity: 0.8;
+    position: relative;
+    left: 75px;
+    top: 50px;
+    align-items: center;
+}
+
+#startContent {
+    padding: 10px;
+    text-align: center;
+}

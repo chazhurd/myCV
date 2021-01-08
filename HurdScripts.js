@@ -12,13 +12,11 @@ Side Notes:
 time for SQL
  */
 
-var cloudMaker = setInterval(startCloud, 2000);
-var enemyMaker = setInterval(createEnemy, 3000);
-var justiceMaker = setInterval(hitDetection, 5);
-var debuggee = setInterval(hitDetectionHelper, 500);
+var cloudMaker;
+var enemyMaker;
+var justiceMaker;
+var debuggee;
 
-
-alert("This is a touch game only");
 
 var numOfEnemies = 0;
 var x = 30;
@@ -137,6 +135,8 @@ function hitDetectionHelper() {
 }
 
 function myMove() {
+
+
     drawArrows();
     drawLogo();
     enemyAAttack();
@@ -567,7 +567,7 @@ function hitDetection() {
             if (top > 450) {
                 myContainer.removeChild(curShot);
             }
-            if (left > userLeft && left < (userLeft + 50) && top >= 350 && top <= 375 && userShot == false) {
+            if (left > userLeft && left < (userLeft + 40) && top >= 350 && top <= 375 && userShot == false) {
                 userShot = true;
                 shotsTaken++;
             }
@@ -801,6 +801,9 @@ function flashDamage() {
 function lowerHealth() {
     var healthBar = document.getElementById("healthBarImage");
     var myCover = document.getElementById("myCover");
+    var restartDivTL = new TimelineMax();
+    var restartDiv = document.getElementById("restartGame");
+
     if (shotsTaken > 1) {
         if (cycleLife === 1) {
             healthBar.src = "threequartershealth.png";
@@ -826,35 +829,83 @@ function lowerHealth() {
             endGame = true;
             removeItems();
 
+            var restart = document.getElementById("restartQuestion");
+            var outRestart = document.getElementById("restartGame");
+            restart.style.display = "block";
+            outRestart.style.display = "block";
 
-
+            restartDivTL.fromTo(outRestart, .8, { width: "0px" }, { width: "200px" });
+            restartDivTL.fromTo(outRestart, .8, { height: "20px" }, { height: "100px" });
+            restartDivTL.fromTo(restart, 1, { opacity: "0" }, { opacity: "1" });
 
         }
 
     }
 }
 
+
 function removeItems() {
     var clearItems = setInterval(() => {
+        if (endGame) {
+            debugger;
+            var myContainer = document.getElementById('myContainer');
+            var shots = document.getElementsByClassName("enemyShots");
 
-        var myContainer = document.getElementById('myContainer');
-        var shots = document.getElementsByClassName("enemyShots");
+            if (document.getElementById("A") != null) {
+                var eA = document.getElementById("A");
+                myContainer.removeChild(eA);
+            }
 
-        if (document.getElementById("A") != null) {
-            var eA = document.getElementById("A");
-            myContainer.removeChild(eA);
+            if (document.getElementById("B")) {
+                var eB = document.getElementById("B");
+                myContainer.removeChild(eB);
+            }
+
+            for (var z = 0; z < shots.length; z++) {
+                //debugger;
+                myContainer.removeChild(shots.item(z));
+            }
+        } else {
+            clearInterval(clearItems);
         }
 
-        if (document.getElementById("B")) {
-            var eB = document.getElementById("B");
-            myContainer.removeChild(eB);
-        }
-
-        for (var z = 0; z < shots.length; z++) {
-            //debugger;
-            myContainer.removeChild(shots.item(z));
-        }
     }, 200)
 
+
+}
+
+function restartGame() {
+    document.getElementById("restartGame").style.display = "none";
+    commenceGame();
+}
+
+function finishGame() {
+    window.location.href = "http://www.chazhurd.com"
+}
+
+function beforeGame() {
+    document.getElementById("arrows").style.display = "none";
+    document.getElementById("shoot").style.display = "none";
+    var restartDivTL = new TimelineMax();
+    var startContent = document.getElementById("startContent");
+    var startGame = document.getElementById("startGame");
+    restartDivTL.fromTo(startGame, .8, { width: "0px" }, { width: "200px" });
+    restartDivTL.fromTo(startGame, .8, { height: "20px" }, { height: "100px" });
+    restartDivTL.fromTo(startContent, 1, { opacity: "0" }, { opacity: "0.9" });
+}
+
+function commenceGame() {
+    cycleLife = 1;
+    endGame = false;
+    numOfEnemies = 0;
+    document.getElementById("healthBarImage").src = "fullHealth.png"
+    document.getElementById("arrows").style.display = "block";
+    document.getElementById("shoot").style.display = "block";
+    cloudMaker = setInterval(startCloud, 2000);
+    enemyMaker = setInterval(createEnemy, 3000);
+    justiceMaker = setInterval(hitDetection, 5);
+    debuggee = setInterval(hitDetectionHelper, 500);
+    document.getElementById("startGame").style.display = "none";
+    myMove();
 
 }

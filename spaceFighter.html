@@ -17,7 +17,7 @@
 
 </header>
 
-<body onload="myMove()" id="body">
+<body onload="beforeGame()" id="body">
     <div style="width: 100%;">
         <ol class="bar">
             <li class="bar"> <canvas id="myCanvas2" width="60" height="40" style="border:1px solid #ffffff;"></canvas></li>
@@ -36,11 +36,21 @@
         <div id="myContainer" onload="setComponents()" style="margin: auto;">
             <div id="weaponsOverload" style="text-align: center;">Weapons Overload!<br>3 Shots Max</div>
             <div id="damaged" style="text-align: center;"><strong>CAUTION!</strong><br>Damage To Ship</div>
+            <div id="startGame">
+                <div id="startContent">Phone Game Only
+                    <br><br>
+                    <button id="startButton" class="buttons" onclick="commenceGame()">Ok</button>
+                </div>
+            </div>
 
             <div id="shoot">
                 <img src="shoot.svg" id="shootButton" alt="shoot" width="100px" height="100px" ontouchstart="shoot()">
             </div>
             <div id="myAnimation"><img src="idlePlane.png" alt="idlePlane" id="jetImage"></div>
+            <div id="restartGame">
+                <div id="restartQuestion">Restart Game?<br><button id="yesBut" onclick="restartGame()" class="buttons">Yes</button>
+                    <div id="divider" style="display: inline; height: 10px;"> </div><button id="yesBut" onclick="finishGame()" class="buttons">No</button></div>
+            </div>
             <div id="arrows">
                 <canvas id="myLeftArrow" width="50" height="50" style="border:1px solid #ffffff;" ontouchstart="moveJetLeft()" ontouchend="stopLeftMove()" onmousedown="moveJetLeft()" onmouseup="stopLeftMove()"></canvas>
                 <p style="width: 20; display: inline; color: skyblue;">--</p>
