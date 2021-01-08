@@ -37,9 +37,9 @@
             <div id="weaponsOverload" style="text-align: center;">Weapons Overload!<br>3 Shots Max</div>
             <div id="damaged" style="text-align: center;"><strong>CAUTION!</strong><br>Damage To Ship</div>
             <div id="startGame">
-                <div id="startContent">Phone Game Only
-                    <br><br>
-                    <button id="startButton" class="buttons" onclick="commenceGame()">Ok</button>
+                <div id="startContent">Touch Device Only:
+                    <br> - Use Arrows To Move Jet Left & Right<br> - Use Shoot Button To Shoot Enemies<br> - Avoid Being Hit!
+                    <p id="countDown"></p>
                 </div>
             </div>
 
@@ -52,9 +52,9 @@
                     <div id="divider" style="display: inline; height: 10px;"> </div><button id="yesBut" onclick="finishGame()" class="buttons">No</button></div>
             </div>
             <div id="arrows">
-                <canvas id="myLeftArrow" width="50" height="50" style="border:1px solid #ffffff;" ontouchstart="moveJetLeft()" ontouchend="stopLeftMove()" onmousedown="moveJetLeft()" onmouseup="stopLeftMove()"></canvas>
-                <p style="width: 20; display: inline; color: skyblue;">--</p>
-                <canvas id="myRightArrow" width="50" height="50" style="border:1px solid #ffffff; " onmousedown="moveJetRight()" onmouseup="stopRightMove()" ontouchstart="moveJetRight()" ontouchend="stopRightMove()"></canvas>
+                <canvas id="myLeftArrow" width="70" height="70" style="border:1px solid #ffffff;" ontouchstart="moveJetLeft()" ontouchend="stopLeftMove()" onmousedown="moveJetLeft()" onmouseup="stopLeftMove()"></canvas>
+                <p style="width: 20; display: inline; color: skyblue;">----</p>
+                <canvas id="myRightArrow" width="70" height="70" style="border:1px solid #ffffff; " onmousedown="moveJetRight()" onmouseup="stopRightMove()" ontouchstart="moveJetRight()" ontouchend="stopRightMove()"></canvas>
             </div>
         </div>
     </div>

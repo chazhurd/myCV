@@ -18,6 +18,7 @@ var justiceMaker;
 var debuggee;
 
 
+
 var numOfEnemies = 0;
 var x = 30;
 var y = 17;
@@ -28,7 +29,7 @@ var d = 16;
 var timed = 0;
 var cloud = [];
 var xy = 0;
-
+var numOfDefeatedEnemies = 0;
 var enemyAhits = 0;
 var enemyBhits = 0;
 var enemyAstruck = false;
@@ -47,6 +48,8 @@ var cycleLife = 1;
 var endGame = false;
 var noTrig = true;
 var myScore = 0;
+var goRight = false;
+var goLeft = false;
 //Banner
 function drawLogo() {
     var can = document.getElementById("myCanvas2");
@@ -146,7 +149,7 @@ function myMove() {
     var pos = 0;
     var arrows = document.getElementById("arrows");
     arrows.style.left = 10 + 'px';
-    arrows.style.top = 440 + 'px';
+    arrows.style.top = 420 + 'px';
     var shoot = document.getElementById("shoot");
     shoot.style.left = 240 + 'px';
     shoot.style.top = 400 + 'px';;
@@ -154,35 +157,41 @@ function myMove() {
 }
 
 function moveJetLeft() {
+    goLeft = true;
     moveLeft = setInterval(shiftLeft, 10);
 
 }
 
 function shiftLeft() {
-    if (myLeftPos > 2) {
-        myLeftPos -= 3;
-        elem.style.left = myLeftPos + 'px';
+    if (goRight != true) {
+        if (myLeftPos > 2) {
+            myLeftPos -= 3;
+            elem.style.left = myLeftPos + 'px';
+        }
     }
 }
 
 function moveJetRight() {
-
+    goRight = true;
     moveRight = setInterval(shiftRight, 10);
 }
 
 function shiftRight() {
-
-    if (myLeftPos < 300) {
-        myLeftPos += 3;
-        elem.style.left = myLeftPos + 'px';
+    if (goRight = true) {
+        if (myLeftPos < 300) {
+            myLeftPos += 3;
+            elem.style.left = myLeftPos + 'px';
+        }
     }
 }
 
 function stopLeftMove() {
+    goLeft = false;
     clearInterval(moveLeft);
 }
 
 function stopRightMove() {
+    goRight = false;
     clearInterval(moveRight);
 }
 //will have to build array of shots
@@ -302,24 +311,24 @@ function drawArrows() {
     var cant = can.getContext("2d");
     cant.lineWidth = 1;
     cant.strokeStyle = 'black';
-    cant.moveTo(5, 25);
-    cant.lineTo(40, 5);
+    cant.moveTo(5, 35);
+    cant.lineTo(50, 10);
     cant.stroke();
-    cant.lineTo(40, 45);
+    cant.lineTo(50, 60);
     cant.stroke();
-    cant.lineTo(5, 25);
+    cant.lineTo(5, 35);
     cant.stroke();
 
     var can = document.getElementById("myRightArrow");
     var cant = can.getContext("2d");
     cant.lineWidth = 1;
     cant.strokeStyle = 'black';
-    cant.moveTo(45, 25);
-    cant.lineTo(10, 5);
+    cant.moveTo(60, 35);
+    cant.lineTo(20, 10);
     cant.stroke();
-    cant.lineTo(10, 45);
+    cant.lineTo(20, 60);
     cant.stroke();
-    cant.lineTo(45, 25);
+    cant.lineTo(60, 35);
     cant.stroke();
 }
 
@@ -618,6 +627,7 @@ function hitDetection() {
                             if (explosiveCount === 30)
                                 enemyA.src = "e7end.png";
                             if (explosiveCount === 35) {
+                                numOfDefeatedEnemies++;
                                 enemyAstruck = false;
                                 explosiveCount = 0;
                                 clearInterval(explosiveTimer);
@@ -679,6 +689,7 @@ function hitDetection() {
                             if (explosiveCount === 30)
                                 enemyB.src = "e7end.png";
                             if (explosiveCount === 35) {
+                                numOfDefeatedEnemies++;
                                 enemyBstruck = false;
                                 explosiveCount = 0;
                                 clearInterval(explosiveTimer);
@@ -687,7 +698,7 @@ function hitDetection() {
                                     numOfEnemies--;
                                 }
                             }
-                        }, 2);
+                        }, 30);
 
                     }
                 }
@@ -799,12 +810,13 @@ function flashDamage() {
 }
 
 function lowerHealth() {
+    debugger;
     var healthBar = document.getElementById("healthBarImage");
     var myCover = document.getElementById("myCover");
     var restartDivTL = new TimelineMax();
     var restartDiv = document.getElementById("restartGame");
 
-    if (shotsTaken > 1) {
+    if (shotsTaken >= 1) {
         if (cycleLife === 1) {
             healthBar.src = "threequartershealth.png";
             shotsTaken = 0;
@@ -832,7 +844,9 @@ function lowerHealth() {
             var restart = document.getElementById("restartQuestion");
             var outRestart = document.getElementById("restartGame");
             restart.style.display = "block";
+
             outRestart.style.display = "block";
+            outRestart.style.top = "100px";
 
             restartDivTL.fromTo(outRestart, .8, { width: "0px" }, { width: "200px" });
             restartDivTL.fromTo(outRestart, .8, { height: "20px" }, { height: "100px" });
@@ -890,11 +904,34 @@ function beforeGame() {
     var startContent = document.getElementById("startContent");
     var startGame = document.getElementById("startGame");
     restartDivTL.fromTo(startGame, .8, { width: "0px" }, { width: "200px" });
-    restartDivTL.fromTo(startGame, .8, { height: "20px" }, { height: "100px" });
+    restartDivTL.fromTo(startGame, .8, { height: "20px" }, { height: "250px" });
     restartDivTL.fromTo(startContent, 1, { opacity: "0" }, { opacity: "0.9" });
+    var x = 6;
+    var cdp = document.getElementById("countDown");
+    var startGameDiv = document.getElementById("startGame");
+    var container = document.getElementById("myContainer");
+    cdp.style.display = "block";
+    var countDown = setInterval(() => {
+        x--;
+        if (x <= 5) {
+            cdp.innerText = x;
+            restartDivTL.fromTo(cdp, 0.999, { opacity: "0.2" }, { opacity: "1" });
+
+            if (x === 0) {
+
+                restartDivTL.fromTo(startGame, .6, { opacity: "1" }, { opacity: "0" });
+
+                clearInterval(countDown);
+                //cdp.style.display = "none";
+                commenceGame();
+            }
+        }
+    }, 1000);
 }
 
 function commenceGame() {
+    var startGameDiv = document.getElementById("startGame");
+    var container = document.getElementById("myContainer");
     cycleLife = 1;
     endGame = false;
     numOfEnemies = 0;
@@ -905,7 +942,9 @@ function commenceGame() {
     enemyMaker = setInterval(createEnemy, 3000);
     justiceMaker = setInterval(hitDetection, 5);
     debuggee = setInterval(hitDetectionHelper, 500);
-    document.getElementById("startGame").style.display = "none";
     myMove();
+    if (startGameDiv != null)
+        container.removeChild(startGameDiv);
+    //document.getElementById("startGame").style.display = "none";
 
 }

@@ -234,10 +234,10 @@ li.bar a:hover {
 .buttons {
     position: relative;
     background-color: cornflowerblue;
-    margin: auto;
     color: white;
     border-radius: 8px;
     height: 30px;
+    width: 60px;
 }
 
 #startGame {
@@ -252,4 +252,9 @@ li.bar a:hover {
 #startContent {
     padding: 10px;
     text-align: center;
+}
+
+#countDown {
+    text-align: center;
+    font-size: 50px;
 }
