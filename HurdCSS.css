@@ -169,7 +169,7 @@ li.bar a:hover {
     margin-right: auto;
     width: 350px;
     height: 100px;
-    z-index: 2;
+    z-index: 1;
 }
 
 #damaged {
@@ -257,4 +257,29 @@ li.bar a:hover {
 #countDown {
     text-align: center;
     font-size: 50px;
+}
+
+#healthBarCircle {
+    margin: auto;
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    top: 78px;
+}
+
+#hpCircle {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 76px;
+    height: 60px;
+    z-index: 1;
+}
+
+#score {
+    position: relative;
+    top: 420px;
+    left: 220px;
+    opacity: 0.5;
+    display: none;
 }

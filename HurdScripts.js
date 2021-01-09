@@ -124,8 +124,7 @@ function drawLogo() {
 }
 //Banner above
 
-
-//game below
+//gamebelow
 
 function hitDetectionHelper() {
     if (userShot) {
@@ -307,6 +306,7 @@ function shoot() {
 }
 
 function drawArrows() {
+    document.getElementById("score").style.display = "block";
     var can = document.getElementById("myLeftArrow");
     var cant = can.getContext("2d");
     cant.lineWidth = 1;
@@ -627,7 +627,7 @@ function hitDetection() {
                             if (explosiveCount === 30)
                                 enemyA.src = "e7end.png";
                             if (explosiveCount === 35) {
-                                numOfDefeatedEnemies++;
+                                document.getElementById("score").innerText = ++numOfDefeatedEnemies;
                                 enemyAstruck = false;
                                 explosiveCount = 0;
                                 clearInterval(explosiveTimer);
@@ -689,7 +689,7 @@ function hitDetection() {
                             if (explosiveCount === 30)
                                 enemyB.src = "e7end.png";
                             if (explosiveCount === 35) {
-                                numOfDefeatedEnemies++;
+                                document.getElementById("score").innerText = ++numOfDefeatedEnemies;
                                 enemyBstruck = false;
                                 explosiveCount = 0;
                                 clearInterval(explosiveTimer);
@@ -898,6 +898,7 @@ function finishGame() {
 }
 
 function beforeGame() {
+
     document.getElementById("arrows").style.display = "none";
     document.getElementById("shoot").style.display = "none";
     var restartDivTL = new TimelineMax();
@@ -906,16 +907,14 @@ function beforeGame() {
     restartDivTL.fromTo(startGame, .8, { width: "0px" }, { width: "200px" });
     restartDivTL.fromTo(startGame, .8, { height: "20px" }, { height: "250px" });
     restartDivTL.fromTo(startContent, 1, { opacity: "0" }, { opacity: "0.9" });
-    var x = 6;
+    var x = 7;
     var cdp = document.getElementById("countDown");
-    var startGameDiv = document.getElementById("startGame");
-    var container = document.getElementById("myContainer");
     cdp.style.display = "block";
     var countDown = setInterval(() => {
         x--;
         if (x <= 5) {
             cdp.innerText = x;
-            restartDivTL.fromTo(cdp, 0.999, { opacity: "0.2" }, { opacity: "1" });
+            restartDivTL.fromTo(cdp, 5, { opacity: "0" }, { opacity: "1" });
 
             if (x === 0) {
 
