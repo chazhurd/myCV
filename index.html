@@ -35,13 +35,61 @@
 
                 <div class="w3-white w3-text-grey w3-card-4">
                     <div class="w3-display-container">
-                        <!--<img src="bizproposal.png" style="width:100%" alt="PicOfChazHurd">-->
-                        <video id="vid" width="320" height="240" autoplay>
-                            <source src="boyni.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                          </video>
+                        <img src="boyni/e1.png" style="width:100%" alt="PicOfChazHurd" id="myPic">
+
                         <script>
-                            document.getElementById('vid').play();
+                            var counter = parseInt(0);
+                            var myPic = document.getElementById("myPic");
+                            var picCollage = setInterval(() => {
+                                counter++;
+                                switch (counter) {
+
+                                    case (1):
+                                        myPic.src = "boyni/e2.png";
+                                        break;
+                                    case (2):
+                                        myPic.src = "boyni/e3.png";
+                                        break;
+                                    case (3):
+                                        myPic.src = "boyni/e4.png";
+                                        break;
+                                    case (4):
+                                        myPic.src = "boyni/e5.png";
+                                        break;
+                                    case (5):
+                                        myPic.src = "boyni/e6.png";
+                                        break;
+                                    case (6):
+                                        myPic.src = "boyni/e7.png";
+                                        break;
+                                    case (7):
+                                        myPic.src = "boyni/e8.png";
+                                        break;
+                                    case (8):
+                                        myPic.src = "boyni/e9.png";
+                                        break;
+                                    case (9):
+                                        myPic.src = "boyni/e10.png";
+                                        break;
+                                    case (10):
+                                        myPic.src = "boyni/e12.png";
+                                        break;
+                                    case (11):
+                                        myPic.src = "boyni/e13.png";
+                                        break;
+                                    case (12):
+                                        myPic.src = "boyni/e14.png";
+                                        break;
+                                    case (13):
+                                        myPic.src = "boyni/e15.png";
+                                        break;
+                                    case (14):
+                                        counter = 0;
+                                        break;
+
+
+                                }
+                            }, 200)
                         </script>
 
                         <br/><br/>
