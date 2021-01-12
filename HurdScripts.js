@@ -52,6 +52,9 @@ var aHit = false;
 var bHit = false;
 
 
+var debugPasses = 0;
+
+
 
 //Banner
 function drawLogo() {
@@ -131,7 +134,6 @@ function drawLogo() {
 
 function hitDetectionHelper() {
     if (userShot) {
-        x++;
         flashDamage();
         lowerHealth();
         shotsTaken++;
@@ -139,15 +141,20 @@ function hitDetectionHelper() {
     }
 }
 var ecounter = 0;
+var aPassed = true;
+var bPassed = true;
 
 function explodeEnemy() {
-    if (aHit) {
+    if (aHit && aPassed) {
+        aPassed = false;
+        debugPasses = debugPasses + 1;
         aHit = false;
         document.getElementById("score").innerText = ++numOfDefeatedEnemies;
         makeAexplode();
     }
-    if (bHit) {
+    if (bHit && bPassed) {
         bHit = false;
+        bPassed = false;
         document.getElementById("score").innerText = ++numOfDefeatedEnemies;
         makeBexplode();
     }
@@ -176,8 +183,18 @@ function makeAexplode() {
             enemyA.src = "e7end.png";
         } else if (explosiveCountA === 8) {
             aHit = false;
-            myContainer.removeChild(enemyA);
-            numOfEnemies--;
+            aPassed = true;
+            try {
+                myContainer.removeChild(enemyA);
+                numOfEnemies--;
+            } catch {
+                //doubleCheckEnemies("A");
+                console.log("A WASNT DELETED");
+                var enemyA2 = document.getElementById("A");
+                var myContainer2 = document.getElementById("myContainer");
+                myContainer2.removeChild(enemyA2);
+                stopIntervalA();
+            }
         } else {
             stopIntervalA();
         }
@@ -209,13 +226,40 @@ function makeBexplode() {
             enemyB.src = "e7end.png";
         } else if (explosiveCountB === 8) {
             bHit = false;
-            myContainer.removeChild(enemyB);
-            numOfEnemies--;
+            bPassed = true;
+            try {
+                myContainer.removeChild(enemyB);
+                numOfEnemies--;
+            } catch {
+                //doubleCheckEnemies("B");
+                console.log("B DIDNT GET DELETED");
+                var enemyB2 = document.getElementById("B");
+                var myContainer2 = document.getElementById("myContainer");
+                myContainer2.removeChild(enemyB2);
+                stopIntervalB();
+
+            }
+
         } else {
             stopIntervalB();
         }
     }, 100);
 
+}
+
+function doubleCheckEnemies(enemyID) {
+    debugger;
+    var enemies = document.getElementsByClassName("enemies");
+    var myContainer = document.getElementById("myContainer");
+    for (var i = 0; i < enemies.length; i++) {
+        var thisEnemy = enemies.item(i);
+        if (thisEnemy.id === "B" && enemyID === "B") {
+            myContainer.remove(thisEnemy);
+        }
+        if (thisEnemy.id === "A" && enemyID === "A") {
+            myContainer.remove(thisEnemy);
+        }
+    }
 }
 
 function stopIntervalB() {
@@ -495,7 +539,7 @@ function moveClouds() {
 
 
         },
-        10)
+        10);
 }
 var start = 0;
 var enemyToggle = 0;
@@ -511,7 +555,7 @@ function createEnemy() {
         } else {
             enemy.src = "enemyPlane2.png";
         }
-        enemy.className += "enemies";
+        enemy.className = "enemies";
 
         if (enemyToggle === 0) {
             enemy.id = "A";
@@ -660,7 +704,7 @@ function hitDetection() {
                 pLoc = myShotleft.indexOf("p");
                 myShotleft = parseInt(myShotleft.substr(0, pLoc));
 
-                if (myShottop <= enemyAtop + 45 && myShottop >= enemyAtop + 15) {
+                if (myShottop <= enemyAtop + 45 && myShottop >= enemyAtop + 35) {
                     if (myShotleft >= enemyAleft && myShotleft <= enemyAleft + 40) {
                         aHit = true;
                     }
@@ -689,7 +733,7 @@ function hitDetection() {
                 pLoc = myShotleft.indexOf("p");
                 myShotleft = parseInt(myShotleft.substr(0, pLoc));
 
-                if (myShottop <= enemyBtop + 45 && myShottop >= enemyBtop + 15) {
+                if (myShottop <= enemyBtop + 45 && myShottop >= enemyBtop + 35) {
                     if (myShotleft >= enemyBleft && myShotleft <= enemyBleft + 40) {
                         bHit = true;
                     }
@@ -846,12 +890,8 @@ function lowerHealth() {
             restartDivTL.fromTo(restart, 1, { opacity: "0" }, { opacity: "1" });
 
             scoreDiv.style.top = "50px";
-            scoreDiv.style.left = "135px";
-            var curScore = scoreDiv.innerText;
-            if (curScore === "") {
-                curScore = 0;
-            }
-            scoreDiv.innerText = "Score: " + curScore;
+            scoreDiv.style.left = "128px";
+            scoreDiv.innerText = "Score: " + numOfDefeatedEnemies;
             scoreDiv.style.width = "100px";
             restartDivTL.fromTo(scoreDiv, 1, { opacity: "0" }, { opacity: "1" });
 
@@ -894,7 +934,6 @@ function removeItems() {
 
 function restartGame() {
     document.getElementById("restartGame").style.display = "none";
-
     commenceGame();
 }
 
@@ -909,10 +948,10 @@ function beforeGame() {
     var restartDivTL = new TimelineMax();
     var startContent = document.getElementById("startContent");
     var startGame = document.getElementById("startGame");
-    restartDivTL.fromTo(startGame, .8, { width: "0px" }, { width: "200px" });
-    restartDivTL.fromTo(startGame, .8, { height: "20px" }, { height: "250px" });
+    restartDivTL.fromTo(startGame, .8, { width: "0px" }, { width: "250px" });
+    restartDivTL.fromTo(startGame, .8, { height: "20px" }, { height: "260px" });
     restartDivTL.fromTo(startContent, 1, { opacity: "0" }, { opacity: "0.9" });
-    var x = 7;
+    startGame.style.alignItems = "center";
     /* var cdp = document.getElementById("countDown");
      cdp.style.display = "block";
      var countDown = setInterval(() => {
@@ -935,7 +974,8 @@ function beforeGame() {
 
 function commenceGame() {
     var scoreDiv = document.getElementById("score");
-    myScore = 0;
+    numOfDefeatedEnemies = 0;
+    scoreDiv.innerText = "";
     scoreDiv.style.width = "40px";
     scoreDiv.style.top = "420px";
     scoreDiv.style.left = "220px";
