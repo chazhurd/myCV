@@ -16,7 +16,7 @@ var cloudMaker;
 var enemyMaker;
 var justiceMaker;
 var debuggee;
-
+var enemyExplosion;
 
 
 var numOfEnemies = 0;
@@ -32,10 +32,8 @@ var xy = 0;
 var numOfDefeatedEnemies = 0;
 var enemyAhits = 0;
 var enemyBhits = 0;
-var enemyAstruck = false;
 var userShot = false;
 var healthLowered = false;
-var enemyBstruck = 0;
 var myLeftPos = 150;
 var moveLeft = 0;
 var moveRight = 0;
@@ -50,6 +48,11 @@ var noTrig = true;
 var myScore = 0;
 var goRight = false;
 var goLeft = false;
+var aHit = false;
+var bHit = false;
+
+
+
 //Banner
 function drawLogo() {
     var can = document.getElementById("myCanvas2");
@@ -135,12 +138,101 @@ function hitDetectionHelper() {
         userShot = false;
     }
 }
+var ecounter = 0;
+
+function explodeEnemy() {
+    if (aHit) {
+        aHit = false;
+        document.getElementById("score").innerText = ++numOfDefeatedEnemies;
+        makeAexplode();
+    }
+    if (bHit) {
+        bHit = false;
+        document.getElementById("score").innerText = ++numOfDefeatedEnemies;
+        makeBexplode();
+    }
+}
+var explosiveCountA = 0;
+var explosiveTimerA;
+
+function makeAexplode() {
+    var myContainer = document.getElementById("myContainer");
+    var enemyA = document.getElementById("A");
+    explosiveTimerA = setInterval(function() {
+        explosiveCountA++;
+        if (explosiveCountA === 1) {
+            enemyA.src = "e1.png";
+        } else if (explosiveCountA === 2) {
+            enemyA.src = "e2.png";
+        } else if (explosiveCountA === 3) {
+            enemyA.src = "e3.png";
+        } else if (explosiveCountA === 4) {
+            enemyA.src = "e4.png";
+        } else if (explosiveCountA === 5) {
+            enemyA.src = "e5.png";
+        } else if (explosiveCountA === 6) {
+            enemyA.src = "e6.png";
+        } else if (explosiveCountA === 7) {
+            enemyA.src = "e7end.png";
+        } else if (explosiveCountA === 8) {
+            aHit = false;
+            myContainer.removeChild(enemyA);
+            numOfEnemies--;
+        } else {
+            stopIntervalA();
+        }
+    }, 100);
+
+}
+
+var explosiveCountB = 0;
+var explosiveTimerB;
+
+function makeBexplode() {
+    var enemyB = document.getElementById("B");
+    var myContainer = document.getElementById("myContainer");
+    explosiveTimerB = setInterval(function() {
+        explosiveCountB++;
+        if (explosiveCountB === 1) {
+            enemyB.src = "e1.png";
+        } else if (explosiveCountB === 2) {
+            enemyB.src = "e2.png";
+        } else if (explosiveCountB === 3) {
+            enemyB.src = "e3.png";
+        } else if (explosiveCountB === 4) {
+            enemyB.src = "e4.png";
+        } else if (explosiveCountB === 5) {
+            enemyB.src = "e5.png";
+        } else if (explosiveCountB === 6) {
+            enemyB.src = "e6.png";
+        } else if (explosiveCountB === 7) {
+            enemyB.src = "e7end.png";
+        } else if (explosiveCountB === 8) {
+            bHit = false;
+            myContainer.removeChild(enemyB);
+            numOfEnemies--;
+        } else {
+            stopIntervalB();
+        }
+    }, 100);
+
+}
+
+function stopIntervalB() {
+    explosiveCountB = 0;
+    bHit = false;
+    clearInterval(explosiveTimerB);
+}
+
+function stopIntervalA() {
+    explosiveCountA = 0;
+    aHit = false;
+    clearInterval(explosiveTimerA);
+}
 
 function myMove() {
-
-
+    //my original load therefore some stank code here. 
     drawArrows();
-    drawLogo();
     enemyAAttack();
     enemyBAttack();
     var moveTl = new TimelineMax();
@@ -274,8 +366,7 @@ function shoot() {
         var myShootButton = document.getElementById("shootButton");
         myShootButton.style.display = "none";
         var overload = setInterval(function() {
-            oCount++;
-            //debugger;
+            oCount++
             if (oCount === 1) {
                 divTl.fromTo(overloadImage, 0.5, { opacity: "0" }, { opacity: "1" });
 
@@ -357,29 +448,6 @@ function moveClouds() {
     cloud.style.left = rando + 'px';
     var cloudOpac = 0;
     cloud.style.opacity = 1;
-    /*
-    var thisCloud = setInterval(function() {
-
-        //opac and movemnt of cloud pretty much the fromTo. 
-        if (posit <= 400) {
-            if (cloudOpac <= .8 && posit <= 299) {
-                cloudOpac += .025;
-            }
-            cloud.style.opacity = cloudOpac;
-            posit += 1;
-            cloud.style.top = posit + 'px';
-        }
-        if (posit >= 290) {
-            if (cloudOpac >= 0) {
-                cloudOpac -= .025;
-            }
-            cloud.style.opacity = cloudOpac;
-        }
-        if (posit > 380) {
-            myContainer.removeChild(cloud);
-            clearInterval(thisCloud);
-        }
-    }, 5);*/
 
     var cloudTl = new TimelineMax();
 
@@ -448,11 +516,9 @@ function createEnemy() {
         if (enemyToggle === 0) {
             enemy.id = "A";
             enemyToggle++;
-            enemyAstruck = 0;
         } else {
             enemy.id = "B";
             enemyToggle--;
-            enemyBstruck = 0;
         }
         myContainer.appendChild(enemy);
         enemy.style.top = 0 + 'px';
@@ -531,13 +597,6 @@ function startShifts(enemy) {
         if (numCheckTop >= 200) {
             clearInterval(checkOnIt);
             tl.fromTo(enemy, 0.4, { top: checkTop, opacity: "0.8", height: "60", width: "50" }, { top: "310px", opacity: "0", height: "20", width: "10" });
-            /*var endOfLife = setInterval(function() {
-                if (enemy != null) {
-                    document.getElementById("myContainer").removeChild(enemy);
-                    numOfEnemies--;
-                }
-                clearInterval(endOfLife);
-            }, 1000);*/
         }
     }, rando);
 }
@@ -558,7 +617,6 @@ function hitDetection() {
 
     }
     if (numOfEnemyShots > 0) {
-
         var shots = document.getElementsByClassName("enemyShots");
         var top, curShot;
 
@@ -594,7 +652,6 @@ function hitDetection() {
 
         for (var i = 1; i < 4; i++) {
             if (document.getElementById("myShot" + i) != null) {
-                var thisShot = document.getElementById("myShot" + i);
                 var myShottop = document.getElementById("myShot" + i).style.top;
                 pLoc = myShottop.indexOf("p");
                 myShottop = parseInt(myShottop.substr(0, pLoc));
@@ -603,41 +660,9 @@ function hitDetection() {
                 pLoc = myShotleft.indexOf("p");
                 myShotleft = parseInt(myShotleft.substr(0, pLoc));
 
-                if (myShottop <= enemyAtop + 45) {
-                    if (myShotleft >= enemyAleft && myShotleft <= enemyAleft + 40 && enemyAstruck == false) {
-                        enemyAstruck = true;
-                        var explosiveTimer = setInterval(function() {
-                            explosiveCount++;
-                            if (explosiveCount === 1) {
-                                enemyA.style.opacity = "0.7";
-                                enemyA.src = "e1.png";
-                            }
-                            if (explosiveCount === 5)
-                                enemyA.src = "e2.png";
-                            if (explosiveCount === 10) {
-                                enemyA.style.opacity = "1";
-                                enemyA.src = "e3.png";
-                            }
-                            if (explosiveCount === 15)
-                                enemyA.src = "e4.png";
-                            if (explosiveCount === 20)
-                                enemyA.src = "e5.png";
-                            if (explosiveCount === 25)
-                                enemyA.src = "e6.png";
-                            if (explosiveCount === 30)
-                                enemyA.src = "e7end.png";
-                            if (explosiveCount === 35) {
-                                document.getElementById("score").innerText = ++numOfDefeatedEnemies;
-                                enemyAstruck = false;
-                                explosiveCount = 0;
-                                clearInterval(explosiveTimer);
-                                if (enemyA != null) {
-                                    document.getElementById('myContainer').removeChild(enemyA);
-                                    numOfEnemies--;
-                                }
-                            }
-                        }, 2);
-
+                if (myShottop <= enemyAtop + 45 && myShottop >= enemyAtop + 15) {
+                    if (myShotleft >= enemyAleft && myShotleft <= enemyAleft + 40) {
+                        aHit = true;
                     }
                 }
             }
@@ -647,16 +672,15 @@ function hitDetection() {
     //enemy b hit detection
     if (document.getElementById("B") != null) {
         var enemyB = document.getElementById("B");
-        var enemyAtop = enemyB.style.top;
-        var pLoc = enemyAtop.indexOf("p");
-        enemyAtop = parseInt(enemyAtop.substr(0, pLoc));
-        var enemyAleft = enemyB.style.left;
-        pLoc = enemyAleft.indexOf("p");
-        enemyAleft = parseInt(enemyAleft.substr(0, pLoc));
+        var enemyBtop = enemyB.style.top;
+        var pLoc = enemyBtop.indexOf("p");
+        enemyBtop = parseInt(enemyBtop.substr(0, pLoc));
+        var enemyBleft = enemyB.style.left;
+        pLoc = enemyBleft.indexOf("p");
+        enemyBleft = parseInt(enemyBleft.substr(0, pLoc));
 
         for (var i = 0; i < 5; i++) {
             if (document.getElementById("myShot" + i) != null) {
-                var thisShot = document.getElementById("myShot" + i);
                 var myShottop = document.getElementById("myShot" + i).style.top;
                 pLoc = myShottop.indexOf("p");
                 myShottop = parseInt(myShottop.substr(0, pLoc));
@@ -665,41 +689,9 @@ function hitDetection() {
                 pLoc = myShotleft.indexOf("p");
                 myShotleft = parseInt(myShotleft.substr(0, pLoc));
 
-                if (myShottop <= enemyAtop + 45) {
-                    if (myShotleft >= enemyAleft && myShotleft <= enemyAleft + 40 && enemyBstruck == false) {
-                        enemyBstruck = true;
-                        var explosiveTimer = setInterval(function() {
-                            explosiveCount++;
-                            if (explosiveCount === 1) {
-                                enemyA.style.opacity = "0.7";
-                                enemyB.src = "e1.png";
-                            }
-                            if (explosiveCount === 5)
-                                enemyB.src = "e2.png";
-                            if (explosiveCount === 10) {
-                                enemyB.style.opacity = "1";
-                                enemyB.src = "e3.png";
-                            }
-                            if (explosiveCount === 15)
-                                enemyB.src = "e4.png";
-                            if (explosiveCount === 20)
-                                enemyB.src = "e5.png";
-                            if (explosiveCount === 25)
-                                enemyB.src = "e6.png";
-                            if (explosiveCount === 30)
-                                enemyB.src = "e7end.png";
-                            if (explosiveCount === 35) {
-                                document.getElementById("score").innerText = ++numOfDefeatedEnemies;
-                                enemyBstruck = false;
-                                explosiveCount = 0;
-                                clearInterval(explosiveTimer);
-                                if (enemyB != null) {
-                                    document.getElementById('myContainer').removeChild(enemyB);
-                                    numOfEnemies--;
-                                }
-                            }
-                        }, 30);
-
+                if (myShottop <= enemyBtop + 45 && myShottop >= enemyBtop + 15) {
+                    if (myShotleft >= enemyBleft && myShotleft <= enemyBleft + 40) {
+                        bHit = true;
                     }
                 }
             }
@@ -810,8 +802,8 @@ function flashDamage() {
 }
 
 function lowerHealth() {
-    debugger;
     var healthBar = document.getElementById("healthBarImage");
+    var scoreDiv = document.getElementById("score");
     var myCover = document.getElementById("myCover");
     var restartDivTL = new TimelineMax();
     var restartDiv = document.getElementById("restartGame");
@@ -840,6 +832,7 @@ function lowerHealth() {
             clearInterval(debuggee);
             endGame = true;
             removeItems();
+            restartDivTL.fromTo(scoreDiv, .2, { opacity: "0.8" }, { opacity: "0" });
 
             var restart = document.getElementById("restartQuestion");
             var outRestart = document.getElementById("restartGame");
@@ -849,8 +842,18 @@ function lowerHealth() {
             outRestart.style.top = "100px";
 
             restartDivTL.fromTo(outRestart, .8, { width: "0px" }, { width: "200px" });
-            restartDivTL.fromTo(outRestart, .8, { height: "20px" }, { height: "100px" });
+            restartDivTL.fromTo(outRestart, .8, { height: "20px" }, { height: "150px" });
             restartDivTL.fromTo(restart, 1, { opacity: "0" }, { opacity: "1" });
+
+            scoreDiv.style.top = "50px";
+            scoreDiv.style.left = "135px";
+            var curScore = scoreDiv.innerText;
+            if (curScore === "") {
+                curScore = 0;
+            }
+            scoreDiv.innerText = "Score: " + curScore;
+            scoreDiv.style.width = "100px";
+            restartDivTL.fromTo(scoreDiv, 1, { opacity: "0" }, { opacity: "1" });
 
         }
 
@@ -859,11 +862,12 @@ function lowerHealth() {
 
 
 function removeItems() {
+
     var clearItems = setInterval(() => {
         if (endGame) {
-            debugger;
             var myContainer = document.getElementById('myContainer');
             var shots = document.getElementsByClassName("enemyShots");
+
 
             if (document.getElementById("A") != null) {
                 var eA = document.getElementById("A");
@@ -890,6 +894,7 @@ function removeItems() {
 
 function restartGame() {
     document.getElementById("restartGame").style.display = "none";
+
     commenceGame();
 }
 
@@ -898,7 +903,7 @@ function finishGame() {
 }
 
 function beforeGame() {
-
+    drawLogo();
     document.getElementById("arrows").style.display = "none";
     document.getElementById("shoot").style.display = "none";
     var restartDivTL = new TimelineMax();
@@ -908,27 +913,33 @@ function beforeGame() {
     restartDivTL.fromTo(startGame, .8, { height: "20px" }, { height: "250px" });
     restartDivTL.fromTo(startContent, 1, { opacity: "0" }, { opacity: "0.9" });
     var x = 7;
-    var cdp = document.getElementById("countDown");
-    cdp.style.display = "block";
-    var countDown = setInterval(() => {
-        x--;
-        if (x <= 5) {
-            cdp.innerText = x;
-            restartDivTL.fromTo(cdp, 5, { opacity: "0" }, { opacity: "1" });
+    /* var cdp = document.getElementById("countDown");
+     cdp.style.display = "block";
+     var countDown = setInterval(() => {
+         x--;
+         if (x <= 5) {
+             cdp.innerText = x;
+             restartDivTL.fromTo(cdp, 5, { opacity: "0" }, { opacity: "1" });
 
-            if (x === 0) {
+             if (x === 0) {
 
-                restartDivTL.fromTo(startGame, .6, { opacity: "1" }, { opacity: "0" });
+                 restartDivTL.fromTo(startGame, .6, { opacity: "1" }, { opacity: "0" });
 
-                clearInterval(countDown);
-                //cdp.style.display = "none";
-                commenceGame();
-            }
-        }
-    }, 1000);
+                 clearInterval(countDown);
+                 //cdp.style.display = "none";
+                 commenceGame();
+             }
+         }
+     }, 1000);*/
 }
 
 function commenceGame() {
+    var scoreDiv = document.getElementById("score");
+    myScore = 0;
+    scoreDiv.style.width = "40px";
+    scoreDiv.style.top = "420px";
+    scoreDiv.style.left = "220px";
+
     var startGameDiv = document.getElementById("startGame");
     var container = document.getElementById("myContainer");
     cycleLife = 1;
@@ -941,6 +952,7 @@ function commenceGame() {
     enemyMaker = setInterval(createEnemy, 3000);
     justiceMaker = setInterval(hitDetection, 5);
     debuggee = setInterval(hitDetectionHelper, 500);
+    enemyExplosion = setInterval(explodeEnemy, 400);
     myMove();
     if (startGameDiv != null)
         container.removeChild(startGameDiv);
