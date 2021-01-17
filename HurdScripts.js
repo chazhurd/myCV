@@ -168,25 +168,17 @@ function makeAexplode() {
     explosiveTimerA = setInterval(function() {
         explosiveCountA++;
         if (explosiveCountA === 1) {
-            enemyA.src = "e1.png";
-        } else if (explosiveCountA === 2) {
             enemyA.src = "e2.png";
-        } else if (explosiveCountA === 3) {
-            enemyA.src = "e3.png";
-        } else if (explosiveCountA === 4) {
-            enemyA.src = "e4.png";
-        } else if (explosiveCountA === 5) {
+        } else if (explosiveCountA === 2) {
             enemyA.src = "e5.png";
-        } else if (explosiveCountA === 6) {
-            enemyA.src = "e6.png";
-        } else if (explosiveCountA === 7) {
+        } else if (explosiveCountA === 3) {
             enemyA.src = "e7end.png";
-        } else if (explosiveCountA === 8) {
+        } else if (explosiveCountA === 4) {
             aHit = false;
             aPassed = true;
             try {
                 myContainer.removeChild(enemyA);
-                numOfEnemies--;
+                numOfEnemies = 1;
             } catch {
                 //doubleCheckEnemies("A");
                 console.log("A WASNT DELETED");
@@ -198,7 +190,7 @@ function makeAexplode() {
         } else {
             stopIntervalA();
         }
-    }, 100);
+    }, 200);
 
 }
 
@@ -211,25 +203,17 @@ function makeBexplode() {
     explosiveTimerB = setInterval(function() {
         explosiveCountB++;
         if (explosiveCountB === 1) {
-            enemyB.src = "e1.png";
-        } else if (explosiveCountB === 2) {
             enemyB.src = "e2.png";
-        } else if (explosiveCountB === 3) {
-            enemyB.src = "e3.png";
-        } else if (explosiveCountB === 4) {
-            enemyB.src = "e4.png";
-        } else if (explosiveCountB === 5) {
+        } else if (explosiveCountB === 2) {
             enemyB.src = "e5.png";
-        } else if (explosiveCountB === 6) {
-            enemyB.src = "e6.png";
-        } else if (explosiveCountB === 7) {
+        } else if (explosiveCountB === 3) {
             enemyB.src = "e7end.png";
-        } else if (explosiveCountB === 8) {
+        } else if (explosiveCountB === 4) {
             bHit = false;
             bPassed = true;
             try {
                 myContainer.removeChild(enemyB);
-                numOfEnemies--;
+                numOfEnemies = 1;
             } catch {
                 //doubleCheckEnemies("B");
                 console.log("B DIDNT GET DELETED");
@@ -243,7 +227,7 @@ function makeBexplode() {
         } else {
             stopIntervalB();
         }
-    }, 100);
+    }, 200);
 
 }
 
@@ -292,31 +276,39 @@ function myMove() {
 }
 
 function moveJetLeft() {
+
     goLeft = true;
+    goRight = false;
     moveLeft = setInterval(shiftLeft, 10);
 
 }
 
 function shiftLeft() {
-    if (goRight != true) {
+    if (goLeft === true && goRight === false) {
         if (myLeftPos > 2) {
             myLeftPos -= 3;
             elem.style.left = myLeftPos + 'px';
         }
+    } else {
+        stopLeftMove();
     }
 }
 
 function moveJetRight() {
     goRight = true;
+    goLeft = false;
+
     moveRight = setInterval(shiftRight, 10);
 }
 
 function shiftRight() {
-    if (goRight = true) {
+    if (goRight === true && goLeft === false) {
         if (myLeftPos < 300) {
             myLeftPos += 3;
             elem.style.left = myLeftPos + 'px';
         }
+    } else {
+        stopRightMove();
     }
 }
 
@@ -328,6 +320,27 @@ function stopLeftMove() {
 function stopRightMove() {
     goRight = false;
     clearInterval(moveRight);
+}
+
+var checkMoves = setInterval(() => {
+    document.getElementById("debugger").innerHTML = "GoLeft: " + goLeft + " -- GoRight: " + goRight + "\n" + "moveLeft: " + moveLeft + "--- moveRight: " + moveRight;
+    if (!goLeft) {
+        clearInterval(moveLeft);
+    }
+    if (!goRight) {
+        clearInterval(moveRight);
+    }
+}, 50);
+
+function checkEs() {
+    var checkEnemies = setInterval(() => {
+        var enemies = document.getElementsByClassName("enemies");
+        document.getElementById("debugger2").innerText = "\nNOE: " + numOfEnemies + "CLASS E: " + enemies.length;
+
+        if (enemies.length < 2) {
+            createEnemy();
+        }
+    }, 100);
 }
 //will have to build array of shots
 var allShots = [];
@@ -597,6 +610,7 @@ function createEnemy() {
 
         }, 1000);
         startShifts(enemy);
+        checkEs();
 
     }
 }
