@@ -29,7 +29,7 @@
     </div>
 
     <div id="healthBar">
-        <img src="fullHealth.png" alt="healthbar" id="healthBarImage">
+        <img src="imgs/fullHealth.png" alt="healthbar" id="healthBarImage">
     </div>
 
     <div id="myCover">
@@ -44,12 +44,12 @@
             </div>
 
             <div id="shoot">
-                <img src="shoot.svg" id="shootButton" alt="shoot" width="100px" height="100px" ontouchstart="shoot()">
+                <img src="imgs/shoot.svg" id="shootButton" alt="shoot" width="100px" height="100px" ontouchstart="shoot()">
             </div>
-            <div id="myAnimation"><img src="idlePlane.png" alt="idlePlane" id="jetImage"></div>
+            <div id="myAnimation"><img src="imgs/idlePlane.png" alt="idlePlane" id="jetImage"></div>
             <div id="restartGame">
                 <div id="restartQuestion">Restart Game?<br><button id="yesBut" onclick="restartGame()" class="buttons">Yes</button>
-                    <div id="divider" style="display: inline; height: 10px;"> </div><button id="yesBut" onclick="finishGame()" class="buttons">No</button></div>
+                    <div id="divider" style="display: inline; height: 10px;"> </div><button id="noBut" onclick="finishGame()" class="buttons">No</button></div>
             </div>
             <div id="arrows">
                 <canvas id="myLeftArrow" width="70" height="70" style="border:1px solid #ffffff;" ontouchstart="moveJetLeft()" ontouchend="stopLeftMove()" onmousedown="moveJetLeft()" onmouseup="stopLeftMove()"></canvas>

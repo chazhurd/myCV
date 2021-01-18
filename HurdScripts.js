@@ -168,11 +168,11 @@ function makeAexplode() {
     explosiveTimerA = setInterval(function() {
         explosiveCountA++;
         if (explosiveCountA === 1) {
-            enemyA.src = "e2.png";
+            enemyA.src = "imgs/e2.png";
         } else if (explosiveCountA === 2) {
-            enemyA.src = "e5.png";
+            enemyA.src = "imgs/e5.png";
         } else if (explosiveCountA === 3) {
-            enemyA.src = "e7end.png";
+            enemyA.src = "imgs/e7end.png";
         } else if (explosiveCountA === 4) {
             aHit = false;
             aPassed = true;
@@ -203,11 +203,11 @@ function makeBexplode() {
     explosiveTimerB = setInterval(function() {
         explosiveCountB++;
         if (explosiveCountB === 1) {
-            enemyB.src = "e2.png";
+            enemyB.src = "imgs/e2.png";
         } else if (explosiveCountB === 2) {
-            enemyB.src = "e5.png";
+            enemyB.src = "imgs/e5.png";
         } else if (explosiveCountB === 3) {
-            enemyB.src = "e7end.png";
+            enemyB.src = "imgs/e7end.png";
         } else if (explosiveCountB === 4) {
             bHit = false;
             bPassed = true;
@@ -232,7 +232,7 @@ function makeBexplode() {
 }
 
 function doubleCheckEnemies(enemyID) {
-    debugger;
+
     var enemies = document.getElementsByClassName("enemies");
     var myContainer = document.getElementById("myContainer");
     for (var i = 0; i < enemies.length; i++) {
@@ -323,7 +323,6 @@ function stopRightMove() {
 }
 
 var checkMoves = setInterval(() => {
-    document.getElementById("debugger").innerHTML = "GoLeft: " + goLeft + " -- GoRight: " + goRight + "\n" + "moveLeft: " + moveLeft + "--- moveRight: " + moveRight;
     if (!goLeft) {
         clearInterval(moveLeft);
     }
@@ -335,8 +334,6 @@ var checkMoves = setInterval(() => {
 function checkEs() {
     var checkEnemies = setInterval(() => {
         var enemies = document.getElementsByClassName("enemies");
-        document.getElementById("debugger2").innerText = "\nNOE: " + numOfEnemies + "CLASS E: " + enemies.length;
-
         if (enemies.length < 2) {
             createEnemy();
         }
@@ -364,7 +361,7 @@ function shoot() {
         var shotButton = document.getElementById("shootButton");
         var myContainer = document.getElementById("myContainer");
         var myShot = document.createElement("img");
-        myShot.src = 'theShot.png';
+        myShot.src = 'imgs/theShot.png';
         myShot.id = "myShot" + cycleShots;
         myShot.className = "myShots";
         myContainer.appendChild(myShot);
@@ -495,9 +492,9 @@ function moveClouds() {
     var cloud = document.createElement("img");
     var typeOfCloud = Math.random();
     if (typeOfCloud <= 0.5) {
-        cloud.src = "cloud.png";
+        cloud.src = "imgs/cloud.png";
     } else {
-        cloud.src = "mediumCloud.png";
+        cloud.src = "imgs/mediumCloud.png";
     }
     myContainer.appendChild(cloud);
     cloud.id = "myCloud";
@@ -564,9 +561,9 @@ function createEnemy() {
         var enemy = document.createElement("img");
         var typeOfEnemy = Math.random();
         if (typeOfEnemy <= 0.5) {
-            enemy.src = "enemyPlane1.png";
+            enemy.src = "imgs/enemyPlane1.png";
         } else {
-            enemy.src = "enemyPlane2.png";
+            enemy.src = "imgs/enemyPlane2.png";
         }
         enemy.className = "enemies";
 
@@ -779,7 +776,7 @@ function enemyAAttack() {
             aShotLeft = enemyAleft + 25;
             var aShot = document.createElement("img");
             myContainer.appendChild(aShot);
-            aShot.src = "theShot.png";
+            aShot.src = "imgs/theShot.png";
             aShot.style.left = aShotLeft + "px";
             aShot.className = "enemyShots";
             tl.fromTo(aShot, 1, { top: enemyAtop }, { top: "490px" });
@@ -810,7 +807,7 @@ function enemyBAttack() {
             bShotLeft = enemyBleft + 25;
             var bShot = document.createElement("img");
             myContainer.appendChild(bShot);
-            bShot.src = "theShot.png";
+            bShot.src = "imgs/theShot.png";
             bShot.style.left = bShotLeft + "px";
             bShot.className = "enemyShots";
             tl.fromTo(bShot, 1, { top: enemyBtop }, { top: "490px" });
@@ -868,19 +865,19 @@ function lowerHealth() {
 
     if (shotsTaken >= 1) {
         if (cycleLife === 1) {
-            healthBar.src = "threequartershealth.png";
+            healthBar.src = "imgs/threequartershealth.png";
             shotsTaken = 0;
             cycleLife = 2;
         } else if (cycleLife === 2) {
-            healthBar.src = "halfhealth.png";
+            healthBar.src = "imgs/halfhealth.png";
             shotsTaken = 0;
             cycleLife = 3;
         } else if (cycleLife === 3) {
-            healthBar.src = "quarterhealth.png";
+            healthBar.src = "imgs/quarterhealth.png";
             shotsTaken = 0;
             cycleLife = 4;
         } else if (cycleLife === 4) {
-            healthBar.src = "dead1.png";
+            healthBar.src = "imgs/dead1.png";
             shotsTaken = 0;
             cycleLife = 5;
 
@@ -904,9 +901,8 @@ function lowerHealth() {
             restartDivTL.fromTo(restart, 1, { opacity: "0" }, { opacity: "1" });
 
             scoreDiv.style.top = "50px";
-            scoreDiv.style.left = "128px";
+            scoreDiv.style.left = "0";
             scoreDiv.innerText = "Score: " + numOfDefeatedEnemies;
-            scoreDiv.style.width = "100px";
             restartDivTL.fromTo(scoreDiv, 1, { opacity: "0" }, { opacity: "1" });
 
         }
@@ -990,7 +986,6 @@ function commenceGame() {
     var scoreDiv = document.getElementById("score");
     numOfDefeatedEnemies = 0;
     scoreDiv.innerText = "";
-    scoreDiv.style.width = "40px";
     scoreDiv.style.top = "420px";
     scoreDiv.style.left = "220px";
 
@@ -999,7 +994,7 @@ function commenceGame() {
     cycleLife = 1;
     endGame = false;
     numOfEnemies = 0;
-    document.getElementById("healthBarImage").src = "fullHealth.png"
+    document.getElementById("healthBarImage").src = "imgs/fullHealth.png"
     document.getElementById("arrows").style.display = "block";
     document.getElementById("shoot").style.display = "block";
     cloudMaker = setInterval(startCloud, 2000);
