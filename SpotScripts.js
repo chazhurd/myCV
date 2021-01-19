@@ -10,33 +10,43 @@ var d = 16;
 function main() {
     drawLogo();
     siteAnimate();
-    var randomBlink = setInterval(() => {
-        var allowBlink = Math.random();
-        if (allowBlink < .5) {
-            var blinkTl = new TimelineMax();
-            var topText = document.getElementById("topNeon");
-            var bottomText = document.getElementById("bottomNeon");
-            blinkTl.fromTo(topText, 0.1, { opacity: "1" }, { opacity: "0.2" })
-                .fromTo(topText, 0.1, { opacity: "0.2" }, { opacity: "1" })
-                .fromTo(bottomText, 0.1, { opacity: "1" }, { opacity: "0.2" })
-                .fromTo(bottomText, 0.3, { opacity: "0.2" }, { opacity: "1" });
-        }
-    }, 4000);
+
+
+    var windowWidth = window.screen.width;
+
+    if (windowWidth > 900) {
+        var randomBlink = setInterval(() => {
+            var allowBlink = Math.random();
+            if (allowBlink < .5) {
+                var blinkTl = new TimelineMax();
+                var topText = document.getElementById("topNeon");
+                var bottomText = document.getElementById("bottomNeon");
+                blinkTl.fromTo(topText, 0.1, { opacity: "1" }, { opacity: "0.2" })
+                    .fromTo(topText, 0.1, { opacity: "0.2" }, { opacity: "1" })
+                    .fromTo(bottomText, 0.1, { opacity: "1" }, { opacity: "0.2" })
+                    .fromTo(bottomText, 0.3, { opacity: "0.2" }, { opacity: "1" });
+            }
+        }, 4000);
+    }
 }
 
 function siteAnimate() {
     var openTl = new TimelineMax();
     var topText = document.getElementById("topNeon");
     var bottomText = document.getElementById("bottomNeon");
-    openTl.fromTo(topText, 0.1, { opacity: "0" }, { opacity: ".3" })
-        .fromTo(topText, 0.1, { opacity: ".3" }, { opacity: "0" })
-        .fromTo(topText, 0.1, { opacity: "0" }, { opacity: ".5" })
-        .fromTo(topText, 0.1, { opacity: ".5" }, { opacity: "0" })
-        .fromTo(topText, 1, { opacity: "0" }, { opacity: "1" })
-        .fromTo(bottomText, 0.2, { opacity: "0.6" }, { opacity: "0" })
-        .fromTo(bottomText, 0.1, { opacity: "0" }, { opacity: "1" })
-        .fromTo(bottomText, 0.1, { opacity: "1" }, { opacity: "1" })
-        .fromTo(bottomText, 1, { opacity: "0" }, { opacity: "1" });
+    var windowWidth = window.screen.width;
+
+    if (windowWidth > 900) {
+        openTl.fromTo(topText, 0.1, { opacity: "0" }, { opacity: ".3" })
+            .fromTo(topText, 0.1, { opacity: ".3" }, { opacity: "0" })
+            .fromTo(topText, 0.1, { opacity: "0" }, { opacity: ".5" })
+            .fromTo(topText, 0.1, { opacity: ".5" }, { opacity: "0" })
+            .fromTo(topText, 1, { opacity: "0" }, { opacity: "1" })
+            .fromTo(bottomText, 0.2, { opacity: "0.6" }, { opacity: "0" })
+            .fromTo(bottomText, 0.1, { opacity: "0" }, { opacity: "1" })
+            .fromTo(bottomText, 0.1, { opacity: "1" }, { opacity: "1" })
+            .fromTo(bottomText, 1, { opacity: "0" }, { opacity: "1" });
+    }
 }
 //Banner
 function drawLogo() {
