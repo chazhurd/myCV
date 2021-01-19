@@ -1,0 +1,102 @@
+@media only screen and (min-width: 600px) {
+    li.bar {
+        float: right;
+        z-index: 1;
+    }
+    .sliderImages {
+        height: 350px;
+    }
+    #spotVid {
+        float: inline-end;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    li.bar {
+        float: center;
+        z-index: 1;
+    }
+    .sliderImages {
+        height: 200px;
+    }
+    #spotVid {
+        display: block;
+        margin: 0 auto;
+        float: none;
+    }
+}
+
+ol.bar {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style-type: none;
+    background-color: #333;
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+li.bar a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li.bar a:hover {
+    background-color: rgba(0, 119, 255, 0.658);
+}
+
+#myCanvas2 {
+    animation: myFirst 5s ease 0s infinite alternate;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+@keyframes myFirst {
+    0% {
+        background-color: #333;
+        border-color: #333
+    }
+    100% {
+        background-color: #333;
+        border-color: #333;
+    }
+}
+
+#body {
+    animation: bodyBack 3s ease 0s infinite alternate;
+}
+
+@keyframes bodyBack {
+    0% {
+        background-color: black;
+    }
+    100% {
+        background-color: rgb(87, 86, 86);
+    }
+}
+
+.neon {
+    color: #fff;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #0ff, 0 0 80px #0ff, 0 0 90px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;
+}
+
+ :root {
+    font-size: calc(1vw + 1vh + 1.5vmin);
+}
+
+h1 {
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+}
