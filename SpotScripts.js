@@ -11,7 +11,6 @@ function main() {
     drawLogo();
     siteAnimate();
 
-
     var windowWidth = window.screen.width;
 
     if (windowWidth > 900) {
@@ -27,7 +26,33 @@ function main() {
                     .fromTo(bottomText, 0.3, { opacity: "0.2" }, { opacity: "1" });
             }
         }, 4000);
+
+        var constantBlink = setInterval(() => {
+            var blinkWarn = new TimelineMax();
+            var warning = document.getElementById("warning");
+            if (warning.style.opacity === "0") {
+                blinkWarn.fromTo(warning, .7, { opacity: "0" }, { opacity: "1" });
+            } else {
+                blinkWarn.fromTo(warning, .7, { opacity: "1" }, { opacity: "0" });
+            }
+        }, 1000)
     }
+    var processImage = document.getElementById("devProc");
+    var procNum = 0;
+    var devProc = setInterval(() => {
+        procNum++;
+        if (procNum === 0) {
+            processImage.src = "imgs/Spot/DevProcess2.png";
+        } else if (procNum === 1) {
+            processImage.src = "imgs/Spot/DevProcess2inc1.jpg";
+        } else if (procNum === 2) {
+            processImage.src = "imgs/Spot/DevProcess2inc2.jpg";
+        } else if (procNum === 3) {
+            processImage.src = "imgs/Spot/DevProcess2inc3.jpg";
+        } else {
+            procNum = 0;
+        }
+    }, 150);
 }
 
 function siteAnimate() {
