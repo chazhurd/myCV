@@ -113,3 +113,7 @@ h1 {
     width: 60%;
     border-radius: 2cm;
 }
+
+#neonContainer {
+    opacity: 0;
+}

@@ -14,6 +14,8 @@ function main() {
     var windowWidth = window.screen.width;
 
     if (windowWidth > 900) {
+        document.getElementById("neonContainer").style.display = "block";
+        document.getElementById("neonLine").style.display = "block";
         var randomBlink = setInterval(() => {
             var allowBlink = Math.random();
             if (allowBlink < .5) {
@@ -36,6 +38,9 @@ function main() {
                 blinkWarn.fromTo(warning, .7, { opacity: "1" }, { opacity: "0" });
             }
         }, 1000)
+    } else {
+        document.getElementById("neonContainer").style.display = "none";
+        document.getElementById("neonLine").style.display = "none";
     }
     var processImage = document.getElementById("devProc");
     var procNum = 0;
