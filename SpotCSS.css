@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Warnes&display=swap');
 @media only screen and (min-width: 600px) {
     li.bar {
         float: right;
@@ -6,7 +7,7 @@
     .sliderImages {
         height: 350px;
     }
-    #spotVid {
+    #spotVideo {
         float: inline-end;
     }
 }
@@ -19,9 +20,10 @@
     .sliderImages {
         height: 200px;
     }
-    #spotVid {
+    #spotVideo {
         display: block;
-        margin: 0 auto;
+        margin-left: auto;
+        margin-right: auto;
         float: none;
     }
 }
@@ -87,8 +89,8 @@ li.bar a:hover {
 }
 
 .neon {
-    color: #fff;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff, 0 0 40px #0ff, 0 0 80px #0ff, 0 0 90px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;
+    color: rgb(255, 255, 255);
+    text-shadow: 0 0 5px #fff, 0 0 10px rgb(182, 237, 247), 0 0 20px rgb(140, 227, 253), 0 0 40px #0ff, 0 0 80px #0ff, 0 0 90px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;
 }
 
  :root {
@@ -111,9 +113,13 @@ h1 {
     margin-left: auto;
     margin-right: auto;
     width: 60%;
-    border-radius: 2cm;
+    border-radius: 1cm;
 }
 
-#neonContainer {
+#topNeon {
+    opacity: 0;
+}
+
+#bottomNeon {
     opacity: 0;
 }

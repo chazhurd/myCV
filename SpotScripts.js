@@ -39,6 +39,7 @@ function main() {
             }
         }, 1000)
     } else {
+        debugger;
         document.getElementById("neonContainer").style.display = "none";
         document.getElementById("neonLine").style.display = "none";
     }
@@ -80,12 +81,15 @@ function siteAnimate() {
 }
 //Banner
 function drawLogo() {
+    var myVideo = document.getElementById("spotVideo");
     var can = document.getElementById("myCanvas2");
     var cantx = can.getContext("2d");
     cantx.lineWidth = 1;
     cantx.strokeStyle = 'white';
 
+
     var myTimer = setInterval(function() {
+
         if (timed < 1) {
             cantx.fillStyle = '#333';
             cantx.fillRect(0, 0, 60, 40);
@@ -151,3 +155,16 @@ function drawLogo() {
     }, 34);
 }
 //Banner above
+
+var onresize = function(e) {
+    //note i need to pass the event as an argument to the function
+    width = e.target.outerWidth;
+    height = e.target.outerHeight;
+    var myVideo = document.getElementById("spotVideo");
+    document.getElementById("debugger").innerHTML = "Width = " + width;
+    if (width <= 600) {
+        myVideo.style.width = width + "px";
+
+    }
+}
+window.addEventListener("resize", onresize);
