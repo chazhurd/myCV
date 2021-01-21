@@ -257,9 +257,24 @@ function stopIntervalA() {
     aHit = false;
     clearInterval(explosiveTimerA);
 }
+/*
+var onresize = function(e) {
+    var myBody = document.getElementById("body");
+
+    width = e.target.outerWidth;
+    height = e.target.outerHeight;
+
+    myBody.style.width = width + "px";
+}
+window.addEventListener("resize", onresize);*/
 
 function myMove() {
     //my original load therefore some stank code here. 
+    /*
+    var myBody = document.getElementById("body");
+    var myScreenSize = window.screen.width;
+    myBody.style.width = myScreenSize + "px";*/
+
     drawArrows();
     enemyAAttack();
     enemyBAttack();
