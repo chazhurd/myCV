@@ -999,6 +999,10 @@ function beforeGame() {
 }
 
 function commenceGame() {
+    if (window.screen.width > 700) {
+        document.getElementById("myCover").style.width = "100%";
+        document.getElementById("healthBar").style.width = "100%";
+    }
     var scoreDiv = document.getElementById("score");
     numOfDefeatedEnemies = 0;
     scoreDiv.innerText = "";
