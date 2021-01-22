@@ -917,6 +917,7 @@ function lowerHealth() {
 
             scoreDiv.style.top = "50px";
             scoreDiv.style.left = "0";
+            scoreDiv.style.width = "100%";
             scoreDiv.innerText = "Score: " + numOfDefeatedEnemies;
             restartDivTL.fromTo(scoreDiv, 1, { opacity: "0" }, { opacity: "1" });
 
@@ -1001,8 +1002,9 @@ function commenceGame() {
     var scoreDiv = document.getElementById("score");
     numOfDefeatedEnemies = 0;
     scoreDiv.innerText = "";
+    scoreDiv.style.width = "30px";
     scoreDiv.style.top = "420px";
-    scoreDiv.style.left = "220px";
+    scoreDiv.style.left = "65px";
 
     var startGameDiv = document.getElementById("startGame");
     var container = document.getElementById("myContainer");
