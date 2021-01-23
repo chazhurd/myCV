@@ -1127,8 +1127,6 @@ function checkNumOfEnemies() {
     var checknums = setInterval(() => {
         var actualNumofEnemies = document.getElementsByClassName("enemies");
         var i = 0;
-        document.getElementById("debugger").innerText = actualNumofEnemies.item(i + 1).id;
-
         if (actualNumofEnemies.length < 2 && endGame === false) {
             createEnemy();
         }
