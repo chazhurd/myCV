@@ -567,7 +567,7 @@ function moveClouds() {
         10);
 }
 var start = 0;
-var enemyToggle = 0;
+var enemyToggle = true;
 //creating enemies:
 function createEnemy() {
     if (numOfEnemies === 1 || numOfEnemies === 0) {
@@ -575,21 +575,29 @@ function createEnemy() {
         var myContainer = document.getElementById("myContainer");
         var enemy = document.createElement("img");
         var typeOfEnemy = Math.random();
+        enemy.className = "enemies";
+        var i = 0;
+
         if (typeOfEnemy <= 0.5) {
             enemy.src = "imgs/enemyPlane1.png";
         } else {
             enemy.src = "imgs/enemyPlane2.png";
         }
-        enemy.className = "enemies";
+        //going to have to search and find what is out there not just bounce back and forth. 
 
-        if (enemyToggle === 0) {
-            enemy.id = "A";
-            enemyToggle++;
-        } else {
-            enemy.id = "B";
-            enemyToggle--;
-        }
         myContainer.appendChild(enemy);
+        if (numOfEnemies > 0) {
+            var enemyIds = document.getElementsByClassName("enemies");
+            document.getElementById("debugger").innerHTML = "ENEIES = " + enemyIds.length;
+            if (enemyIds.item(i).id === "A") {
+                enemy.id = "B";
+            } else {
+                enemy.id = "A";
+            }
+        }
+        //document.getElementById("debugger").innerText = "enemy ID  = " + enemy.id;
+
+
         enemy.style.top = 0 + 'px';
         var pos = 100;
         var topPos = 0;
@@ -946,7 +954,6 @@ function removeItems() {
             }
 
             for (var z = 0; z < shots.length; z++) {
-                //debugger;
                 myContainer.removeChild(shots.item(z));
             }
         } else {
@@ -975,7 +982,7 @@ function beforeGame() {
     var startContent = document.getElementById("startContent");
     var startGame = document.getElementById("startGame");
     restartDivTL.fromTo(startGame, .8, { width: "0px" }, { width: "250px" });
-    restartDivTL.fromTo(startGame, .8, { height: "20px" }, { height: "260px" });
+    restartDivTL.fromTo(startGame, .8, { height: "20px" }, { height: "320px" });
     restartDivTL.fromTo(startContent, 1, { opacity: "0" }, { opacity: "0.9" });
     startGame.style.alignItems = "center";
     /* var cdp = document.getElementById("countDown");
@@ -1024,8 +1031,93 @@ function commenceGame() {
     debuggee = setInterval(hitDetectionHelper, 500);
     enemyExplosion = setInterval(explodeEnemy, 400);
     myMove();
+    checkNumOfEnemies();
     if (startGameDiv != null)
         container.removeChild(startGameDiv);
     //document.getElementById("startGame").style.display = "none";
 
+}
+var keyLeft = false;
+var keyRight = false;
+var keys = "";
+
+function keyPressed(e) {
+    var keynum;
+
+    if (window.event) { // IE                  
+        keynum = e.keyCode;
+    } else if (e.which) { // Netscape/Firefox/Opera                 
+        keynum = e.which;
+    }
+
+    if (parseInt(keynum) === 65 && keyLeft === false) {
+        keys += "l";
+    } else if (parseInt(keynum) === 68 && keyRight === false) {
+        keys += "r";
+    }
+    if (parseInt(keynum) === 32) {
+        keys += "s";
+    }
+    //a = 65
+    //d = 68
+    //space = 32
+    //for (var i = 0; i < keys.length; i++) {
+    if (keys.includes("l") && keyLeft === false) {
+        moveJetLeft();
+        keyLeft = true;
+    } else if (keys.includes("s")) {
+        shoot();
+    } else if (keys.includes("r") && keyRight === false) {
+        moveJetRight();
+        keyRight = true;
+    } else if (keys.includes("r") && keys.includes("s") && keyRight === false) {
+        shoot();
+        moveJetRight();
+    } else if (keys.includes("l") && keys.includes("s") && keyLeft === false) {
+        shoot();
+        moveJetLeft();
+    }
+    //}
+
+}
+
+
+
+function keyupFunction(e) {
+
+    var keynum;
+
+    if (window.event) { // IE                  
+        keynum = e.keyCode;
+    } else if (e.which) { // Netscape/Firefox/Opera                 
+        keynum = e.which;
+    }
+
+    if (parseInt(keynum) === 65) {
+        keys = keys.replace("l", "");
+        keyLeft = false;
+        stopLeftMove();
+    }
+    if (parseInt(keynum) === 68) {
+        keys = keys.replace("r", "");
+        keyRight = false;
+        stopRightMove();
+    }
+    if (parseInt(keynum) === 32) {
+        keys = keys.replace("s", "");
+    }
+
+}
+
+function checkNumOfEnemies() {
+    var checknums = setInterval(() => {
+        var actualNumofEnemies = document.getElementsByClassName("enemies");
+        var i = 0;
+        document.getElementById("debugger").innerText = actualNumofEnemies.item(i + 1).id;
+
+        if (actualNumofEnemies.length < 2 && endGame === false) {
+            createEnemy();
+        }
+
+    }, 10);
 }

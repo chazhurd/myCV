@@ -161,7 +161,6 @@ var onresize = function(e) {
     width = e.target.outerWidth;
     height = e.target.outerHeight;
     var myVideo = document.getElementById("spotVideo");
-    document.getElementById("debugger").innerHTML = "Width = " + width;
     if (width <= 600) {
         myVideo.style.width = width + "px";
 

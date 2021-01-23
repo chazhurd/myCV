@@ -296,6 +296,4 @@ li.bar a:hover {
     font-size: 28px;
     margin: 4px 2px;
     cursor: pointer;
-    position: relative;
-    top: 40px;
 }

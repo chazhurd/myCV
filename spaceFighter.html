@@ -17,7 +17,7 @@
 
 </header>
 
-<body onload="beforeGame()" id="body">
+<body onload="beforeGame()" id="body" onkeydown="keyPressed(event)" onkeyup="keyupFunction(event)">
     <div style="width: 90%;">
         <ol class="bar">
             <li class="bar"> <canvas id="myCanvas2" width="60" height="40" style="border:1px solid #ffffff;"></canvas></li>
@@ -37,8 +37,13 @@
             <div id="weaponsOverload" style="text-align: center;">Weapons Overload!<br>3 Shots Max</div>
             <div id="damaged" style="text-align: center;"><strong>CAUTION!</strong><br>Damage To Ship</div>
             <div id="startGame">
-                <div id="startContent">Touch Device Only (Arrows Work With Mouse):<br>
-                    <br> - Use Arrows To Move Jet Left & Right<br> - Use Shoot Button To Shoot Enemies<br> - Avoid Being Hit!<br>
+                <div id="startContent">
+                    <h4>Azure Fighter:</h4>
+                    - Touch arrows to move left or right
+                    <br> - Use The Shoot Button To Shoot Enemies
+                    <br> - Or Use "a" for left, "d" for right and the space bar for shooting
+                    <br> - Hint: Move and Shoot at the same time
+                    <br>
                     <button id="startGameButton" value="Start" height="200px" width="400px" onclick="commenceGame()">Start</button>
                 </div>
             </div>
