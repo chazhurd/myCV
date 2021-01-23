@@ -976,6 +976,12 @@ function finishGame() {
 
 function beforeGame() {
     drawLogo();
+    var wp = document.getElementById("weaponsOverload");
+    var cd = document.getElementById("damaged");
+    var sb = document.getElementById("startGameButton");
+    wp.style.zIndex = 0;
+    cd.style.zIndex = 0;
+    sb.style.zIndex = 1;
     document.getElementById("arrows").style.display = "none";
     document.getElementById("shoot").style.display = "none";
     var restartDivTL = new TimelineMax();
@@ -1006,6 +1012,14 @@ function beforeGame() {
 }
 
 function commenceGame() {
+    var wp = document.getElementById("weaponsOverload");
+    var cd = document.getElementById("damaged");
+    var sb = document.getElementById("startGameButton");
+
+    wp.style.zIndex = 1;
+    cd.style.zIndex = 1;
+    sb.style.zIndex = 1;
+
     if (window.screen.width > 700) {
         document.getElementById("myCover").style.width = "100%";
         document.getElementById("healthBar").style.width = "100%";

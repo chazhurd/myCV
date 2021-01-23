@@ -12,7 +12,6 @@
 </script>
 <style>
     html,
-    body,
     h1,
     h3,
     h6 {
@@ -40,9 +39,24 @@
         font-size: x-large;
         font-family: cursive;
     }
+    
+    #myBody {
+        font-family: "Roboto", sans-serif;
+        font-size: medium;
+        animation: myShades 5s ease 0s infinite alternate;
+    }
+    
+    @keyframes myShades {
+        0% {
+            background-color: black;
+        }
+        100% {
+            background-color: white;
+        }
+    }
 </style>
 
-<body class="w3-light-grey">
+<body id="myBody">
 
     <!-- Page Container -->
     <div class="w3-content w3-margin-top" style="max-width:1400px;">
@@ -162,10 +176,10 @@
                         <h5 class="w3-opacity"><b>Eastern Washington University</b></h5>
                         <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2017 - 2020</h6>
                         <h4>Bachelors Degree</h4>
-                        <p>Eastern provided significant formal training of Software Engineering such as OOP design and programming, C and UNIX programming, and an in-depth multi-quarter sequence of Java. Intensive mathematical concepts were taught through
-                            Calculus 2, Discrete Mathematics and Algorithms. Eastern Washington University is an Accredited College by the Computing Accreditation Commission of ABET, there I learned 10 different programming languages and used more than
-                            10 different IDE’s. Waterfall and Agile development principles as well as version control was taught there as well. Professors not only taught different languages and their respective code but also required the understanding
-                            of common coding principles such as the pillars of OOP and Design Patterns.
+                        <p>Eastern provided me with many hours of formal training of Software Engineering such as OOP design and programming, C and UNIX programming, and an in-depth multi-quarter sequence of Java. I chose the more rigorous math course that
+                            was taught which were Calculus 2, Discrete Mathematics and Algorithms. Eastern Washington University is an Accredited College by the Computing Accreditation Commission of ABET, therefore was an easy choice for me make. There
+                            I learned 10 different programming languages and used more than 10 different Development Environments. Waterfall and Agile development principles as well as version control was taught there as well. Professors not only taught
+                            different languages and their respective code but also required the understanding of common coding principles such as the pillars of OOP and Design Patterns all the way down to process scheduling.
                             <br>
                             <ul>
                                 <li>Algorithms</li>
@@ -175,7 +189,7 @@
                                 <li>GUI Dev (JavaFX, Android, C# .NET)</li>
                                 <li>Java I & II</li>
                                 <li>DataMining & Big Data</li>
-                                <li>Networks (IP/ICP etc.)</li>
+                                <li>Networks (IP/TCP etc.)</li>
                                 <li>Embedded Software</li>
                             </ul>
                         </p>
