@@ -1,15 +1,15 @@
 /**
  * Created By Chaz Hurd
  * Classic jet fighting game
- * Hours: 25
+ * Hours: 55
  * First game made using JS/HTML/CSS 
- * 12/25/2020
+ * In hind-sight I could've encapsulated some of this code into different classes to help understand how things work,
+ * since the planes functions are the same I kept it in one page. 
  * 
- */
-
-/*
+ * 1/23/2020
+ * 
 Side Notes:
-time for SQL
+Might Add SQL/PHP
  */
 
 var cloudMaker;
@@ -257,23 +257,9 @@ function stopIntervalA() {
     aHit = false;
     clearInterval(explosiveTimerA);
 }
-/*
-var onresize = function(e) {
-    var myBody = document.getElementById("body");
-
-    width = e.target.outerWidth;
-    height = e.target.outerHeight;
-
-    myBody.style.width = width + "px";
-}
-window.addEventListener("resize", onresize);*/
 
 function myMove() {
     //my original load therefore some stank code here. 
-    /*
-    var myBody = document.getElementById("body");
-    var myScreenSize = window.screen.width;
-    myBody.style.width = myScreenSize + "px";*/
 
     drawArrows();
     enemyAAttack();
@@ -300,6 +286,8 @@ function moveJetLeft() {
 
 function shiftLeft() {
     if (goLeft === true && goRight === false) {
+        document.getElementById("myLeftArrow").style.backgroundColor = "blue";
+
         if (myLeftPos > 2) {
             myLeftPos -= 3;
             elem.style.left = myLeftPos + 'px';
@@ -318,6 +306,7 @@ function moveJetRight() {
 
 function shiftRight() {
     if (goRight === true && goLeft === false) {
+        document.getElementById("myRightArrow").style.backgroundColor = "blue";
         if (myLeftPos < 300) {
             myLeftPos += 3;
             elem.style.left = myLeftPos + 'px';
@@ -328,11 +317,13 @@ function shiftRight() {
 }
 
 function stopLeftMove() {
+    document.getElementById("myLeftArrow").style.backgroundColor = "";
     goLeft = false;
     clearInterval(moveLeft);
 }
 
 function stopRightMove() {
+    document.getElementById("myRightArrow").style.backgroundColor = "";
     goRight = false;
     clearInterval(moveRight);
 }
@@ -354,7 +345,7 @@ function checkEs() {
         }
     }, 100);
 }
-//will have to build array of shots
+
 var allShots = [];
 var shotID = "start";
 
@@ -386,32 +377,6 @@ function shoot() {
         var myJetCenter = myJet.substr(0, 3);
         myJetCenter = parseInt(myJetCenter) + 20;
         myShot.style.left = myJetCenter + 'px';
-        //begin flight
-        /* This was removed and replaced with from to as it was more glittchy
-        var thisShot = setInterval(function() {
-                shotLeft = myShot.style.left;
-                shotTop = myShot.style.top;
-                if (posit >= -20) {
-                    posit -= 2;
-                    myShot.style.top = posit + 'px';
-
-                    if (posit > 280) {
-                        shotButton.src = "holdingShot.png";
-                    } else {
-                        shotButton.src = "shoot.svg";
-                    }
-                } else {
-                    if (myShot != null) {
-                        myContainer.removeChild(myShot);
-                        totalShots--;
-                    }
-                    clearInterval(thisShot);
-                }
-            },
-            2);
-    } else {
-        document.getElementById("weaponsOverload").style.display = "block";
-    */
         var myShotTop, pPos;
         shotTl.fromTo(myShot, 2, { top: "340px" }, { top: "-100px" });
         var checkShot = setInterval(function() {
@@ -588,7 +553,6 @@ function createEnemy() {
         myContainer.appendChild(enemy);
         if (numOfEnemies > 0) {
             var enemyIds = document.getElementsByClassName("enemies");
-            document.getElementById("debugger").innerHTML = "ENEIES = " + enemyIds.length;
             if (enemyIds.item(i).id === "A") {
                 enemy.id = "B";
             } else {
@@ -991,34 +955,14 @@ function beforeGame() {
     restartDivTL.fromTo(startGame, .8, { height: "20px" }, { height: "320px" });
     restartDivTL.fromTo(startContent, 1, { opacity: "0" }, { opacity: "0.9" });
     startGame.style.alignItems = "center";
-    /* var cdp = document.getElementById("countDown");
-     cdp.style.display = "block";
-     var countDown = setInterval(() => {
-         x--;
-         if (x <= 5) {
-             cdp.innerText = x;
-             restartDivTL.fromTo(cdp, 5, { opacity: "0" }, { opacity: "1" });
-
-             if (x === 0) {
-
-                 restartDivTL.fromTo(startGame, .6, { opacity: "1" }, { opacity: "0" });
-
-                 clearInterval(countDown);
-                 //cdp.style.display = "none";
-                 commenceGame();
-             }
-         }
-     }, 1000);*/
 }
 
 function commenceGame() {
     var wp = document.getElementById("weaponsOverload");
     var cd = document.getElementById("damaged");
-    var sb = document.getElementById("startGameButton");
 
     wp.style.zIndex = 1;
     cd.style.zIndex = 1;
-    sb.style.zIndex = 1;
 
     if (window.screen.width > 700) {
         document.getElementById("myCover").style.width = "100%";
@@ -1126,8 +1070,8 @@ function keyupFunction(e) {
 function checkNumOfEnemies() {
     var checknums = setInterval(() => {
         var actualNumofEnemies = document.getElementsByClassName("enemies");
-        var i = 0;
         if (actualNumofEnemies.length < 2 && endGame === false) {
+            numOfEnemies = 1;
             createEnemy();
         }
 

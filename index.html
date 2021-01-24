@@ -8,7 +8,42 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto' />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js" integrity="sha512-8Wy4KH0O+AuzjMm1w5QfZ5j5/y8Q/kcUktK9mPUVaUoBvh3QPUZB822W/vy7ULqri3yR8daH3F58+Y8Z08qzeg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineMax.min.js" integrity="sha512-lJDBw/vKlGO8aIZB8/6CY4lV+EMAL3qzViHid6wXjH/uDrqUl+uvfCROHXAEL0T/bgdAQHSuE68vRlcFHUdrUw==" crossorigin="anonymous"></script>
 <script>
+    /*
+        var x = 0;
+
+        var introCover = setInterval(() => {
+            var coverTL = new TimelineMax();
+            var content = document.getElementById("content");
+            var myCover = document.getElementById("gifCover");
+            if (x === 1) {
+                getIt();
+                coverTL.fromTo(myCover, 2, {
+                    top: "0px",
+                    opacity: "1"
+                }, {
+                    top: "-1000px",
+                    opacity: "0"
+
+                });
+            }
+            x++;
+        }, 5000);
+
+        function getIt() {
+            var coverTL = new TimelineMax();
+            var content = document.getElementById("content");
+            coverTL.fromTo(content, 2, {
+                top: "0px",
+                opacity: "0"
+            }, {
+                top: "-1000px",
+                opacity: "1"
+            });
+
+        }*/
 </script>
 <style>
     html,
@@ -35,11 +70,6 @@
         font-family: "Roboto", sans-serif;
     }
     
-    #name {
-        font-size: x-large;
-        font-family: cursive;
-    }
-    
     #myBody {
         font-family: "Roboto", sans-serif;
         font-size: medium;
@@ -57,203 +87,205 @@
 </style>
 
 <body id="myBody">
+    <div id="myCover">
+        <!--<img src="imgs/introCover.gif" width="100%" height="vh" id="gifCover" style="position: relative;">-->
+        <!-- Page Container -->
+        <div class="w3-content w3-margin-top" style="max-width:1400px; position: relative;" id="content">
 
-    <!-- Page Container -->
-    <div class="w3-content w3-margin-top" style="max-width:1400px;">
+            <!-- The Grid -->
+            <div class="w3-row-padding">
 
-        <!-- The Grid -->
-        <div class="w3-row-padding">
+                <!-- Left Column -->
+                <div class="w3-third">
 
-            <!-- Left Column -->
-            <div class="w3-third">
+                    <div class="w3-white w3-text-grey w3-card-4">
+                        <p id="debugger"></p>
+                        <div class="w3-display-container">
+                            <img src="imgs/boyni/e3.png" style="width:100%" alt="PicOfChazHurd" id="myPic">
+                            <br/><br/>
 
-                <div class="w3-white w3-text-grey w3-card-4">
-                    <p id="debugger"></p>
-                    <div class="w3-display-container">
-                        <img src="imgs/boyni/e3.png" style="width:100%" alt="PicOfChazHurd" id="myPic">
-                        <br/><br/>
-                        <br/>
-                        <br/>
-                        <div class="w3-display-bottomleft w3-container w3-text-black">
-                            <h2 id="name"><strong>Chaz Hurd</strong></h2>
-                        </div>
-                    </div>
-                    <div class="w3-container">
-                        <p><i class="fa fa-black-tie fa-fw w3-margin-right w-3-large w3-text-teal"></i>Entrepreneur & Software Engineer</p>
-                        <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Spokane, WA</p>
-                        <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><a href="mailto: 1chazhurd@gmail.com">1chazhurd@gmail.com</a></p>
-                        <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1(509)701-8173</p>
-                        <hr>
-
-                        <p class="w3-large"><b><i class="fa fa-code fa-fw w3-margin-right w3-text-teal"></i>Tech Skills</b></p>
-                        <p>Java</p>
-                        <div class="w3-light-grey w3-round-xlarge w3-small">
-                            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>
-                        </div>
-                        <br>
-                        <div class=" w3-card-2 w3-center" style="width: 75%; margin: auto;">
-                            <i class="fa fa-clock-o fa-fw w3-margin-right"></i>3,360 Hours
-                        </div>
-                        <p>C# (.NET Core)</p>
-                        <div class="w3-light-grey w3-round-xlarge w3-small">
-                            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:55%">
-                                <div class="w3-center w3-text-white">55%</div>
+                            <div class="w3-display-bottomleft w3-container w3-text-black">
+                                <h2 id="name"></h2>
                             </div>
                         </div>
-                        <br>
-                        <div class=" w3-card-2 w3-center" style="width: 75%; margin: auto;">
-                            <i class="fa fa-clock-o fa-fw w3-margin-right"></i>240 Hours
-                        </div>
-                        <p>SQL</p>
-                        <div class="w3-light-grey w3-round-xlarge w3-small">
-                            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">80%</div>
-                        </div>
-                        <br>
-                        <div class=" w3-card-2 w3-center" style="width: 75%; margin: auto;">
-                            <i class="fa fa-clock-o fa-fw w3-margin-right"></i>210 Hours
-                        </div>
-                        <p>HTML/CSS/Javascript</p>
-                        <div class="w3-light-grey w3-round-xlarge w3-small">
-                            <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:70%">70%</div>
-                        </div>
-                        <br>
-                        <div class=" w3-card-2 w3-center" style="width: 75%; margin: auto;">
-                            <i class="fa fa-clock-o fa-fw w3-margin-right"></i>310 Hours
-                        </div>
-                        <br>
+                        <div class="w3-container">
+                            <p><i class="fa fa-black-tie fa-fw w3-margin-right w-3-large w3-text-teal"></i>Entrepreneur & Software Engineer</p>
+                            <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>Spokane, WA</p>
+                            <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i><a href="mailto: 1chazhurd@gmail.com">1chazhurd@gmail.com</a></p>
+                            <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>1(509)701-8173</p>
+                            <hr>
 
-                        <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
-                        <p>English</p>
-                        <div class="w3-light-grey w3-round-xlarge">
-                            <div class="w3-round-xlarge w3-teal w3-center" style="height:20px;width:99%">99%</div>
-                        </div>
-                        <p>French</p>
-                        <div class="w3-light-grey w3-round-xlarge">
-                            <div class="w3-round-xlarge w3-teal w3-center" style="height:20px;width:55%">55%</div>
-                        </div>
-                        <p>Spanish</p>
-                        <div class="w3-light-grey w3-round-xlarge">
-                            <div class="w3-round-xlarge w3-teal w3-center" style="height:20px;width:25%">25%</div>
-                        </div>
-                        <br>
-                    </div>
-                </div><br>
-
-                <!-- End Left Column -->
-            </div>
-
-            <!-- Right Column -->
-            <div class="w3-twothird">
-
-                <div class="w3-container w3-card w3-white w3-margin-bottom">
-                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
-                    <div class="w3-container">
-                        <h5 class="w3-opacity"><b>Freelance Painter</b></h5>
-                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
-                        <p>Part time Painter where I am self-employed. I took over as my own boss and would meet, bid, and work on my own jobs. Working with many different contractors and citizens, this position taught me to be very responsible. This position
-                            also required me to hire a helping hand which hours and pay was managed by me. I worked this position while attending College full time, it offered me a way to have flexibility in prioritizing my time properly amongst the two.
-                            During this time, I was also engaging in home theater sales via online platforms, as far as creating a custom ASP.net/JS/CSS + bootstrap website where people could order merchandise from</p>
-                        <hr>
-                    </div>
-                    <div class="w3-container">
-                        <h5 class="w3-opacity"><b>Lead Painter</b></h5>
-                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2012 - Dec 2014</h6>
-                        <p>Full time Painter working directly with the owner of the Company (10 employees), I was a valued employee who was never written up or laid off. This employer would be a great reference to my ability to show up every day on time
-                            with a go to personality</p>
-                        <hr>
-                    </div>
-                    <div class="w3-container">
-                        <h5 class="w3-opacity"><b>Customer Service Rep</b></h5>
-                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
-                        <p>Full time Customer Service Associate who worked directly with Customers, cash, and Management. I opened and closed the entire store, made sales, tendered my cash and reported for weekly reports. On the Ruby and Division store I
-                            achieved the highest sales in the Northwest. This job would be a great reference to my ability to always be on time and try my hardest while also being responsible at a young age </p><br>
-                    </div>
-                </div>
-
-                <div class="w3-container w3-card w3-white w3-margin-bottom">
-                    <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
-                    <div class="w3-container">
-                        <h5 class="w3-opacity"><b>Eastern Washington University</b></h5>
-                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2017 - 2020</h6>
-                        <h4>Bachelors Degree</h4>
-                        <p>Eastern provided me with many hours of formal training of Software Engineering such as OOP design and programming, C and UNIX programming, and an in-depth multi-quarter sequence of Java. I chose the more rigorous math course that
-                            was taught which were Calculus 2, Discrete Mathematics and Algorithms. Eastern Washington University is an Accredited College by the Computing Accreditation Commission of ABET, therefore was an easy choice for me make. There
-                            I learned 10 different programming languages and used more than 10 different Development Environments. Waterfall and Agile development principles as well as version control was taught there as well. Professors not only taught
-                            different languages and their respective code but also required the understanding of common coding principles such as the pillars of OOP and Design Patterns all the way down to process scheduling.
+                            <p class="w3-large"><b><i class="fa fa-code fa-fw w3-margin-right w3-text-teal"></i>Tech Skills</b></p>
+                            <p>Java</p>
+                            <div class="w3-light-grey w3-round-xlarge w3-small">
+                                <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:90%">90%</div>
+                            </div>
                             <br>
-                            <ul>
-                                <li>Algorithms</li>
-                                <li>Data Structures</li>
-                                <li>Design Patterns</li>
-                                <li>Operating Systems</li>
-                                <li>GUI Dev (JavaFX, Android, C# .NET)</li>
-                                <li>Java I & II</li>
-                                <li>DataMining & Big Data</li>
-                                <li>Networks (IP/TCP etc.)</li>
-                                <li>Embedded Software</li>
-                            </ul>
-                        </p>
-                        <p>Please take a look at my GitHub for an in depth explanation of these course projects: <strong><a href="https://www.github.com/chazhurd">github.com/chazhurd</a></strong></p>
-                        <hr>
-                    </div>
-                    <div class="w3-container">
-                        <h5 class="w3-opacity"><b>Spokane Falls CC</b></h5>
-                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2014-2017</h6>
-                        <h4>Associates Degree</h4>
-                        <p>Spokane Falls provided a great base start of education. There I learned most of my engineering Mathematics and Sciences. Calculus 2 and all 4 major sciences were learned there. Prior to attending, becoming an Engineer was certain
-                            however which type was unknown. I chose the biological as it was one of the most difficult to understand and was fun to study. I took two years of French, studied various sciences, and took more than the needed amount of general
-                            education to understand what I wanted and be sure of what future I will proceed with. </p><br>
-                    </div>
+                            <div class=" w3-card-2 w3-center" style="width: 75%; margin: auto;">
+                                <i class="fa fa-clock-o fa-fw w3-margin-right"></i>3,360 Hours
+                            </div>
+                            <p>C# (.NET Core)</p>
+                            <div class="w3-light-grey w3-round-xlarge w3-small">
+                                <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:55%">
+                                    <div class="w3-center w3-text-white">55%</div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class=" w3-card-2 w3-center" style="width: 75%; margin: auto;">
+                                <i class="fa fa-clock-o fa-fw w3-margin-right"></i>240 Hours
+                            </div>
+                            <p>SQL</p>
+                            <div class="w3-light-grey w3-round-xlarge w3-small">
+                                <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:80%">80%</div>
+                            </div>
+                            <br>
+                            <div class=" w3-card-2 w3-center" style="width: 75%; margin: auto;">
+                                <i class="fa fa-clock-o fa-fw w3-margin-right"></i>210 Hours
+                            </div>
+                            <p>HTML/CSS/Javascript</p>
+                            <div class="w3-light-grey w3-round-xlarge w3-small">
+                                <div class="w3-container w3-center w3-round-xlarge w3-teal" style="width:70%">70%</div>
+                            </div>
+                            <br>
+                            <div class=" w3-card-2 w3-center" style="width: 75%; margin: auto;">
+                                <i class="fa fa-clock-o fa-fw w3-margin-right"></i>310 Hours
+                            </div>
+                            <br>
+
+                            <p class="w3-large w3-text-theme"><b><i class="fa fa-globe fa-fw w3-margin-right w3-text-teal"></i>Languages</b></p>
+                            <p>English</p>
+                            <div class="w3-light-grey w3-round-xlarge">
+                                <div class="w3-round-xlarge w3-teal w3-center" style="height:20px;width:99%">99%</div>
+                            </div>
+                            <p>French</p>
+                            <div class="w3-light-grey w3-round-xlarge">
+                                <div class="w3-round-xlarge w3-teal w3-center" style="height:20px;width:55%">55%</div>
+                            </div>
+                            <p>Spanish</p>
+                            <div class="w3-light-grey w3-round-xlarge">
+                                <div class="w3-round-xlarge w3-teal w3-center" style="height:20px;width:25%">25%</div>
+                            </div>
+                            <br>
+                        </div>
+                    </div><br>
+
+                    <!-- End Left Column -->
                 </div>
 
-                <div class="w3-container w3-card-4 w3-white w3-margin-bottom">
-                    <h2 class="w3-text-grey w3-padding-16">
-                        <div id="backEm" style="display: inline-flex;"><i id="code" class="fa fa-code fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i></div>Self-Taught Projects</h2>
-                    <div class="w3-container" style="background-image: url(imgs/hcj.png); background-size: contain; background-repeat: no-repeat; background-position: center;">
-                        <h5 class="w3-opacity"><b><a href="spaceFighter.html">Azure Fighter</a></b></h5>
-                        <a href="spaceFighter.html"><img src="imgs/originalHold.png" alt="GamePreview" id="holdPhone" style="height: 190px; width: 170px; float: inline-end; padding: 10px;"></a>
-                        <h6 class="w3-text-teal"><i class="fa fa-clock-o fa-fw w3-margin-right"></i>50 hours</h6>
-                        <h4>ES6 & JS</h4>
-                        <p>Lots of ES6 in this project. I thought I should make one of my favorite classic games so I did! This was a complete scratch project, no reference to any game code found online/offline. Lots of testing and rewriting went on here,
-                            did my own animation then decided to use some online libraries for certain elements. Originally made for phones, recently update with keyboard controls.
-                        </p>
-                        <hr>
+                <!-- Right Column -->
+                <div class="w3-twothird">
+
+                    <div class="w3-container w3-card w3-white w3-margin-bottom">
+                        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-suitcase fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work Experience</h2>
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Freelance Painter</b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jan 2015 - <span class="w3-tag w3-teal w3-round">Current</span></h6>
+                            <p>Part time Painter where I am self-employed. I took over as my own boss and would meet, bid, and work on my own jobs. Working with many different contractors and citizens, this position taught me to be very responsible. This
+                                position also required me to hire a helping hand which hours and pay was managed by me. I worked this position while attending College full time, it offered me a way to have flexibility in prioritizing my time properly
+                                amongst the two. During this time, I was also engaging in home theater sales via online platforms, as far as creating a custom ASP.net/JS/CSS + bootstrap website where people could order merchandise from</p>
+                            <hr>
+                        </div>
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Lead Painter</b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Mar 2012 - Dec 2014</h6>
+                            <p>Full time Painter working directly with the owner of the Company (10 employees), I was a valued employee who was never written up or laid off. This employer would be a great reference to my ability to show up every day on time
+                                with a go to personality</p>
+                            <hr>
+                        </div>
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Customer Service Rep</b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Jun 2010 - Mar 2012</h6>
+                            <p>Full time Customer Service Associate who worked directly with Customers, cash, and Management. I opened and closed the entire store, made sales, tendered my cash and reported for weekly reports. On the Ruby and Division store
+                                I achieved the highest sales in the Northwest. This job would be a great reference to my ability to always be on time and try my hardest while also being responsible at a young age </p><br>
+                        </div>
                     </div>
-                    <div class="w3-container" style="background-image: url(imgs/vcsharp.png); background-size: contain; background-repeat: no-repeat; background-position: center;">
-                        <h5 class="w3-opacity"><b>Spot Application</b></h5>
-                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>200 hours</h6>
-                        <h4>DevOps</h4>
-                        <a href="Spot.html"><img src="imgs/Spot/spotTight.png" alt="spotLogo" id="spotLogo" style="height: 150px; width: 150px; float: inline-end;padding: 10px;"></a>
-                        <p>During my time at EWU an idea of mine came to life. I always enjoyed making money, especially in the most efficient way which made me think of this Application. The code is private however the page will give you an idea of what
-                            I have Dev'Op'd. <code style="color: grey;">(BootStrap use example, current page is a w3 use example)</code>
-                            <ol>
-                                <li><a href="Spot.html">Spot Parking App</a></li>
-                                <li><a href="https://www.spot-parking.com">Spot-Parking.com</a></li>
-                            </ol>
-                        </p>
-                        <hr>
+
+                    <div class="w3-container w3-card w3-white w3-margin-bottom">
+                        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education</h2>
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Eastern Washington University</b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2017 - 2020</h6>
+                            <h4>Bachelors Degree</h4>
+                            <p>Eastern provided me with many hours of formal training of Software Engineering such as OOP design and programming, C and UNIX programming, and an in-depth multi-quarter sequence of Java. I chose the more rigorous math course
+                                that was taught which were Calculus 2, Discrete Mathematics and Algorithms. Eastern Washington University is an Accredited College by the Computing Accreditation Commission of ABET, therefore was an easy choice for me make.
+                                There I learned 10 different programming languages and used more than 10 different Development Environments. Waterfall and Agile development principles as well as version control was taught there as well. Professors not
+                                only taught different languages and their respective code but also required the understanding of common coding principles such as the pillars of OOP and Design Patterns all the way down to process scheduling.
+                                <br>
+                                <ul>
+                                    <li>Algorithms</li>
+                                    <li>Data Structures</li>
+                                    <li>Design Patterns</li>
+                                    <li>Operating Systems</li>
+                                    <li>GUI Dev (JavaFX, Android, C# .NET)</li>
+                                    <li>Java I & II</li>
+                                    <li>DataMining & Big Data</li>
+                                    <li>Networks (IP/TCP etc.)</li>
+                                    <li>Embedded Software</li>
+                                </ul>
+                            </p>
+                            <p>Please take a look at my GitHub for an in depth explanation of these course projects: <strong><a href="https://www.github.com/chazhurd">github.com/chazhurd</a></strong></p>
+                            <hr>
+                        </div>
+                        <div class="w3-container">
+                            <h5 class="w3-opacity"><b>Spokane Falls CC</b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2014-2017</h6>
+                            <h4>Associates Degree</h4>
+                            <p>Spokane Falls provided a great base start of education. There I learned most of my engineering Mathematics and Sciences. Calculus 2 and all 4 major sciences were learned there. Prior to attending, becoming an Engineer was certain
+                                however which type was unknown. I chose the biological as it was one of the most difficult to understand and was fun to study. I took two years of French, studied various sciences, and took more than the needed amount of
+                                general education to understand what I wanted and be sure of what future I will proceed with. </p><br>
+                        </div>
                     </div>
-                    <div class="w3-container" style="background-image: url(imgs/hcj.png); background-size: contain; background-repeat: no-repeat; background-position: center;">
-                        <h5 class="w3-opacity"><b>HTML\CSS\JS W3</b></h5>
-                        <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>150 hours</h6>
-                        <h4>Ecma Script 6</h4>
-                        <p>The W3 schools tutorial taught me much of what I know. These pages were the <code>GOULOASH</code> of what I learned. This type of code reminds me much of my JavaFX, Android and WPF type of programming.
-                            <ol>
-                                <li><a href="ecmaScript.html">EcmaScript6</a></li>
-                                <li><a href="truePlay.html">CSS</a></li>
-                            </ol>
-                        </p>
-                        <hr>
+
+                    <div class="w3-container w3-card-4 w3-white w3-margin-bottom">
+                        <h2 class="w3-text-grey w3-padding-16">
+                            <div id="backEm" style="display: inline-flex;"><i id="code" class="fa fa-code fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i></div>Self-Taught Projects</h2>
+                        <div class="w3-container" style="background-image: url(imgs/hcj.png); background-size: contain; background-repeat: no-repeat; background-position: center;">
+                            <h5 class="w3-opacity"><b><a href="spaceFighter.html">Azure Fighter</a></b></h5>
+                            <a href="spaceFighter.html"><img src="imgs/originalHold.png" alt="GamePreview" id="holdPhone" style="height: 190px; width: 170px; float: inline-end; padding: 10px;"></a>
+                            <h6 class="w3-text-teal"><i class="fa fa-clock-o fa-fw w3-margin-right"></i>55 hours</h6>
+                            <h4>ES6 & JS</h4>
+                            <p>Lots of ES6 in this project. I thought I should make one of my favorite classic games so I did! This was a complete scratch project, no reference to any game code found online/offline. Lots of testing and rewriting went on
+                                here, did my own animation then decided to use some online libraries for certain elements. Originally made for phones, recently update with keyboard controls.
+                            </p>
+                            <hr>
+                        </div>
+                        <div class="w3-container" style="background-image: url(imgs/vcsharp.png); background-size: contain; background-repeat: no-repeat; background-position: center;">
+                            <h5 class="w3-opacity"><b>Spot Application</b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>200 hours</h6>
+                            <h4>DevOps</h4>
+                            <a href="Spot.html"><img src="imgs/Spot/spotTight.png" alt="spotLogo" id="spotLogo" style="height: 150px; width: 150px; float: inline-end;padding: 10px;"></a>
+                            <p>During my time at EWU an idea of mine came to life. I always enjoyed making money, especially in the most efficient way which made me think of this Application. The code is private however the page will give you an idea of
+                                what I have Dev'Op'd. <code style="color: grey;">(BootStrap use example, current page is a w3 use example)</code>
+                                <ol>
+                                    <li><a href="Spot.html">Spot Parking App</a></li>
+                                    <li><a href="https://www.spot-parking.com">Spot-Parking.com</a></li>
+                                </ol>
+                            </p>
+                            <hr>
+                        </div>
+                        <div class="w3-container" style="background-image: url(imgs/hcj.png); background-size: contain; background-repeat: no-repeat; background-position: center;">
+                            <h5 class="w3-opacity"><b>HTML\CSS\JS W3</b></h5>
+                            <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>150 hours</h6>
+                            <h4>Ecma Script 6</h4>
+                            <p>The W3 schools tutorial taught me much of what I know. These pages were the <code>GOULOASH</code> of what I learned. This type of code reminds me much of my JavaFX, Android and WPF type of programming.
+                                <ol>
+                                    <li><a href="ecmaScript.html">EcmaScript6</a></li>
+                                    <li><a href="truePlay.html">CSS</a></li>
+                                </ol>
+                            </p>
+                            <hr>
+                        </div>
                     </div>
+
+                    <!-- End Right Column -->
                 </div>
 
-                <!-- End Right Column -->
+                <!-- End Grid -->
             </div>
 
-            <!-- End Grid -->
+            <!-- End Page Container -->
         </div>
-
-        <!-- End Page Container -->
+        <!-- End My Cover-->
     </div>
 
     <footer class="w3-container w3-teal w3-center w3-margin-top">
