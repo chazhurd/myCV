@@ -50,6 +50,7 @@ var goRight = false;
 var goLeft = false;
 var aHit = false;
 var bHit = false;
+var hitCenter, hitLeft, hitRight = false;
 
 
 var debugPasses = 0;
@@ -676,9 +677,16 @@ function hitDetection() {
             if (top > 450) {
                 myContainer.removeChild(curShot);
             }
-            if (left > userLeft && left < (userLeft + 40) && top >= 350 && top <= 375 && userShot == false) {
+            if (left > (userLeft - 3) && left < (userLeft + 35) && top >= 350 && top <= 375 && userShot == false) {
                 userShot = true;
                 shotsTaken++;
+                if (left < userLeft + 10) {
+                    hitLeft = true;
+                } else if (left >= userLeft + 10 && left <= userLeft + 25) {
+                    hitCenter = true;
+                } else {
+                    hitRight = true;
+                }
             }
         }
     }
@@ -703,7 +711,7 @@ function hitDetection() {
                 myShotleft = parseInt(myShotleft.substr(0, pLoc));
 
                 if (myShottop <= enemyAtop + 45 && myShottop >= enemyAtop + 35) {
-                    if (myShotleft >= enemyAleft && myShotleft <= enemyAleft + 40) {
+                    if (myShotleft >= enemyAleft && myShotleft <= enemyAleft + 45) {
                         aHit = true;
                     }
                 }
@@ -732,7 +740,7 @@ function hitDetection() {
                 myShotleft = parseInt(myShotleft.substr(0, pLoc));
 
                 if (myShottop <= enemyBtop + 45 && myShottop >= enemyBtop + 35) {
-                    if (myShotleft >= enemyBleft && myShotleft <= enemyBleft + 40) {
+                    if (myShotleft >= enemyBleft && myShotleft <= enemyBleft + 45) {
                         bHit = true;
                     }
                 }
@@ -760,7 +768,7 @@ function enemyAAttack() {
             enemyAleft = enemyA.style.left;
             pIndex = enemyAleft.indexOf("p");
             enemyAleft = parseInt(enemyAleft.substr(0, pIndex));
-            aShotLeft = enemyAleft + 25;
+            aShotLeft = enemyAleft + 20;
             var aShot = document.createElement("img");
             myContainer.appendChild(aShot);
             aShot.src = "imgs/theShot.png";
@@ -791,7 +799,7 @@ function enemyBAttack() {
             enemyBleft = enemyB.style.left;
             pIndex = enemyBleft.indexOf("p");
             enemyBleft = parseInt(enemyBleft.substr(0, pIndex));
-            bShotLeft = enemyBleft + 25;
+            bShotLeft = enemyBleft + 20;
             var bShot = document.createElement("img");
             myContainer.appendChild(bShot);
             bShot.src = "imgs/theShot.png";
@@ -809,6 +817,7 @@ function enemyBAttack() {
 
 function flashDamage() {
     var damageDiv;
+    var jetImage = document.getElementById("jetImage");
     var myContainer = document.getElementById("myContainer");
     damageDiv = document.getElementById("damaged");
     var divTl = new TimelineMax();
@@ -819,7 +828,16 @@ function flashDamage() {
             damTimer++;
             if (damTimer === 1) {
                 divTl.fromTo(damageDiv, 0.1, { opacity: "0" }, { opacity: "1" });
-
+                if (hitLeft) {
+                    jetImage.src = "imgs/hitLeft.png";
+                    hitLeft = false;
+                } else if (hitCenter) {
+                    jetImage.src = "imgs/hitCenter.png";
+                    hitCenter = false;
+                } else {
+                    jetImage.src = "imgs/hitRight.png";
+                    hitRight = false;
+                }
             }
             if (damTimer === 2) {
                 divTl.fromTo(damageDiv, 0.1, { opacity: "1" }, { opacity: "0" });
@@ -833,6 +851,7 @@ function flashDamage() {
             }
             if (damTimer === 4) {
                 divTl.fromTo(damageDiv, 0.1, { opacity: "1" }, { opacity: "0" });
+                jetImage.src = "imgs/newHost.png";
 
             }
             if (damTimer >= 5) {
@@ -987,7 +1006,7 @@ function commenceGame() {
     enemyMaker = setInterval(createEnemy, 3000);
     justiceMaker = setInterval(hitDetection, 5);
     debuggee = setInterval(hitDetectionHelper, 500);
-    enemyExplosion = setInterval(explodeEnemy, 400);
+    enemyExplosion = setInterval(explodeEnemy, 200);
     myMove();
     checkNumOfEnemies();
     if (startGameDiv != null)
@@ -1010,7 +1029,8 @@ function keyPressed(e) {
 
     if (parseInt(keynum) === 65 && keyLeft === false) {
         keys += "l";
-    } else if (parseInt(keynum) === 68 && keyRight === false) {
+    }
+    if (parseInt(keynum) === 68 && keyRight === false) {
         keys += "r";
     }
     if (parseInt(keynum) === 32) {
@@ -1029,11 +1049,11 @@ function keyPressed(e) {
         moveJetRight();
         keyRight = true;
     } else if (keys.includes("r") && keys.includes("s") && keyRight === false) {
-        shoot();
         moveJetRight();
-    } else if (keys.includes("l") && keys.includes("s") && keyLeft === false) {
         shoot();
+    } else if (keys.includes("l") && keys.includes("s") && keyLeft === false) {
         moveJetLeft();
+        shoot();
     }
     //}
 

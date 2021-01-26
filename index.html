@@ -12,38 +12,38 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineMax.min.js" integrity="sha512-lJDBw/vKlGO8aIZB8/6CY4lV+EMAL3qzViHid6wXjH/uDrqUl+uvfCROHXAEL0T/bgdAQHSuE68vRlcFHUdrUw==" crossorigin="anonymous"></script>
 <script>
     /*
-        var x = 0;
+            var x = 0;
 
-        var introCover = setInterval(() => {
-            var coverTL = new TimelineMax();
-            var content = document.getElementById("content");
-            var myCover = document.getElementById("gifCover");
-            if (x === 1) {
-                getIt();
-                coverTL.fromTo(myCover, 2, {
+            var introCover = setInterval(() => {
+                var coverTL = new TimelineMax();
+                var content = document.getElementById("content");
+                var myCover = document.getElementById("gifCover");
+                if (x === 1) {
+                    getIt();
+                    coverTL.fromTo(myCover, 2, {
+                        top: "0px",
+                        opacity: "1"
+                    }, {
+                        top: "-1000px",
+                        opacity: "0"
+
+                    });
+                }
+                x++;
+            }, 5000);
+
+            function getIt() {
+                var coverTL = new TimelineMax();
+                var content = document.getElementById("content");
+                coverTL.fromTo(content, 2, {
                     top: "0px",
-                    opacity: "1"
+                    opacity: "0"
                 }, {
                     top: "-1000px",
-                    opacity: "0"
-
+                    opacity: "1"
                 });
-            }
-            x++;
-        }, 5000);
 
-        function getIt() {
-            var coverTL = new TimelineMax();
-            var content = document.getElementById("content");
-            coverTL.fromTo(content, 2, {
-                top: "0px",
-                opacity: "0"
-            }, {
-                top: "-1000px",
-                opacity: "1"
-            });
-
-        }*/
+            }*/
 </script>
 <style>
     html,
@@ -101,7 +101,7 @@
                     <div class="w3-white w3-text-grey w3-card-4">
                         <p id="debugger"></p>
                         <div class="w3-display-container">
-                            <img src="imgs/boyni/e3.png" style="width:100%" alt="PicOfChazHurd" id="myPic">
+                            <img src="imgs/boyni/e3.jpg" style="width:100%" alt="PicOfChazHurd" id="myPic">
                             <br/><br/>
 
                             <div class="w3-display-bottomleft w3-container w3-text-black">
