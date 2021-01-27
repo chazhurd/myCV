@@ -98,6 +98,17 @@ li.bar a:hover {
     margin-right: auto;
 }
 
+#myCover {
+    height: 100%;
+    width: 90%;
+}
+
+#damageBorder {
+    z-index: 0;
+    opacity: 0;
+    display: none;
+}
+
 #myAnimation {
     width: 50px;
     height: 50px;
@@ -157,9 +168,6 @@ li.bar a:hover {
 }
 
 #healthBar {
-    margin: auto;
-    position: absolute;
-    width: 100%;
     z-index: 2;
 }
 
@@ -173,7 +181,7 @@ li.bar a:hover {
 }
 
 #damaged {
-    position: absolute;
+    position: relative;
     font-size: 20px;
     font-family: monospace;
     margin: auto;
@@ -181,8 +189,7 @@ li.bar a:hover {
     color: red;
     border: 2px solid red;
     border-radius: 5px;
-    top: 200px;
-    left: 70px;
+    top: -400px;
     opacity: 0;
 }
 

@@ -18,7 +18,7 @@
 </header>
 
 <body onload="beforeGame()" id="body" onkeydown="keyPressed(event)" onkeyup="keyupFunction(event)">
-    <div style="width: 90%;">
+    <div style="width: 100%;">
         <ol class="bar">
             <li class="bar"> <canvas id="myCanvas2" width="60" height="40" style="border:1px solid #ffffff;"></canvas></li>
             <li class="bar"><a href="index.html">My CV</a></li>
@@ -28,14 +28,15 @@
         </ol>
     </div>
 
-    <div id="healthBar" style="width: 95%;">
+    <div id="healthBar">
         <img src="imgs/fullHealth.png" alt="healthbar" id="healthBarImage">
     </div>
 
-    <div id="myCover" style="width: 95%;">
+    <div id="myCover" style="width: 90%; margin: auto;">
         <div id="myContainer" onload="setComponents()" style="margin: auto;">
-            <div id="weaponsOverload" style="text-align: center;">Weapons Overload!<br>3 Shots Max</div>
-            <div id="damaged" style="text-align: center;"><strong>CAUTION!</strong><br>Damage To Ship</div>
+            <div id="damageBorder" style="width: 100%; height:500px"><img src="imgs/damageBorder.png" width="340px" height="500px"></div>
+            <div id="weaponsOverload" style="text-align: center; margin: auto;">Weapons Overload!<br>3 Shots Max</div>
+            <div id="damaged" style="text-align: center; margin: auto; width: 75%;"><strong>CAUTION!</strong><br>Damage To Ship</div>
             <div id="startGame">
                 <div id="startContent">
                     <h4>Azure Fighter:</h4>
@@ -64,12 +65,10 @@
             <div id="score" style="font-size: 24px; color: red;"></div>
 
         </div>
-    </div>
-    <div id="debugger" style="background-color: black; color: white; float: left; font-size: larger;"></div>
-    <div id="debugger2" style="background-color: black; color: white;"></div>
-</body>
-<footer>
 
-</footer>
+        <div id="debugger" style="background-color: black; color: white; float: left; font-size: larger;"></div>
+        <div id="debugger2" style="background-color: black; color: white;"></div>
+    </div>
+</body>
 
 </html>

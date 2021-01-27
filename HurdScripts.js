@@ -818,8 +818,10 @@ function enemyBAttack() {
 function flashDamage() {
     var damageDiv;
     var jetImage = document.getElementById("jetImage");
-    var myContainer = document.getElementById("myContainer");
+    var dmgBorder = document.getElementById("damageBorder");
     damageDiv = document.getElementById("damaged");
+    dmgBorder.style.display = "block";
+
     var divTl = new TimelineMax();
     //--------------
     if (userShot) {
@@ -828,6 +830,9 @@ function flashDamage() {
             damTimer++;
             if (damTimer === 1) {
                 divTl.fromTo(damageDiv, 0.1, { opacity: "0" }, { opacity: "1" });
+                divTl.fromTo(dmgBorder, .5, { opacity: "0" }, { opacity: "0.5" })
+                    .fromTo(dmgBorder, .5, { opacity: "0.5" }, { opacity: "0" });
+                dmgBorder.style.zIndex = 1;
                 if (hitLeft) {
                     jetImage.src = "imgs/hitLeft.png";
                     hitLeft = false;
@@ -841,18 +846,14 @@ function flashDamage() {
             }
             if (damTimer === 2) {
                 divTl.fromTo(damageDiv, 0.1, { opacity: "1" }, { opacity: "0" });
-
-
             }
             if (damTimer === 3) {
                 divTl.fromTo(damageDiv, 0.1, { opacity: "0" }, { opacity: "1" });
-
 
             }
             if (damTimer === 4) {
                 divTl.fromTo(damageDiv, 0.1, { opacity: "1" }, { opacity: "0" });
                 jetImage.src = "imgs/newHost.png";
-
             }
             if (damTimer >= 5) {
                 userShot = false;
@@ -865,7 +866,7 @@ function flashDamage() {
 function lowerHealth() {
     var healthBar = document.getElementById("healthBarImage");
     var scoreDiv = document.getElementById("score");
-    var myCover = document.getElementById("myCover");
+    var db = document.getElementById("damageBorder");
     var restartDivTL = new TimelineMax();
     var restartDiv = document.getElementById("restartGame");
 
@@ -883,6 +884,7 @@ function lowerHealth() {
             shotsTaken = 0;
             cycleLife = 4;
         } else if (cycleLife === 4) {
+            db.style.display = "none";
             healthBar.src = "imgs/dead1.png";
             shotsTaken = 0;
             cycleLife = 5;
@@ -897,6 +899,7 @@ function lowerHealth() {
 
             var restart = document.getElementById("restartQuestion");
             var outRestart = document.getElementById("restartGame");
+            db.style.display = "none";
             restart.style.display = "block";
 
             outRestart.style.display = "block";
@@ -959,6 +962,18 @@ function finishGame() {
 
 function beforeGame() {
     drawLogo();
+    var hb = document.getElementById("healthBar");
+
+    if (window.screen.width > 700) {
+        document.getElementById("myCover").style.width = "100%";
+        hb.style.width = "100%";
+    }
+    hb.style.position = "absolute";
+    let curTop = hb.style.top;
+    curTop = curTop.substr(0, 2);
+    curTop = parseInt(curTop) + 100;
+    hb.style.top = curTop + "px";
+
     var wp = document.getElementById("weaponsOverload");
     var cd = document.getElementById("damaged");
     var sb = document.getElementById("startGameButton");
@@ -983,10 +998,9 @@ function commenceGame() {
     wp.style.zIndex = 1;
     cd.style.zIndex = 1;
 
-    if (window.screen.width > 700) {
-        document.getElementById("myCover").style.width = "100%";
-        document.getElementById("healthBar").style.width = "100%";
-    }
+
+
+
     var scoreDiv = document.getElementById("score");
     numOfDefeatedEnemies = 0;
     scoreDiv.innerText = "";
@@ -1014,6 +1028,7 @@ function commenceGame() {
     //document.getElementById("startGame").style.display = "none";
 
 }
+
 var keyLeft = false;
 var keyRight = false;
 var keys = "";
