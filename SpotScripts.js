@@ -1,4 +1,5 @@
 var timed = 0;
+var windowWidth = 0;
 var x = 30;
 var y = 17;
 var a = 37;
@@ -8,45 +9,69 @@ var d = 16;
 
 
 function main() {
+
+
     drawLogo();
     siteAnimate();
 
-    var windowWidth = window.screen.width;
+    windowWidth = window.screen.width;
 
-    if (windowWidth > 900) {
-        document.getElementById("neonContainer").style.display = "block";
-        document.getElementById("neonLine").style.display = "block";
-        var randomBlink = setInterval(() => {
-            var allowBlink = Math.random();
-            if (allowBlink < .5) {
-                var blinkTl = new TimelineMax();
-                var topText = document.getElementById("topNeon");
-                var bottomText = document.getElementById("bottomNeon");
-                blinkTl.fromTo(topText, 0.1, { opacity: "1" }, { opacity: "0.2" })
-                    .fromTo(topText, 0.1, { opacity: "0.2" }, { opacity: "1" })
-                    .fromTo(bottomText, 0.1, { opacity: "1" }, { opacity: "0.2" })
-                    .fromTo(bottomText, 0.3, { opacity: "0.2" }, { opacity: "1" });
-            }
-        }, 4000);
+    var rightArrow = document.getElementById("rightArrow");
+    var leftArrow = document.getElementById("leftArrow");
 
-        var constantBlink = setInterval(() => {
-            var blinkWarn = new TimelineMax();
-            var warning = document.getElementById("warning");
-            if (warning.style.opacity === "0") {
-                blinkWarn.fromTo(warning, .7, { opacity: "0" }, { opacity: "1" });
-            } else {
-                blinkWarn.fromTo(warning, .7, { opacity: "1" }, { opacity: "0" });
-            }
-        }, 1000)
+    var carouselImage = document.getElementById("myCarouselImage");
+    let cILeft = carouselImage.style.left;
+    let pIndex = cILeft.indexOf("p");
+    cILeft = cILeft.substr(0, pIndex);
+
+    document.getElementById("debugger").innerHTML = "WINDOW " + windowWidth;
+
+
+    leftArrow.style.left = cILeft + "px";
+    if (windowWidth > 700) {
+        rightArrow.style.left = ((windowWidth / 2) + 280) + "px";
+
     } else {
-        debugger;
-        document.getElementById("neonContainer").style.display = "none";
-        document.getElementById("neonLine").style.display = "none";
+        rightArrow.style.left = ((windowWidth / 2) + 120) + "px";
     }
-    var processImage = document.getElementById("devProc");
-    var procNum = 0;
-    var devProc = setInterval(() => {
-        procNum++;
+
+    windowWidth = window.screen.width;
+    document.getElementById("neonContainer").style.display = "block";
+    document.getElementById("neonLine").style.display = "block";
+    var randomBlink = setInterval(() => {
+        var allowBlink = Math.random();
+        if (allowBlink < .5) {
+            var blinkTl = new TimelineMax();
+            var topText = document.getElementById("topNeon");
+            var bottomText = document.getElementById("bottomNeon");
+            blinkTl.fromTo(topText, 0.1, { opacity: "1" }, { opacity: "0.2" })
+                .fromTo(topText, 0.1, { opacity: "0.2" }, { opacity: "1" })
+                .fromTo(bottomText, 0.1, { opacity: "1" }, { opacity: "0.2" })
+                .fromTo(bottomText, 0.3, { opacity: "0.2" }, { opacity: "1" });
+        }
+    }, 4000);
+
+    var constantBlink = setInterval(() => {
+        var blinkWarn = new TimelineMax();
+        var warning = document.getElementById("warning");
+        if (warning.style.opacity === "0") {
+            blinkWarn.fromTo(warning, .7, { opacity: "0" }, { opacity: "1" });
+        } else {
+            blinkWarn.fromTo(warning, .7, { opacity: "1" }, { opacity: "0" });
+        }
+    }, 1000)
+}
+
+//var processImage = document.getElementById("devProc");
+var procNum = 0;
+var arrowCounter = 0;
+
+var devProc = setInterval(() => {
+    var rightArrow = document.getElementById("rightArrow");
+
+    procNum++;
+    arrowCounter++;
+    /*
         if (procNum === 0) {
             processImage.src = "imgs/Spot/DevProcess2.png";
         } else if (procNum === 1) {
@@ -58,16 +83,30 @@ function main() {
         } else {
             procNum = 0;
         }
-    }, 150);
-}
+    */
+    switch (parseInt(arrowCounter)) {
+        case (31):
+            rightArrow.src = "imgs/Spot/r1.png";
+            break;
+        case (32):
+            rightArrow.src = "imgs/Spot/r2.png";
+            break;
+        case (33):
+            rightArrow.src = "imgs/Spot/r3.png";
+            break
+        case (34):
+            rightArrow.src = "imgs/Spot/r4.png";
+            arrowCounter = 0;
+            break;
+    }
+}, 150);
+
 
 function siteAnimate() {
     var openTl = new TimelineMax();
     var topText = document.getElementById("topNeon");
     var bottomText = document.getElementById("bottomNeon");
-    var windowWidth = window.screen.width;
-
-    if (windowWidth > 900) {
+    setTimeout(function() {
         openTl.fromTo(topText, 0.1, { opacity: "0" }, { opacity: ".3" })
             .fromTo(topText, 0.1, { opacity: ".3" }, { opacity: "0" })
             .fromTo(topText, 0.1, { opacity: "0" }, { opacity: ".5" })
@@ -77,7 +116,8 @@ function siteAnimate() {
             .fromTo(bottomText, 0.1, { opacity: "0" }, { opacity: "1" })
             .fromTo(bottomText, 0.1, { opacity: "1" }, { opacity: "1" })
             .fromTo(bottomText, 1, { opacity: "0" }, { opacity: "1" });
-    }
+    }, 1000);
+
 }
 //Banner
 function drawLogo() {
@@ -159,11 +199,33 @@ function drawLogo() {
 var onresize = function(e) {
     //note i need to pass the event as an argument to the function
     width = e.target.outerWidth;
+    windowWidth = width;
     height = e.target.outerHeight;
+
     var myVideo = document.getElementById("spotVideo");
+    var rightArrow = document.getElementById("rightArrow");
+    var leftArrow = document.getElementById("leftArrow");
+    var carouselImage = document.getElementById("myCarouselImage")
+
+    document.getElementById("debugger").innerHTML = width;
+
     if (width <= 600) {
         myVideo.style.width = width + "px";
-
+        rightArrow.style.left = (width - 80) + "px";
+        carouselImage.style.width = (width - 10) + "px";
+    } else {
+        rightArrow.style.left = ((width / 2) + 250) + "px";
+        leftArrow.style.left = ((width / 2) - 250) + "px";
     }
 }
 window.addEventListener("resize", onresize);
+
+
+
+function loaded() {
+    setTimeout(function() {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("myApp").style.display = "block";
+    }, 700);
+    main();
+}

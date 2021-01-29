@@ -9,37 +9,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Spot Application</title>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="SpotCSS.css">
     <script src="SpotScripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js" integrity="sha512-8Wy4KH0O+AuzjMm1w5QfZ5j5/y8Q/kcUktK9mPUVaUoBvh3QPUZB822W/vy7ULqri3yR8daH3F58+Y8Z08qzeg==" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineMax.min.js" integrity="sha512-lJDBw/vKlGO8aIZB8/6CY4lV+EMAL3qzViHid6wXjH/uDrqUl+uvfCROHXAEL0T/bgdAQHSuE68vRlcFHUdrUw==" crossorigin="anonymous"></script>
 </head>
+
 <header>
 
 </header>
 
-<body id="body" onload="main()">
-    <div style="width: 100%;">
-        <ol class="bar">
-            <li class="bar"> <canvas id="myCanvas2" width="60" height="40" style="border:1px solid #ffffff;"></canvas></li>
-            <li class="bar" style="font-size: medium;"><a href="index.html">My CV</a></li>
-            <li class="bar" style="font-size: medium;"><a href="#limit" onclick="alert('Coming Soon')">Projects</a></li>
-            <li class="bar" style="font-size: medium;"><a href="#classes" onclick="alert('Coming Soon')">About Me</a></li>
-        </ol>
-    </div>
+<body id="body" onload="loaded()">
+    <div id="loading" style="margin: auto;"><img src="imgs/Spot/prod1.jpg" style="opacity: .5;margin-left: auto; margin-right: auto; margin-top: 100px; display: block; width: 900px"></div>
+    <div id="myApp">
+        <div style="width: 100%;">
+            <ol class="bar">
+                <li class="bar"> <canvas id="myCanvas2" width="60" height="40" style="border:1px solid #ffffff;"></canvas></li>
+                <li class="bar" style="font-size: medium;"><a href="index.html">My CV</a></li>
+                <li class="bar" style="font-size: medium;"><a href="#limit" onclick="alert('Coming Soon')">Projects</a></li>
+                <li class="bar" style="font-size: medium;"><a href="#classes" onclick="alert('Coming Soon')">About Me</a></li>
+            </ol>
+        </div>
 
-    </ol>
-    </div>
-    <div id="neonContainer" style="font-family: 'Warnes', cursive;">
-        <h1 class="neon">
-            <span id="topNeon">Necessity is the<br></span>
-            <span id="bottomNeon"> mother of all innovation</span>
-        </h1>
-    </div>
-    <br>
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="max-width: 800px; margin: auto;">
+
+        <div id="neonContainer" style="font-family: 'Warnes', cursive;">
+            <h1 class="neon">
+                <span id="topNeon">Necessity is the<br></span>
+                <span id="bottomNeon"> mother of all innovation</span>
+            </h1>
+        </div>
+        <br>
+        <div id="myCarousel" style="width: 100%;"><img src="imgs/Spot/r4.png" id="leftArrow" alt="left Arrow"><img src="imgs/Spot/prod1.jpg" id="myCarouselImage" height="300px"><img src="imgs/Spot/r4.png" id="rightArrow" alt="right Arrow"></div>
+        <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="max-width: 800px; margin: auto;">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img class="d-block w-100 sliderImages" src="imgs/Spot/Problem1.jpg" alt="First slide">
@@ -86,24 +88,24 @@
             <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: rgb(85, 84, 84);"></span>
             <span class="sr-only">Next</span>
         </a>
-    </div>
+    </div> -->
 
-    <h1 class="neonRed" id="neonLine">- - - - - - - - - - - - - -</h1>
+        <h1 class="neonRed" id="neonLine">- - - - - - - - - - - - - -</h1>
 
-    <div id="spotV" style="background-color: rgb(34, 34, 34,0.3); color: skyblue; min-height: 300px; max-width: 800px; margin: auto; font-size: medium; font-family: Georgia, 'Times New Roman', Times, serif;">
-        <section>
-            <iframe width="400" height="285" src="https://www.youtube.com/embed/ucvsTIVrhSg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="float: inline-end;" id="spotVideo"></iframe><br>Spot
-            was is a business idea I had while attending EWU. The desire for it came long before, however it manifested in 2019. I devOp'd a working prototype that is still being developed. All that you see here I put together myself. EWU gave me $2,000
-            for business development and I chose to hire a team of Devs as my lack of time, schoolwork and being a new dad didn't allow for my own production.
-            <br><br><span class="badge badge-primary">Master</span> <span class="badge badge-success">Success</span> <span class="badge badge-secondary">Dev</span> <span class="badge badge-warning" id="warning">Warning</span>
-        </section>
-    </div>
-    <br>
-    <div id="process" style="display:block;">
-        <img src="imgs/Spot/DevProcess2.png" alt="DevOpProcess" id="devProc">
-    </div>
-    <br>
-    <div id="myProcess" class="carousel slide" data-ride="carousel" style="max-width: 800px; margin: auto;">
+        <div id="spotV" style="background-color: rgb(34, 34, 34,0.3); color: skyblue; min-height: 300px; max-width: 800px; margin: auto; font-size: medium; font-family: Georgia, 'Times New Roman', Times, serif;">
+            <section>
+                <iframe width="400" height="285" src="https://www.youtube.com/embed/ucvsTIVrhSg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="float: inline-end;" id="spotVideo"></iframe><br>Spot
+                was is a business idea I had while attending EWU. The desire for it came long before, however it manifested in 2019. I devOp'd a working prototype that is still being developed. All that you see here I put together myself. EWU gave me
+                $2,000 for business development and I chose to hire a team of Devs as my lack of time, schoolwork and being a new dad didn't allow for my own production.
+                <br><br><span class="badge badge-primary">Master</span> <span class="badge badge-success">Success</span> <span class="badge badge-secondary">Dev</span> <span class="badge badge-warning" id="warning">Warning</span>
+            </section>
+        </div>
+        <br>
+        <div id="process" style="display:block;">
+            <img src="imgs/Spot/DevProcess2.png" alt="DevOpProcess" id="devProc">
+        </div>
+        <br>
+        <!-- <div id="myProcess" class="carousel slide" data-ride="carousel" style="max-width: 800px; margin: auto;">
         <p class="neonRed">Idea -- WireFrame -- Design -- Hiring -- Development -- Fine Tuning</p>
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -127,15 +129,12 @@
             <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: black; position: relative; top: 15%;"></span>
             <span class="sr-only">Next</span>
         </a>
+    </div> -->
     </div>
 
     <div id="debugger">
 
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
 

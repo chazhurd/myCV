@@ -1,62 +1,63 @@
 <!DOCTYPE html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-        <script>
-          var slowUp;
-          function increaseClipHeight(){
-            var x =100;
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script>
+        var slowUp;
+
+        function increaseClipHeight() {
+            var x = 100;
             slowUp = setInterval(incWidth, 5);
-            function incWidth(){
-              if(x<300){
-              document.getElementById("mrClippy").width = "" + x +"";
-              x += 20;
-              }else{
-                clearInterval(slowUp);
-              }
+
+            function incWidth() {
+                if (x < 300) {
+                    document.getElementById("mrClippy").width = "" + x + "";
+                    x += 20;
+                } else {
+                    clearInterval(slowUp);
+                }
             }
-          }
-          function decreaseClipHeight(){
+        }
+
+        function decreaseClipHeight() {
             clearInterval(slowUp);
             document.getElementById("mrClippy").width = "100";
-          }
-        </script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="playStyles.css">
-       <title>w3 CSS Run</title>
-    </head>
-    <body>
-    
-      <div class="header">
-        <h1>CSS Play</h1>
-      </div>
-        
-      
-      <div>
-        <ol class="bar">
-          <li class="bar"><a class="active" href="#intro">Home</a></li>
-          <li class="bar"><a href="#limit">Positioning</a></li>
-          <li class="bar"><a href="#classes">Psuedo</a></li>
-        </ol>
-      
+        }
+    </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="playStyles.css">
+    <title>w3 CSS Run</title>
+</head>
 
-      <div id="intro">
+<body>
+
+    <div class="header">
+        <h1>CSS Play</h1>
+    </div>
+
+
+    <div>
+        <ol class="bar">
+            <li class="bar"><a class="active" href="#intro">Home</a></li>
+            <li class="bar"><a href="#limit">Positioning</a></li>
+            <li class="bar"><a href="#classes">Psuedo</a></li>
+        </ol>
+
+
+        <div id="intro">
             The begining of w3 css tutorial. Below are some Font Awesome icons. (scripts) <br/>
             <i class="fas fa-cloud"></i>
             <i class="fas fa-heart"></i>
             <i class="fas fa-car"></i>
             <i class="fas fa-file"></i>
-            <i class="fas fa-bars"></i> <br/>
-
-            Some bootstrap icons<br/>
+            <i class="fas fa-bars"></i> <br/> Some bootstrap icons<br/>
             <i class="glyphicon glyphicon-cloud"></i>
             <i class="glyphicon glyphicon-remove"></i>
             <i class="glyphicon glyphicon-user"></i>
             <i class="glyphicon glyphicon-envelope"></i>
-            <i class="glyphicon glyphicon-thumbs-up" style="color: blue;"></i><br/>
-
-            some google icons<br/>
+            <i class="glyphicon glyphicon-thumbs-up" style="color: blue;"></i><br/> some google icons<br/>
             <i class="material-icons" style="color: cornflowerblue;">cloud</i>
             <i class="material-icons">favorite</i>
             <i class="material-icons">attachment</i>
@@ -100,76 +101,76 @@
             <h2>CSS Tables</h2>
             <table>
                 <tr>
-                  <th>Firstname</th>
-                  <th>Lastname</th>
-                  <th>Savings</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Savings</th>
                 </tr>
                 <tr>
-                  <td>Peter</td>
-                  <td>Griffin</td>
-                  <td>$100</td>
+                    <td>Peter</td>
+                    <td>Griffin</td>
+                    <td>$100</td>
                 </tr>
                 <tr>
-                  <td>Lois</td>
-                  <td>Griffin</td>
-                  <td>$150</td>
+                    <td>Lois</td>
+                    <td>Griffin</td>
+                    <td>$150</td>
                 </tr>
                 <tr>
-                  <td>Joe</td>
-                  <td>Swanson</td>
-                  <td>$300</td>
+                    <td>Joe</td>
+                    <td>Swanson</td>
+                    <td>$300</td>
                 </tr>
                 <tr>
-                  <td>Cleveland</td>
-                  <td>Brown</td>
-                  <td>$250</td>
+                    <td>Cleveland</td>
+                    <td>Brown</td>
+                    <td>$250</td>
                 </tr>
             </table>
-              <br/>
+            <br/>
 
-              
+
 
             <table class="chunk">
-                    <tr>
+                <tr>
                     <td>This</td>
                     <td>Little</td>
                     <td>Piggy</td>
                     <td>Went</td>
                     <td>To</td>
                     <td>Market</td>
-                    </tr>
-                    <tr>
+                </tr>
+                <tr>
                     <td colspan="2">This</td>
                     <td>Little</td>
                     <td>Piggy</td>
                     <td>Went</td>
                     <td>To</td>
-                    </tr>
-                    <tr>
+                </tr>
+                <tr>
                     <td colspan="4">This</td>
                     <td rowspan="3">Little</td>
                     <td>Piggy</td>
-                    </tr>
-                    <tr>
+                </tr>
+                <tr>
                     <td rowspan="2">This</td>
                     <td>Little</td>
                     <td>Piggy</td>
                     <td>Went</td>
                     <td>To</td>
-                    </tr>
-                    <tr>
+                </tr>
+                <tr>
                     <td>Little</td>
                     <td>Piggy</td>
                     <td>Went</td>
                     <td>To</td>
-                    </tr>
+                </tr>
             </table>
 
-                <br/>
-                <hr/>
-                <h2> The Display Property</h2>
-                The display property specifies if/how an element is displayed. Commented are block & inlinne elements:
-                <!-- 
+            <br/>
+            <hr/>
+            <h2> The Display Property</h2>
+            The display property specifies if/how an element is displayed. Commented are block & inlinne elements:
+            <!-- 
                 <div>
                 <h1> - <h6>
                 <p>
@@ -182,445 +183,383 @@
                 <a>
                 <img>
                 -->
-                CSS gives the ability to change the way these elements are displayed however. Display:Block or Inline..
-                Block level takes the entire width of the screen. 
+            CSS gives the ability to change the way these elements are displayed however. Display:Block or Inline.. Block level takes the entire width of the screen.
         </div>
         <div class="untamed">
-          This is a max of 500 pixel and unmanaged
+            This is a max of 500 pixel and unmanaged
 
         </div>
-        <div class="limited" id="limit"> 
-          This has a max of 500 piels and is managed b screen size
+        <div class="limited" id="limit">
+            This has a max of 500 piels and is managed b screen size
 
         </div>
         <div>
-                <br>
-                <h3>Positioning</h4>
-                Position is static by defualt. Use CSS to change it up. Below are some ways to do so:<br>
-                >> position: relative; is positioned relative to its normal position.<br>
-                >> position: fixed; is positioned relative to the viewport (mr clippy br)<br>
-                <img src="mrClippy.png" alt="mr.Clippy" id="mrClippy" onmouseover="increaseClipHeight()" onmouseout="decreaseClipHeight()" width="100px">
-                >> position: absolute; is positioned relative to the nearest positioned ancestor (div in div or w/e is parent, great for adding text in an image <i><strong>(does it work with animation?)</i></strong>)<br>
-                >> position: sticky; is positioned based on the user's scroll position (sim to fixed);
+            <br>
+            <h3>Positioning</h4>
+                Position is static by defualt. Use CSS to change it up. Below are some ways to do so:<br> >> position: relative; is positioned relative to its normal position.<br> >> position: fixed; is positioned relative to the viewport (mr clippy br)<br>
+                <img src="imgs/mrClippy.png" alt="mr.Clippy" id="mrClippy" onmouseover="increaseClipHeight()" onmouseout="decreaseClipHeight()" width="100px"> >> position: absolute; is positioned relative to the nearest positioned ancestor (div in div
+                or w/e is parent, great for adding text in an image <i><strong>(does it work with animation?)</i></strong>)<br> >> position: sticky; is positioned based on the user's scroll position (sim to fixed);
                 <br>
                 <h4> Overlapping elements</h4>
                 >> The z-index property specifies the stack order of an element (which element should be placed in front of, or behind, the others). z-index: -1;
-                  <h4>Overflow</h4>
-                  The option is to tell the browser whether the block element will need scroll bars and or to have the ability, or not, to reach beyond the blocks height.
-                  The overflow property only works for block elements with a specified height
-                  probably wont use this since most browsers are phones now and scroll bars arent very cool. 
-                  <br/>
-                  <h4>Floating</h4>
-                  <p id="floater"><img src="first.jpg" id="floatr" alt="check image" width="200px">The float property is used for positioning and formatting content: for instance this photo can float to the right</p>
-                  <p id="floatel">Most commonly the left float is used. It just looks more proper i guess. <img src="angryClip.png" id="floatl" alt="check image" height="150px"> The image can "float" but will only be floating next to the text that comes after the image element. sksjakdjalsjflkasjdlkjaslkfjaslkjfdalksjdkljsalkdjaslkhfha sa dljaksd laskjd aslkjd alkj</p>
-                  <p>Center an image you must set it to a block, set right to float AND set left to float. Quite a bit</p>
-                  <img id="centeredImage" src="myEntHat.jpg"> <br/>
-                  <hr>
-                  <br>
-          </div>
-
-          <div id="classes">
-                  <h3>Pseudo Classes</h3>
-                  A pseudo-class is used to define a special state of an element.
-
-                  For example, it can be used to:
-                  <br>
-                      Style an element when a user mouses over it
-                      Style visited and unvisited links differently
-                      Style an element when it gets focus
-                  Example:<br>
-                  Pseudo-classes can be combined with CSS classes:
-                  a.highlight:hover {
-                    color: #ff0000;
-                  }
-                  <br>
-                  the CSS class highlight is being combined with the Pseudo class Hover. These classes are not case sensistive.
-                  <br>                  
-                  To use these just pick the element type and choose the class. (DIV:HOVER)
-                  <br>
-
-                  <h3>Pseudo-Element</h3>
-                  selector::pseudo-element {
-                    property: value;
-                  }<br>
-                  To select the first line in all paragraphs for example would be:
-                  <br>
-                  p::first-line {
-                    color: #ff0000;
-                    font-variant: small-caps;
-                  }
-                  <br>
-                  In a more rare case but cool none the less: if a USER selects soething on your page you can 
-                  change the way it highlights, or whatever. 
-
-                ::selection {
-                  color: red;
-                  background: yellow;
-                }
-                <br>
-                <br>
+                <h4>Overflow</h4>
+                The option is to tell the browser whether the block element will need scroll bars and or to have the ability, or not, to reach beyond the blocks height. The overflow property only works for block elements with a specified height probably wont use this
+                since most browsers are phones now and scroll bars arent very cool.
+                <br/>
+                <h4>Floating</h4>
+                <p id="floater"><img src="imgs/first.jpg" id="floatr" alt="check image" width="200px">The float property is used for positioning and formatting content: for instance this photo can float to the right</p>
+                <p id="floatel">Most commonly the left float is used. It just looks more proper i guess. <img src="imgs/angryClip.png" id="floatl" alt="check image" height="150px"> The image can "float" but will only be floating next to the text that comes after the
+                    image element. sksjakdjalsjflkasjdlkjaslkfjaslkjfdalksjdkljsalkdjaslkhfha sa dljaksd laskjd aslkjd alkj</p>
+                <p>Center an image you must set it to a block, set right to float AND set left to float. Quite a bit</p>
+                <img id="centeredImage" src="myEntHat.jpg"> <br/>
                 <hr>
-                <h3>Nav Bars</h3>
                 <br>
-                <p>
+        </div>
+
+        <div id="classes">
+            <h3>Pseudo Classes</h3>
+            A pseudo-class is used to define a special state of an element. For example, it can be used to:
+            <br> Style an element when a user mouses over it Style visited and unvisited links differently Style an element when it gets focus Example:
+            <br> Pseudo-classes can be combined with CSS classes: a.highlight:hover { color: #ff0000; }
+            <br> the CSS class highlight is being combined with the Pseudo class Hover. These classes are not case sensistive.
+            <br> To use these just pick the element type and choose the class. (DIV:HOVER)
+            <br>
+
+            <h3>Pseudo-Element</h3>
+            selector::pseudo-element { property: value; }
+            <br> To select the first line in all paragraphs for example would be:
+            <br> p::first-line { color: #ff0000; font-variant: small-caps; }
+            <br> In a more rare case but cool none the less: if a USER selects soething on your page you can change the way it highlights, or whatever. ::selection { color: red; background: yellow; }
+            <br>
+            <br>
+            <hr>
+            <h3>Nav Bars</h3>
+            <br>
+            <p>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#news">News</a></li>
                 <li class="dropdown">
-                  <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
-                  <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
-                  </div>
+                    <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+                    <div class="dropdown-content">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div>
                 </li>
                 <br><br>
-                </p>
-                <h3>Responsive Gallery</h3>
-                <p>We dont want to make the website static, we should try and make it for every browser type
-                 for instance this gallery:
-                </p>
-                <div class="responsive">
-                  <div class="gallery">
+            </p>
+            <h3>Responsive Gallery</h3>
+            <p>We dont want to make the website static, we should try and make it for every browser type for instance this gallery:
+            </p>
+            <div class="responsive">
+                <div class="gallery">
                     <a target="_blank" href="myEntHatLit.jpg">
-                      <img src="myEntHat.jpg" alt="Entre" width="600" height="400">
+                        <img src="imgs/myEntHat.jpg" alt="Entre" width="600" height="400">
                     </a>
                     <div class="desc">Add a description of the image here</div>
-                  </div>
                 </div>
-                
-                
-                <div class="responsive">
-                  <div class="gallery">
+            </div>
+
+
+            <div class="responsive">
+                <div class="gallery">
                     <a target="_blank" href="myPaintHatLit.jpg">
-                      <img src="myPaintHat.jpg" alt="Paint" width="600" height="400">
+                        <img src="imgs/myPaintHat.jpg" alt="Paint" width="600" height="400">
                     </a>
                     <div class="desc">Add a description of the image here</div>
-                  </div>
                 </div>
-                
-                <div class="responsive">
-                  <div class="gallery">
+            </div>
+
+            <div class="responsive">
+                <div class="gallery">
                     <a target="_blank" href="mySeHat.jpg">
-                      <img src="mySeHat.jpg" alt="Software" width="600" height="400">
+                        <img src="imgs/mySeHat.jpg" alt="Software" width="600" height="400">
                     </a>
                     <div class="desc">Add a description of the image here</div>
-                  </div>
                 </div>
+            </div>
         </div>
         <div>
-          <h3>
-            Forms
-          </h3>
-          <h3>Using CSS to style an HTML Form</h3>
+            <h3>
+                Forms
+            </h3>
+            <h3>Using CSS to style an HTML Form</h3>
 
-          <div class="form">
-            <form action="doSomething()">
-              <label for="fname">First Name</label>
-              <input type="text" id="fname" name="firstname" placeholder="Your name..">
+            <div class="form">
+                <form action="doSomething()">
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
 
-              <label for="lname">Last Name</label>
-              <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
 
-              <label for="country">Country</label>
-              <select id="country" name="country">
+                    <label for="country">Country</label>
+                    <select id="country" name="country">
                 <option value="australia">Australia</option>
                 <option value="canada">Canada</option>
                 <option value="usa">USA</option>
               </select>
-              <textarea name="myTextArea" id="txtArea" cols="30" rows="10">Enter Your Request</textarea>
-              <input type="submit" value="Submit">
-            </form>
-          </div>
-          <hr>
-          <h2>Standard Page Formatting: </h2>
-         
-          <div class="row">
-            <div class="leftcolumn">
-              <div class="card">
-                <h2>TITLE HEADING</h2>
-                <h5>Title description, Dec 7, 2017</h5>
-                <div class="fakeimg" style="height:200px;">Image</div>
-                <p>Some text..</p>
-                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-              </div>
-              <div class="card">
-                <h2>TITLE HEADING</h2>
-                <h5>Title description, Sep 2, 2017</h5>
-                <div class="fakeimg" style="height:200px;">Image</div>
-                <p>Some text..</p>
-                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-              </div>
+                    <textarea name="myTextArea" id="txtArea" cols="30" rows="10">Enter Your Request</textarea>
+                    <input type="submit" value="Submit">
+                </form>
             </div>
-            <div class="rightcolumn">
-              <div class="card">
-                <h2>About Me</h2>
-                <div class="fakeimg" style="height:100px;">Image</div>
-                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-              </div>
-              <div class="card">
-                <h3>Popular Post</h3>
-                <div class="fakeimg"><p>Image</p></div>
-                <div class="fakeimg"><p>Image</p></div>
-                <div class="fakeimg"><p>Image</p></div>
-              </div>
-              <div class="card">
-                <h3>Follow Me</h3>
-                <p>Some text..</p>
-              </div>
-            </div>
-          </div>
-          <hr>
-          <div id="multipleBackgrounds">
-            Here we have multiple backgrounds.
-          </div>
-          <div id="spacer"></div>
-          <div id="sunset">
-          </div>
-          <div id="spacer"></div>
-          <script>
-
-            setInterval(sunset, 20);
-            var mySunset = 0;
-            function sunset(){
-              if(mySunset < 20){
-                document.getElementById("sunset").style.backgroundImage = "linear-gradient(to right, yellow , red)";
-                document.getElementById("sunset").innerHTML = "The Sun May Rise In The East";
-                document.getElementById("sunset").style.textAlign = "left";
-              }
-              if(mySunset >20 && mySunset< 40){
-                document.getElementById("sunset").style.backgroundImage ="linear-gradient(yellow, red)"
-                document.getElementById("sunset").innerHTML = "But Atleast";
-                document.getElementById("sunset").style.textAlign = "center";
-              }
-              if(mySunset>40){
-                document.getElementById("sunset").style.backgroundImage = "linear-gradient(to right, red ,yellow)";
-                document.getElementById("sunset").innerHTML = "It Settled In A Final Location";
-                document.getElementById("sunset").style.textAlign = "right";
-              }
-              if(mySunset > 60){
-                mySunset = 0;
-              }
-
-              mySunset++;
-            }
-          </script>
-          <div>
             <hr>
-            <h2>Shadows</h2>
-            <P>Shadows can be applied to text to create a neon look, images to give it a shadow or to make it look like paper like this one:</p>
-                <div class="polaroid">
-                  <img src="header.jpg" alt="Marble" style="width:100%">
-                  <div class="container2">
-                    <p>Blue Marble</p>
-                  </div>
+            <h2>Standard Page Formatting: </h2>
+
+            <div class="row">
+                <div class="leftcolumn">
+                    <div class="card">
+                        <h2>TITLE HEADING</h2>
+                        <h5>Title description, Dec 7, 2017</h5>
+                        <div class="fakeimg" style="height:200px;">Image</div>
+                        <p>Some text..</p>
+                        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                    </div>
+                    <div class="card">
+                        <h2>TITLE HEADING</h2>
+                        <h5>Title description, Sep 2, 2017</h5>
+                        <div class="fakeimg" style="height:200px;">Image</div>
+                        <p>Some text..</p>
+                        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                    </div>
                 </div>
-          </div>
-          <div id="spacer"></div>
-          <h3>Changing Fonts</h3>
-          <p>We can change fonts to different types by using css @Font Rule</p>
-          <p id="changedFont">For instance this font is different than others</p>
-          <p>Done by doing the @Font Rule</p>
-          <hr>
-          <h2>Transformations(Transform: ...)</h2>
-          <p><img src="bizproposal.png" width="100px" id="mySkewedPhoto">
-            translate(): moves the object in x or y direction<br>
-            rotate(): rotates with dgrees<br>
-            scaleX(): increases/dec size of width<br>
-            scaleY(): increases/dec size of height<br>
-            scale(): changes size<br>
-            skewX(): will skew along x axis<br>
-            skewY(): will skew along y axis with degree<br>
-            skew(): both x and y axis skewd<br>
-            matrix(): combines all 2d transformations in one: matrix(scaleX(),skewY(),skewX(),scaleY(),translateX(),translateY()) <br>
-          </p>
-          <div id="transitions" class="tran" style="background-color: deepskyblue;">
-            <h2> CSS Transitions:</h2>
-            instead of using JavaScript to control the moition of images we can use CSS!
-            Using shorthand notation: transition: width 2s linear 1s 
-          </div>
-          <div class="tran" style="background-color: crimson;">sahdjashllkdsja asldljaslkjlksdjalk as kdjaslkdj asldkjas lkdjajslk asdjalksdj </div>
-          <div class="tran" style="background-color: darkolivegreen;">sahdjashllkdsja asldljaslkjlksdjalk as kdjaslkdj asldkjas lkdjajslk asdjalksdj </div>
-          <div class="spacer" style="display: block;"></div>
-          </div>
-          <br>
-          <h2>Animations using CSS @keyframes</h2>
-          <div style="height: 400px; width:50%; margin: auto;" class="animCont" >
+                <div class="rightcolumn">
+                    <div class="card">
+                        <h2>About Me</h2>
+                        <div class="fakeimg" style="height:100px;">Image</div>
+                        <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+                    </div>
+                    <div class="card">
+                        <h3>Popular Post</h3>
+                        <div class="fakeimg">
+                            <p>Image</p>
+                        </div>
+                        <div class="fakeimg">
+                            <p>Image</p>
+                        </div>
+                        <div class="fakeimg">
+                            <p>Image</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Follow Me</h3>
+                        <p>Some text..</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div id="multipleBackgrounds">
+                Here we have multiple backgrounds.
+            </div>
+            <div id="spacer"></div>
+            <div id="sunset">
+            </div>
+            <div id="spacer"></div>
+            <script>
+                setInterval(sunset, 20);
+                var mySunset = 0;
+
+                function sunset() {
+                    if (mySunset < 20) {
+                        document.getElementById("sunset").style.backgroundImage = "linear-gradient(to right, yellow , red)";
+                        document.getElementById("sunset").innerHTML = "The Sun May Rise In The East";
+                        document.getElementById("sunset").style.textAlign = "left";
+                    }
+                    if (mySunset > 20 && mySunset < 40) {
+                        document.getElementById("sunset").style.backgroundImage = "linear-gradient(yellow, red)"
+                        document.getElementById("sunset").innerHTML = "But Atleast";
+                        document.getElementById("sunset").style.textAlign = "center";
+                    }
+                    if (mySunset > 40) {
+                        document.getElementById("sunset").style.backgroundImage = "linear-gradient(to right, red ,yellow)";
+                        document.getElementById("sunset").innerHTML = "It Settled In A Final Location";
+                        document.getElementById("sunset").style.textAlign = "right";
+                    }
+                    if (mySunset > 60) {
+                        mySunset = 0;
+                    }
+
+                    mySunset++;
+                }
+            </script>
+            <div>
+                <hr>
+                <h2>Shadows</h2>
+                <P>Shadows can be applied to text to create a neon look, images to give it a shadow or to make it look like paper like this one:</p>
+                <div class="polaroid">
+                    <img src="imgs/header.jpg" alt="Marble" style="width:100%">
+                    <div class="container2">
+                        <p>Blue Marble</p>
+                    </div>
+                </div>
+            </div>
+            <div id="spacer"></div>
+            <h3>Changing Fonts</h3>
+            <p>We can change fonts to different types by using css @Font Rule</p>
+            <p id="changedFont">For instance this font is different than others</p>
+            <p>Done by doing the @Font Rule</p>
+            <hr>
+            <h2>Transformations(Transform: ...)</h2>
+            <p><img src="imgs/bizproposal.png" width="100px" id="mySkewedPhoto"> translate(): moves the object in x or y direction<br> rotate(): rotates with dgrees<br> scaleX(): increases/dec size of width<br> scaleY(): increases/dec size of height<br>                scale(): changes size<br> skewX(): will skew along x axis<br> skewY(): will skew along y axis with degree<br> skew(): both x and y axis skewd<br> matrix(): combines all 2d transformations in one: matrix(scaleX(),skewY(),skewX(),scaleY(),translateX(),translateY())
+                <br>
+            </p>
+            <div id="transitions" class="tran" style="background-color: deepskyblue;">
+                <h2> CSS Transitions:</h2>
+                instead of using JavaScript to control the moition of images we can use CSS! Using shorthand notation: transition: width 2s linear 1s
+            </div>
+            <div class="tran" style="background-color: crimson;">sahdjashllkdsja asldljaslkjlksdjalk as kdjaslkdj asldkjas lkdjajslk asdjalksdj </div>
+            <div class="tran" style="background-color: darkolivegreen;">sahdjashllkdsja asldljaslkjlksdjalk as kdjaslkdj asldkjas lkdjajslk asdjalksdj </div>
+            <div class="spacer" style="display: block;"></div>
+        </div>
+        <br>
+        <h2>Animations using CSS @keyframes</h2>
+        <div style="height: 400px; width:50%; margin: auto;" class="animCont">
             <div class="animate" style="background-color: dimgrey;">WOW</div>
-          </div>
-          <hr>
-          <h2> Images with CSS</h2>
-          <div>
-            Pic As A Link: 
+        </div>
+        <hr>
+        <h2> Images with CSS</h2>
+        <div>
+            Pic As A Link:
             <a href="myPaintHat.jpg">
-              <img src="myPaintHat.jpg" alt="Painter" class="paintHatImg">
+                <img src="imgs/myPaintHat.jpg" alt="Painter" class="paintHatImg">
             </a>
             Fade in a box:
             <div class="fadeContainer">
-              <img src="mySeHat.jpg" style="width: 100%;" class="fadeImage">
-              <div class="fadeMiddle">
-                <div class="fadeText">Hire Me</div></div>
+                <img src="imgs/mySeHat.jpg" style="width: 100%;" class="fadeImage">
+                <div class="fadeMiddle">
+                    <div class="fadeText">Hire Me</div>
+                </div>
             </div>
-          </div>
-          <hr>
-          <h2>Animated Button</h2>
+        </div>
+        <hr>
+        <h2>Animated Button</h2>
 
-          <button class="buttonAnimate" style="vertical-align:middle"><span>Hover </span></button>
-          <hr>
-          <div class="columns">
+        <button class="buttonAnimate" style="vertical-align:middle"><span>Hover </span></button>
+        <hr>
+        <div class="columns">
             <h2>My Columns</h2>
-            This Div should be split into 3 columns: Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
-          </div>
-          <hr>
-          <p><h2>CSS Var()</h2>
-          Var() is a key value. It is useful for when you use the same colors over and over again. May be easier to use this notation.
-          <br> You can access these variables with JavaScript. The variable can be changed dynamically for instance if the browser window size is greater than 450 pixels. </p>
-          <div class="unboxed">boxed without padding:     box-sizing: 300 width 100 height;</div>
-          <br>
-          <div class="boxed">Boxed with padding:    box-sizing: 300 width 100 height; </div>
-          <hr>
-          <div class="mediaQueries" style="width: 100%; height: 400px; margin: auto;">Media queries can be used to check many things, such as:
+            This Div should be split into 3 columns: Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
+            suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim
+            qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum.
+        </div>
+        <hr>
+        <p>
+            <h2>CSS Var()</h2>
+            Var() is a key value. It is useful for when you use the same colors over and over again. May be easier to use this notation.
+            <br> You can access these variables with JavaScript. The variable can be changed dynamically for instance if the browser window size is greater than 450 pixels. </p>
+        <div class="unboxed">boxed without padding: box-sizing: 300 width 100 height;</div>
+        <br>
+        <div class="boxed">Boxed with padding: box-sizing: 300 width 100 height; </div>
+        <hr>
+        <div class="mediaQueries" style="width: 100%; height: 400px; margin: auto;">Media queries can be used to check many things, such as:
+            <br> width and height of the viewport
+            <br> width and height of the device
+            <br> orientation (is the tablet/phone in landscape or portrait mode?)
+            <br> resolution
+            <br> This Div will turn green if the viewport is greater than 480, as well as other change.
             <br>
-            width and height of the viewport  
+            <img src="imgs/seBizLit.jpg" style="display: inline-block;" class="mediaImage">
+            <hr> Media Queries For Columns:<br> A common use of media queries, is to create a flexible layout. In this example, we create a layout that varies between four, two and full-width columns, depending on different screen sizes:
+            <br> With FlexBoxes
             <br>
-            width and height of the device
             <br>
-            orientation (is the tablet/phone in landscape or portrait mode?)
-            <br>
-            resolution
-            <br>
-            This Div will turn green if the viewport is greater than 480, as well as other change. 
-            <br>
-            <img src="seBizLit.jpg" style="display: inline-block;" class="mediaImage">
-            <hr>
-            Media Queries For Columns:<br>
-
-            A common use of media queries, is to create a flexible layout. In this example, we create a layout that varies between four, two and full-width columns, depending on different screen sizes:
-            <br>
-            With FlexBoxes
-            <br>
-            <br><div class="spacer"></div>
+            <div class="spacer"></div>
             <div class="rowQ">
-              <div class="columnQ" style="background-color:#aaa;">
-                <h2>Row 1 Column 1</h2>
-                <p>Top Info </p>
-              </div>
-              
-              <div class="columnQ" style="background-color:#bbb;">
-                <h2>Row 1 Column 2</h2>
-                <p>Second info</p>
-              </div>
-              
-              <div class="columnQ" style="background-color:#ccc;">
-                <h2>Row 1 Column 3</h2>
-                <p>Some text..</p>
-              </div>
-              
-              <div class="columnQ" style="background-color:#ddd;">
-                <h2>Row 1 Column 4</h2>
-                <p>Some text..</p>
-              </div>
+                <div class="columnQ" style="background-color:#aaa;">
+                    <h2>Row 1 Column 1</h2>
+                    <p>Top Info </p>
+                </div>
+
+                <div class="columnQ" style="background-color:#bbb;">
+                    <h2>Row 1 Column 2</h2>
+                    <p>Second info</p>
+                </div>
+
+                <div class="columnQ" style="background-color:#ccc;">
+                    <h2>Row 1 Column 3</h2>
+                    <p>Some text..</p>
+                </div>
+
+                <div class="columnQ" style="background-color:#ddd;">
+                    <h2>Row 1 Column 4</h2>
+                    <p>Some text..</p>
+                </div>
             </div>
             <div class="multiQ">Perhaps you want to add multiple stipulations to the Media Queries say for a tablet</div>
             <div class="flexbox">
-            <h2>FlexBox</h2>
-            <p>The "flex-wrap: wrap;" specifies that the flex items will wrap if necessary: Justify-content is a way to align the divs withhn the flexbox. Also stretching, use that with alight items to get height alighnment and exact cetner
-              <br>
-            The flex item properties are:
-              <br>
-            order<br>
-            flex-grow<br>
-            flex-shrink<br>
-            flex-basis<br>
-            flex<br>
-            align-self<br>
+                <h2>FlexBox</h2>
+                <p>The "flex-wrap: wrap;" specifies that the flex items will wrap if necessary: Justify-content is a way to align the divs withhn the flexbox. Also stretching, use that with alight items to get height alighnment and exact cetner
+                    <br> The flex item properties are:
+                    <br> order
+                    <br> flex-grow
+                    <br> flex-shrink
+                    <br> flex-basis
+                    <br> flex
+                    <br> align-self
+                    <br>
 
-            </p>
-    
-            <div class="flex-container">
-              <div>1</div>
-              <div>2</div>
-              <div>3</div>  
-              <div>4</div>
-              <div>5</div>
-              <div>6</div>  
-              <div>7</div>
-              <div>8</div>
-              <div>9</div>  
-              <div>10</div>
-              <div>11</div>
-              <div>12</div>  
+                </p>
+
+                <div class="flex-container">
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                    <div>7</div>
+                    <div>8</div>
+                    <div>9</div>
+                    <div>10</div>
+                    <div>11</div>
+                    <div>12</div>
+                </div>
             </div>
-          </div>
 
-          <p style="background-color: cornflowerblue;"> with a lttle css @media and many flex boxes we can create responsive websites! maybe another webpage for that</p>          
-        
-          <h2>Responsive Web Design.</h2>
-          <p style="background-color: cyan;">
-            Typical size breakpoints: <br>
-            /* Extra small devices (phones, 600px and down) */<br>
-            @media only screen and (max-width: 600px) {...}<br>
-            <br>
-            /* Small devices (portrait tablets and large phones, 600px and up) */<br>
-            @media only screen and (min-width: 600px) {...}<br>
-            <br>
-            /* Medium devices (landscape tablets, 768px and up) */<br>
-            @media only screen and (min-width: 768px) {...}<br>
-            <br>
-            /* Large devices (laptops/desktops, 992px and up) */<br>
-            @media only screen and (min-width: 992px) {...}<br>
-            <br>
-            /* Extra large devices (large laptops and desktops, 1200px and up) */<br>
-            @media only screen and (min-width: 1200px) {...} <br>
-            <br>
-            <h3>Orientation</h3>
-            @media only screen and (orientation: landscape) {
-              body {
-                background-color: lightblue;
-              }
-            }
-            <br>
-            <h3>Responsive backgrounds</h3>
-            <p>Instead of scaling images, use different ones for different medias</p>
-            /* For width smaller than 400px: */<br>
-            body {<br>
-              background-image: url('img_smallflower.jpg');<br>
-            }<br>
-            <br>
-            /* For width 400px and larger: */<br>
-            @media only screen and (min-width: 400px) {<br>
-              body {<br>
-                background-image: url('img_flowers.jpg');<br>
-              }<br>
-            } <br>
-            <br>
-            Using <strong>max-width</strong> the images or videos you show wonnt get very pizelated on large windows.
-            <br>
-            video {<br>
-              max-width: 100%;<br>
-              height: auto;<br>
-            }<br>
-          </p>
-          <h2>Grids</h2>
-          <div class="grid-containerG">
-            <div class="item1">1</div>
-            <div class="item2">2</div>
-            <div class="item3">3</div>  
-            <div class="item4">4</div>
-            <div class="item5">5</div>
-            <div class="item6">6</div>
-            <div class="item7">7</div>
-            <div class="item8">8</div>  
-            <div class="item9">9</div>
-            <div class="item10">10</div>
-            <div class="item11">11</div>
-            <div class="item12">12</div>
-            <div class="item13">13</div>
-            <div class="item14">14</div>
-            <div class="item15">15</div>
-          </div>
-      </div>
-        
-      
+            <p style="background-color: cornflowerblue;"> with a lttle css @media and many flex boxes we can create responsive websites! maybe another webpage for that</p>
+
+            <h2>Responsive Web Design.</h2>
+            <p style="background-color: cyan;">
+                Typical size breakpoints: <br> /* Extra small devices (phones, 600px and down) */<br> @media only screen and (max-width: 600px) {...}<br>
+                <br> /* Small devices (portrait tablets and large phones, 600px and up) */<br> @media only screen and (min-width: 600px) {...}<br>
+                <br> /* Medium devices (landscape tablets, 768px and up) */<br> @media only screen and (min-width: 768px) {...}<br>
+                <br> /* Large devices (laptops/desktops, 992px and up) */<br> @media only screen and (min-width: 992px) {...}<br>
+                <br> /* Extra large devices (large laptops and desktops, 1200px and up) */<br> @media only screen and (min-width: 1200px) {...} <br>
+                <br>
+                <h3>Orientation</h3>
+                @media only screen and (orientation: landscape) { body { background-color: lightblue; } }
+                <br>
+                <h3>Responsive backgrounds</h3>
+                <p>Instead of scaling images, use different ones for different medias</p>
+                /* For width smaller than 400px: */<br> body {<br> background-image: url('img_smallflower.jpg');<br> }
+                <br>
+                <br> /* For width 400px and larger: */<br> @media only screen and (min-width: 400px) {<br> body {<br> background-image: url('img_flowers.jpg');<br> }
+                <br> } <br>
+                <br> Using <strong>max-width</strong> the images or videos you show wonnt get very pizelated on large windows.
+                <br> video {<br> max-width: 100%;<br> height: auto;<br> }
+                <br>
+            </p>
+            <h2>Grids</h2>
+            <div class="grid-containerG">
+                <div class="item1">1</div>
+                <div class="item2">2</div>
+                <div class="item3">3</div>
+                <div class="item4">4</div>
+                <div class="item5">5</div>
+                <div class="item6">6</div>
+                <div class="item7">7</div>
+                <div class="item8">8</div>
+                <div class="item9">9</div>
+                <div class="item10">10</div>
+                <div class="item11">11</div>
+                <div class="item12">12</div>
+                <div class="item13">13</div>
+                <div class="item14">14</div>
+                <div class="item15">15</div>
+            </div>
+        </div>
+
+
 
 
 
@@ -628,8 +567,9 @@
 
 
     </div>
-  </body>
-    <footer>
+</body>
+<footer>
 
-    </footer>
+</footer>
+
 </html>

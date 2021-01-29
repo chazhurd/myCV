@@ -1,217 +1,218 @@
 <!DOCTYPE html>
-    <html>
-        <head Access-Control-Allow-Origin: *>
-            <style>
-            #container {
-                width: 400px;
-                height: 400px;
-                position: relative;
-                background: yellow;
-              }
-              #animate {
-                width: 50px;
-                height: 50px;
-                position: absolute;
-                background-color: red;
-              }
-            </style>
-            <script src="demo_jsonp.php"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-            <script>
-                
-                //cookie works well. not locally but live. 
-                function setCookie(cname,cvalue,exdays) {
-                    var d = new Date();
-                    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-                    var expires = "expires=" + d.toGMTString();
-                    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-                }
-                
-                function getCookie(cname) {
-                    var name = cname + "=";
-                    var decodedCookie = decodeURIComponent(document.cookie);
-                    var ca = decodedCookie.split(';');
-                    for(var i = 0; i < ca.length; i++) {
-                    var c = ca[i];
-                    while (c.charAt(0) == ' ') {
-                        c = c.substring(1);
-                    }
-                    if (c.indexOf(name) == 0) {
-                        return c.substring(name.length, c.length);
-                    }
-                    }
-                    return "";
-                }
-                
-                function checkCookie() {
-                    var user=getCookie("username");
-                    if (user != "") {
-                    alert("Welcome again " + user);
-                    } else {
-                    user = prompt("Please enter your name:","");
-                    if (user != "" && user != null) {
-                        setCookie("username", user, 30);
-                    }
-                    }
-                }
+<html>
 
-                                
-                function myFunction(){
-                    document.getElementById("intro").style.color="red";
+<head Access-Control-Allow-Origin: *>
+    <style>
+        #container {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            background: yellow;
+        }
+        
+        #animate {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background-color: red;
+        }
+    </style>
+    <script src="demo_jsonp.php"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        //cookie works well. not locally but live. 
+        function setCookie(cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toGMTString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
 
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
                 }
-                    var month = new Date().getMonth();
-                    var textToSay ="";
-                /*switch(day){
-                        case 0: 
-                                    textToSay = "Brr Jan";
-                                    break;
-                        case 1: 
-                                    textToSay = "Warming Up Feb";
-                                    break;
-                        case 3: 
-                                    textToSay = "Spring is coming March";
-                                    break;
-                        case 4: 
-                                    textToSay = "Spring is here April";
-                                    break;
-                        case 5:
-                                    textToSay = "Its warm! May"
-                                    break;
-                        case 6:
-                                    textToSay = "lets go fishing: June"
-                                    break;
-                        case 7:
-                                    textToSay="Buy fireworks: July"
-                                    break;
-                        case 8:
-                                    textToSay="Xaviers birthday soon August"
-                                    break;
-                        case 9:
-                                    textToSay="Never FORGETTT: Septementer"
-                                    break;
-                        case 10:
-                                    textToSay="Brrr boo : october"
-                                    break;
-                        case 11:
-                                    textToSay="Snowvember"
-                                    break;
-                        case 12: 
-                                    textToSay="SNOW IS HERE Devembcer"
-                                    break;
-                            }*/
-                    //document.getElementById("loopStuff").innerHTML = "Month: " + month;
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
 
-            </script>
-            <script src="myScripts.js"></script>
-            <title>Chaz's HTTP/JS Tutorial</title>
-        </head>
-            <body onload="checkCookie()">
-                <h1>JavaScript</h1>
-                <header>
-                    <button type="button" onclick='document.getElementById("intro").innerHTML = "Hello"'>Click me</button>
-                    <p id="intro">First Paragraph Tag</p>
-                    <hr/>
-                    <img id='theImage' src="first.jpg" alt="picofxeb" width="300" height="200"><br/>
-                    <button type="button" onclick="document.getElementById('theImage').src='first.jpg'">Outside Work</button>
-                    <button type="button" onclick="document.getElementById('theImage').src='second.jpg'">Inside Work</button>
-                    <hr/>
-                    <button type="button" onclick='document.getElementById("intro").style.fontSize = "40px"'>Change Size</button>
-                    <button type="button" onclick='document.getElementById("intro").style.display = "none"'>Hide Text</button>
-                    <button type="button" onclick='document.getElementById("intro").style.display = "block"'>Show Hidden</button>
-                    <button type="button" onclick="myFunction()">Change Color</button>
-                    <br/>
-                    <hr/>
-                </header> 
-                <div class="first">
-                    
-                    <p id="external"></p>
-                    <button type="button" onclick="changeBackground()">Change Background</button>
-                    <!-- DOC.WRITE deletes stuff only use for testing
+        function checkCookie() {
+            var user = getCookie("username");
+            if (user != "") {
+                alert("Welcome again " + user);
+            } else {
+                user = prompt("Please enter your name:", "");
+                if (user != "" && user != null) {
+                    setCookie("username", user, 30);
+                }
+            }
+        }
+
+
+        function myFunction() {
+            document.getElementById("intro").style.color = "red";
+
+        }
+        var month = new Date().getMonth();
+        var textToSay = "";
+        /*switch(day){
+                case 0: 
+                            textToSay = "Brr Jan";
+                            break;
+                case 1: 
+                            textToSay = "Warming Up Feb";
+                            break;
+                case 3: 
+                            textToSay = "Spring is coming March";
+                            break;
+                case 4: 
+                            textToSay = "Spring is here April";
+                            break;
+                case 5:
+                            textToSay = "Its warm! May"
+                            break;
+                case 6:
+                            textToSay = "lets go fishing: June"
+                            break;
+                case 7:
+                            textToSay="Buy fireworks: July"
+                            break;
+                case 8:
+                            textToSay="Xaviers birthday soon August"
+                            break;
+                case 9:
+                            textToSay="Never FORGETTT: Septementer"
+                            break;
+                case 10:
+                            textToSay="Brrr boo : october"
+                            break;
+                case 11:
+                            textToSay="Snowvember"
+                            break;
+                case 12: 
+                            textToSay="SNOW IS HERE Devembcer"
+                            break;
+                    }*/
+        //document.getElementById("loopStuff").innerHTML = "Month: " + month;
+    </script>
+    <script src="myScripts.js"></script>
+    <title>Chaz's HTTP/JS Tutorial</title>
+</head>
+
+<body onload="checkCookie()">
+    <h1>JavaScript</h1>
+    <header>
+        <button type="button" onclick='document.getElementById("intro").innerHTML = "Hello"'>Click me</button>
+        <p id="intro">First Paragraph Tag</p>
+        <hr/>
+        <img id='theImage' src="imgs/first.jpg" alt="picofxeb" width="300" height="200"><br/>
+        <button type="button" onclick="document.getElementById('theImage').src='imgs/first.jpg'">Outside Work</button>
+        <button type="button" onclick="document.getElementById('theImage').src='imgs/second.jpg'">Inside Work</button>
+        <hr/>
+        <button type="button" onclick='document.getElementById("intro").style.fontSize = "40px"'>Change Size</button>
+        <button type="button" onclick='document.getElementById("intro").style.display = "none"'>Hide Text</button>
+        <button type="button" onclick='document.getElementById("intro").style.display = "block"'>Show Hidden</button>
+        <button type="button" onclick="myFunction()">Change Color</button>
+        <br/>
+        <hr/>
+    </header>
+    <div class="first">
+
+        <p id="external"></p>
+        <button type="button" onclick="changeBackground()">Change Background</button>
+        <!-- DOC.WRITE deletes stuff only use for testing
                     <script>document.write(5+6);</script>-->
-                    <button type="button" onclick="window.alert('Pressing Buttons')">Alert</button>
-                    <button type="button" onclick="console.log('For Debugging')">Console</button>
-                    <button type="button" onclick="window.print()">Print</button>
-                    <br/>
-                    <hr/>
-                    <label for="num1">Enter a number</label>
-                    <input type="number" id="num1" placeholder="5" ><br/>
-                    <label for="num1">Enter another number</label>
-                    <input type="number" id="num2" placeholder="2"><br/>
-                    <button type="button" id="calcBut" onclick="calc('exp')">Exponential</button>
-                    <button type="button" id="calcBut2" onclick="calc('add')">Add</button>
+        <button type="button" onclick="window.alert('Pressing Buttons')">Alert</button>
+        <button type="button" onclick="console.log('For Debugging')">Console</button>
+        <button type="button" onclick="window.print()">Print</button>
+        <br/>
+        <hr/>
+        <label for="num1">Enter a number</label>
+        <input type="number" id="num1" placeholder="5"><br/>
+        <label for="num1">Enter another number</label>
+        <input type="number" id="num2" placeholder="2"><br/>
+        <button type="button" id="calcBut" onclick="calc('exp')">Exponential</button>
+        <button type="button" id="calcBut2" onclick="calc('add')">Add</button>
 
-                    <p id="calc"></p>
-                    <hr/>
-                    <label for="pers1">Enter first name</label>
-                    <input type="text" id="name1" placeholder="John" ><br/>
-                    <label for="pers2">Enter last name</label>
-                    <input type="text" id="name2" placeholder="Doe"><br/>
-                    <label for="phone">Enter phone number</label>
-                    <input type="tel" id="phone"><br/>
-                    <button type="submit" id="makePerson" onclick="makePerson()">Submit</button>
-                    <p id="person"></p>
-                    <hr/>
-                    </div>
-                    <div id="arr">
-                        <p class="c">Array Play: ["Banana", "Orange", "Lemon", "Apple", "Mango"]</p>
-                        <label for="sliceA">Slice var # 1</label>
-                        <input type="number" id="sliceA" placeholder="0" ><br/>
-                        <label for="sliceB">Slice var # 2</label>
-                        <input type="number" id="sliceB" placeholder="2"><br/>
-                        <button type="button" id="makeArr" onClick="slice2()">Slice(A,B)</button>
-                        <hr/>
-                        <label for="sliceA">Basic Slice</label>
-                        <input type="number" id="slice1" placeholder="0" ><br/>
-                        <button type="button"  onClick="slice()">Slice</button>
-                        <p id="arrayStuff"></p>
-                        <hr/>
-                        <p>Pop</p>
-                        <button type="button"  onClick="popIt()">Pop</button><br/>
-                        <p>Push Custom Fruit</p>
-                        <input type="text" id="pushed"><br/>
-                        <button type="button" onClick="pushIt()">Push</button><br/>
-                        <button type="button" onClick="remakeArray()">RESET</button>
-                        <p>Sorting</p>
-                        <button type="button" onClick="sortIt()">Sort</button>
-                        <button type="button" onClick="reverseIt()">Reverse</button>
-                        <p>Sorting Numbers: [40, 100, 1, 5, 25, 10]</p>
-                        <button type="button" onClick="sortNums()">Sort</button>
-                        <button type="button" onClick="randomSort()">Random Sort</button><br/>
-                        <label for="random1">Choose min of randoms</label><br/>
-                        <input type="number" id="rand1"><br/>
-                        <label for="rand2">Choose max of randoms</label><br/>
-                        <input type="number" id="rand2"><br/>
-                        <button type="button" onClick="genRandomNum()">Generate Random Number</button>
-                    </div>
-                    <hr/>
-                    <div id="loops">
-                        <p class="c">Conditional (Ternary) Operator</p>
-                        <label for="age">Enter Age</label>
-                        <input id="age" placeholder="17"><br/>
-                        <button type="button" onClick="checkAge()">Submit</button>
-                        <p id="loopStuff"></p>
-                        <p>Loop through array from above using for(x of array)</p>
-                        <button onClick="loopArray()">Loop Array ()</button>
-                        <p>Loop through array from above using array.foreach</p>
-                        <button onClick="loopArrayEach()">Loop Array .foreach</button>
-                    </div>
-                    <hr/>
-                    <img src="second.jpg" height = "200" width="200">
-                    <div id="beyondLoops">
-                        <p class="c">Change the types of objects: 0 </p>
-                        <p id="typeOut">Number</p>
-                        <label for="dropdownTypeList">Choose a type:</label>
-                        <select id="dropdownTypeList" name="Types">
+        <p id="calc"></p>
+        <hr/>
+        <label for="pers1">Enter first name</label>
+        <input type="text" id="name1" placeholder="John"><br/>
+        <label for="pers2">Enter last name</label>
+        <input type="text" id="name2" placeholder="Doe"><br/>
+        <label for="phone">Enter phone number</label>
+        <input type="tel" id="phone"><br/>
+        <button type="submit" id="makePerson" onclick="makePerson()">Submit</button>
+        <p id="person"></p>
+        <hr/>
+    </div>
+    <div id="arr">
+        <p class="c">Array Play: ["Banana", "Orange", "Lemon", "Apple", "Mango"]</p>
+        <label for="sliceA">Slice var # 1</label>
+        <input type="number" id="sliceA" placeholder="0"><br/>
+        <label for="sliceB">Slice var # 2</label>
+        <input type="number" id="sliceB" placeholder="2"><br/>
+        <button type="button" id="makeArr" onClick="slice2()">Slice(A,B)</button>
+        <hr/>
+        <label for="sliceA">Basic Slice</label>
+        <input type="number" id="slice1" placeholder="0"><br/>
+        <button type="button" onClick="slice()">Slice</button>
+        <p id="arrayStuff"></p>
+        <hr/>
+        <p>Pop</p>
+        <button type="button" onClick="popIt()">Pop</button><br/>
+        <p>Push Custom Fruit</p>
+        <input type="text" id="pushed"><br/>
+        <button type="button" onClick="pushIt()">Push</button><br/>
+        <button type="button" onClick="remakeArray()">RESET</button>
+        <p>Sorting</p>
+        <button type="button" onClick="sortIt()">Sort</button>
+        <button type="button" onClick="reverseIt()">Reverse</button>
+        <p>Sorting Numbers: [40, 100, 1, 5, 25, 10]</p>
+        <button type="button" onClick="sortNums()">Sort</button>
+        <button type="button" onClick="randomSort()">Random Sort</button><br/>
+        <label for="random1">Choose min of randoms</label><br/>
+        <input type="number" id="rand1"><br/>
+        <label for="rand2">Choose max of randoms</label><br/>
+        <input type="number" id="rand2"><br/>
+        <button type="button" onClick="genRandomNum()">Generate Random Number</button>
+    </div>
+    <hr/>
+    <div id="loops">
+        <p class="c">Conditional (Ternary) Operator</p>
+        <label for="age">Enter Age</label>
+        <input id="age" placeholder="17"><br/>
+        <button type="button" onClick="checkAge()">Submit</button>
+        <p id="loopStuff"></p>
+        <p>Loop through array from above using for(x of array)</p>
+        <button onClick="loopArray()">Loop Array ()</button>
+        <p>Loop through array from above using array.foreach</p>
+        <button onClick="loopArrayEach()">Loop Array .foreach</button>
+    </div>
+    <hr/>
+    <img src="imgs/second.jpg" height="200" width="200">
+    <div id="beyondLoops">
+        <p class="c">Change the types of objects: 0 </p>
+        <p id="typeOut">Number</p>
+        <label for="dropdownTypeList">Choose a type:</label>
+        <select id="dropdownTypeList" name="Types">
                           <option value="string">String</option>
                           <option value="number">Number</option>
                           <option value="boolean">Boolean</option>
-                        </select> 
-                        <button type="button" onClick="changeType()">Submit</button>
-                        <br/>
-                        <p id="afterType"></p>
-                        <input id="chosenFruit" list="Fruits">
-                            <datalist id="Fruits">
+                        </select>
+        <button type="button" onClick="changeType()">Submit</button>
+        <br/>
+        <p id="afterType"></p>
+        <input id="chosenFruit" list="Fruits">
+        <datalist id="Fruits">
                               <option value="Apple">
                               <option value="Banana">
                               <option value="Orange">
@@ -219,261 +220,276 @@
                               <option value="Lemon">
                               <option value="Mango">
                             </datalist>
-                        <button type="submit" onClick="regExpression()">RegEx Search (FRUITS ex "BanaNA")</button>
-                        <br/>
-                        <p>Mess with <strong>this.</strong></p>
-                        <script>        
-                            var person ={
-                            firstName: "tester",
-                            lastName: "mcgee",
-                            phoneNumber: 5504,
-                            fullName: function(){ return this.firstName + " " + this.lastName;}
-                        };</script>
-                        <button onClick="this.style.color = 'red', document.getElementById('afterType').innerHTML = person.fullName()">This Red</button>
-                        <button onClick="document.getElementById('afterType').innerHTML = hello('Universe')">Arrow Function</button><br/>
-                        <p>Make Custom Car, Make & Model, Car Class (debugger and console added)</p>
-                        <input id="Make"><br/>
-                        <input id="Model"><br/>
-                        <button onClick="makeCars()">Create</button>
-                        <p id="carCreations"></p>
-                        <p>Getter and Setter, benefits are to be able to get the data and manipulate it so it doesnt change the object, also simpler syntax</p>
-                        <button onClick="getYears()">Get Years</button><br/>
-                        <article style = "background-color: coral;">
-                        <h3>JavaScript Closures</h3>
+        <button type="submit" onClick="regExpression()">RegEx Search (FRUITS ex "BanaNA")</button>
+        <br/>
+        <p>Mess with <strong>this.</strong></p>
+        <script>
+            var person = {
+                firstName: "tester",
+                lastName: "mcgee",
+                phoneNumber: 5504,
+                fullName: function() {
+                    return this.firstName + " " + this.lastName;
+                }
+            };
+        </script>
+        <button onClick="this.style.color = 'red', document.getElementById('afterType').innerHTML = person.fullName()">This Red</button>
+        <button onClick="document.getElementById('afterType').innerHTML = hello('Universe')">Arrow Function</button><br/>
+        <p>Make Custom Car, Make & Model, Car Class (debugger and console added)</p>
+        <input id="Make"><br/>
+        <input id="Model"><br/>
+        <button onClick="makeCars()">Create</button>
+        <p id="carCreations"></p>
+        <p>Getter and Setter, benefits are to be able to get the data and manipulate it so it doesnt change the object, also simpler syntax</p>
+        <button onClick="getYears()">Get Years</button><br/>
+        <article style="background-color: coral;">
+            <h3>JavaScript Closures</h3>
 
-                        <p>Counting with a local variable. "private variables, not global"</p>
+            <p>Counting with a local variable. "private variables, not global"</p>
 
-                        <button type="button" onclick="myFunctionc()">Count!</button>
-                        <button type="button" id="startButtton" onclick="startInterval()">Count Interval!</button>
-                        <button type="button" onclick="endInterval()">Stop Interval!</button>
+            <button type="button" onclick="myFunctionc()">Count!</button>
+            <button type="button" id="startButtton" onclick="startInterval()">Count Interval!</button>
+            <button type="button" onclick="endInterval()">Stop Interval!</button>
 
-                        <p id="demo">0</p>
+            <p id="demo">0</p>
 
-                        <script>
-                        var myInterval;
-                        function startInterval() {
-                            myInterval = setInterval(myFunctionc, 1000); 
-                        }  
-                        function endInterval(){
-                            clearInterval(myInterval);
-                        }
-                        var add = (function () {
-                        var counter = 0;
-                        return function () {counter += 1; return counter;}
-                        })();
+            <script>
+                var myInterval;
 
-                        function myFunctionc(){
-                        document.getElementById("demo").innerHTML = add();
-                        }
-                        </script>
-                        </article>
-                        <h2>Asynchronous actions</h2>
-                        <p id="async">Load an html file</p>
-                        <button type="button" onclick="openFile(myDisplayer)">Open File</button>
-                    
-                        <h2>JavaScript Callbacks</h2>
+                function startInterval() {
+                    myInterval = setInterval(myFunctionc, 1000);
+                }
 
-                        <p id="demo5"></p>
+                function endInterval() {
+                    clearInterval(myInterval);
+                }
+                var add = (function() {
+                    var counter = 0;
+                    return function() {
+                        counter += 1;
+                        return counter;
+                    }
+                })();
 
-                        <script>
-                            /*
-                        function myDisplayer2(some) {
-                        document.getElementById("demo5").innerHTML = some;
-                        }
-                        function getFile2(myCallback) {
-                            var oReq = new XMLHttpRequest();
-                            oReq.addEventListener("load", reqListener);
-                            oReq.open("GET", "http://www.example.org");
-                            oReq.send();
-                        }
-                        function reqListener () {
-                            document.getElementById("async").innerHTML = "being requested";
-                            document.getElementById("async").innerHTML = "had to install a cors ext \n" + this.responseText;
-                            console.log(this.responseText);
-                            }
-                        getFile2(myDisplayer2); */
-                        </script>
-                        <p>Find different elements of the DOM</p>
-                        <button onclick="playDOM()">DOC.GET</button>
-                        <br/>
-                        <h2> Animation!!</h2>
-                        <p><button onclick="myMove()">Start</button>
-                            <button onclick="myStop()">Stop</button></p> 
+                function myFunctionc() {
+                    document.getElementById("demo").innerHTML = add();
+                }
+            </script>
+        </article>
+        <h2>Asynchronous actions</h2>
+        <p id="async">Load an html file</p>
+        <button type="button" onclick="openFile(myDisplayer)">Open File</button>
 
-                        <div id ="container">
-                        <div id ="animate"></div>
-                        </div>
-                    </div>
-                    <h2>Event Handling tips and tricks</h2>
-                    <div id="myDiv1" style="background-color: blue;">
-                        <h2>Bubbling:</h2>
-                        <p id="myP1" style="background-color: blueviolet;">Click me! Inside gets read first then outside</p>
-                        <br/>
-                    </div><br>
-                    <div id="myDiv2" style="background-color: brown;">
-                        <h2>Capturing:</h2>
-                        <p id="myP2" style="background-color: burlywood;">Click me! vise versa</p>
-                        <br/>
-                      </div>
-                    <script>
-                        document.getElementById("myP1").addEventListener("click", function() {alert("You clicked the inner element!");}, false);
-                        document.getElementById("myDiv1").addEventListener("click", function() {alert("You clicked the outer element!");}, false);
-                        document.getElementById("myP2").addEventListener("click", function() {alert("You clicked the inner element!");}, true);
-                        document.getElementById("myDiv2").addEventListener("click", function() {alert("You clicked the outer element!")}, true);
-                    </script>
+        <h2>JavaScript Callbacks</h2>
 
-                    <br/>
-                    <h2>Add Elements using Script</h2>
-                    <div id="Append">
-                        <p id="p1Child">Here we have a DIV, we can append and remove children:</p>
-                        <br/>
-                        <button onclick="addChild()">ADD & APPEND</button>
-                        <button onclick="addChildBefore()">ADD & Ibefore</button>
-                        <br/>
-                        <button onclick="deleteChild()">DELETE LC & CLEAR</button>
+        <p id="demo5"></p>
 
-                    </div>
-                        <label for="nNumber">Cycle Through Headers</label>
-                        <input type="number" placeholder="0" onchange="findHeaders()" id="nNumber">
-                        <br/>
-                        <hr/>
-                        <button onclick="confirmBox()" style="background-color: chartreuse;">Go To Google</button>
-                        <button onclick="promptBox()" style="background-color: chocolate;">Prompt Name</button>
-                    <div id="cookies">
-                        <p>Time to play with cookies again, typically cookies will last until/n
-                            the user exits the program. However this is modified to last 30 days
-                        </p>
-                         <button onclick="getCookie('chaz')">cookie</button>
-
-                    </div>
-
-                    <div id="ajaxStuff">
-                        <h4>AJAX DEV</h4>
-                        <p id="firstAjax">Change this content using the XMLHttpRequest. This is on AWS server. 
-                        Most likely still getting CORS error :?</p>
-                        <button onclick="loadFile()">Load QFI.txt</button>
-                        <p> Not AJAX but just a file reader. for ones local machine aka MINE</p>
-                        <input type="file" onchange="readTextFile(this)">
-                        <hr/>
-                        <h2>The XMLHttpRequest Object</h2>
-
-                    </div>
-                    <div id="jsonStuff">
-                        <h4>JSON DEV</h4>
-                        <p id="jsonFirst"> Sending Data --> JSON.stringify() , Receiving data --> JSON. parse()</p>
-                        <p> Below is an example of how to store on your local machine and to store through session, session is lost after browser is closed</p>
-                        <label for="jsonName">Enter Name:  </label><input type="text" id="jsonName" placeholder="John">
-                        <br/>
-                        <label for="jsonAge">Enter age:  </label><input type="number" id="jsonAge" placeholder="33">
-                        <br/>
-                        <label for="jsonCity">Enter city:  </label><input type="text" id="jsonCity" placeholder="Spokane">
-                        <br/>
-                        <label for="jsonKey">Enter JSON name value:  </label><input type="text" id="jsonKey" placeholder="JSON1">
-
-                        <button onclick="JSONstore()">Store Locally</button>
-                        <button onclick="storeSesh()">Store Session</button>
-                        <br/>
-                        <p id="jsonTest">This is where the data should be changed. Will need further tutorials about JSON and PHP </p>
-                        <br/>
-                        <label>Get JSON Object using key/name input above</label>
-                        <button onclick="JSONget()">Get JSON</button>
-                        <button onclick="seshGet()">Get Sesh</button>
-                        <br>
-                        <br/>
-                        <p>Using JSON with PHP Server</p>
-                        <button onclick="jsonPHP()">PHP GET</button>
-                        <script>
-                            function jsonPHP(){
-                                var xmlhttp = new XMLHttpRequest();
-                                xmlhttp.onreadystatechange = function() {
-                                    if (this.readyState == 4 && this.status == 200) {
-                                        var myObj = JSON.parse(this.responseText);
-                                        document.getElementById("jsonTest").innerHTML = myObj.name;
+        <script>
+            /*
+                                    function myDisplayer2(some) {
+                                    document.getElementById("demo5").innerHTML = some;
                                     }
-                                };
-                                xmlhttp.open("GET", "php-demo.php", true);
-                                xmlhttp.send();
-                            }
-                        </script>
-                        <br>
-                        <p>Using JSONP, this works around that PESKY CORS. Get the PHP file names jsonp_demo, loaded upon entry</p>
-                        <script>
-                            function myFunc(mObj){
-                                document.getElementById("jsonTest").innerHTML = mObj.name;
-                            }
-                        </script> 
-                        <br/>
-                        <h3>WEB API</h3>
-                        <p>Application Programming Interface</p>
-                        <button onclick="getLocation()">Coordinates</button>
-                        <p id="coords">The browser has a location API built in</p>
-                        <script>
-                            var x = document.getElementById("coords");
+                                    function getFile2(myCallback) {
+                                        var oReq = new XMLHttpRequest();
+                                        oReq.addEventListener("load", reqListener);
+                                        oReq.open("GET", "http://www.example.org");
+                                        oReq.send();
+                                    }
+                                    function reqListener () {
+                                        document.getElementById("async").innerHTML = "being requested";
+                                        document.getElementById("async").innerHTML = "had to install a cors ext \n" + this.responseText;
+                                        console.log(this.responseText);
+                                        }
+                                    getFile2(myDisplayer2); */
+        </script>
+        <p>Find different elements of the DOM</p>
+        <button onclick="playDOM()">DOC.GET</button>
+        <br/>
+        <h2> Animation!!</h2>
+        <p><button onclick="myMove()">Start</button>
+            <button onclick="myStop()">Stop</button></p>
 
-                            function getLocation() {
-                              if (navigator.geolocation) {
-                                navigator.geolocation.getCurrentPosition(showPosition);
-                              } else {
-                                x.innerHTML = "Geolocation is not supported by this browser.";
-                              }
-                            }
-                            
-                            function showPosition(position) {
-                              x.innerHTML = "Latitude: " + position.coords.latitude +
-                              "<br>Longitude: " + position.coords.longitude;
-                            }
-                        </script>
-                        <hr/>
-                    <div id="jquery">
-                        <h1>JQUERY</h1>
-                        <h2>Finding HTML Elements by Id</h2>
-                        <p>Using JQUERY to find and maniplate DOM elements</p>
-                        <p id="id01">Hello World!</p>
-                        <p id="id02">Hello Sweden!</p>
-                        <p id="id03">Hello Japan!</p>
-                        <br>
-                        <label>Multiply using JQUERY</label>
-                        <p id="qA">4</p> x <p id="qB">5</p>
-                        <br/>
-                        <button onclick="textSelJQ()">MULT</button>
+        <div id="container">
+            <div id="animate"></div>
+        </div>
+    </div>
+    <h2>Event Handling tips and tricks</h2>
+    <div id="myDiv1" style="background-color: blue;">
+        <h2>Bubbling:</h2>
+        <p id="myP1" style="background-color: blueviolet;">Click me! Inside gets read first then outside</p>
+        <br/>
+    </div><br>
+    <div id="myDiv2" style="background-color: brown;">
+        <h2>Capturing:</h2>
+        <p id="myP2" style="background-color: burlywood;">Click me! vise versa</p>
+        <br/>
+    </div>
+    <script>
+        document.getElementById("myP1").addEventListener("click", function() {
+            alert("You clicked the inner element!");
+        }, false);
+        document.getElementById("myDiv1").addEventListener("click", function() {
+            alert("You clicked the outer element!");
+        }, false);
+        document.getElementById("myP2").addEventListener("click", function() {
+            alert("You clicked the inner element!");
+        }, true);
+        document.getElementById("myDiv2").addEventListener("click", function() {
+            alert("You clicked the outer element!")
+        }, true);
+    </script>
 
-                        <p id="qOut"> A + B = </p>
-                        Change style using JQUERY
-                        <button onclick="cssJQ()">to 35px</button>
+    <br/>
+    <h2>Add Elements using Script</h2>
+    <div id="Append">
+        <p id="p1Child">Here we have a DIV, we can append and remove children:</p>
+        <br/>
+        <button onclick="addChild()">ADD & APPEND</button>
+        <button onclick="addChildBefore()">ADD & Ibefore</button>
+        <br/>
+        <button onclick="deleteChild()">DELETE LC & CLEAR</button>
 
-                        <p id="demoJQUERY"></p>
-                        <p id="numJQ"></p>
-                        <script>
-                            function cssJQ(){
-                                var myElement = $("#qOut");
-                                myElement.css("font-size","35px");
-                            }
-                            $(document).ready(function() {
-                                var allParagraphs = $("p");
-                                var allClassesNamedIntro = $(".first");
-                                var allParagraphsInIntro =$("p.first");
+    </div>
+    <label for="nNumber">Cycle Through Headers</label>
+    <input type="number" placeholder="0" onchange="findHeaders()" id="nNumber">
+    <br/>
+    <hr/>
+    <button onclick="confirmBox()" style="background-color: chartreuse;">Go To Google</button>
+    <button onclick="promptBox()" style="background-color: chocolate;">Prompt Name</button>
+    <div id="cookies">
+        <p>Time to play with cookies again, typically cookies will last until/n the user exits the program. However this is modified to last 30 days
+        </p>
+        <button onclick="getCookie('chaz')">cookie</button>
 
-                                $("#numJQ").text("The amount of paragprahs in the doc is " + allParagraphs.length);
-                                var myElements = $("#id01");
-                                $("#demoJQUERY").text("The text from the id01 paragraph is: " + myElements[0].innerHTML);
-                            });
+    </div>
 
-                            function textSelJQ(){
-                                var myElementA = $("#qA");
-                                var myElementB = $("#qB");
-                                var numA = parseInt(myElementA.text());
-                                var numB = parseInt(myElementB.text());
-                                var total = myElementA.text() * myElementB.text();
-                                $("#qOut").text("A + B = " + total); 
-                            }
+    <div id="ajaxStuff">
+        <h4>AJAX DEV</h4>
+        <p id="firstAjax">Change this content using the XMLHttpRequest. This is on AWS server. Most likely still getting CORS error :?</p>
+        <button onclick="loadFile()">Load QFI.txt</button>
+        <p> Not AJAX but just a file reader. for ones local machine aka MINE</p>
+        <input type="file" onchange="readTextFile(this)">
+        <hr/>
+        <h2>The XMLHttpRequest Object</h2>
 
-                        </script>
+    </div>
+    <div id="jsonStuff">
+        <h4>JSON DEV</h4>
+        <p id="jsonFirst"> Sending Data --> JSON.stringify() , Receiving data --> JSON. parse()</p>
+        <p> Below is an example of how to store on your local machine and to store through session, session is lost after browser is closed</p>
+        <label for="jsonName">Enter Name:  </label><input type="text" id="jsonName" placeholder="John">
+        <br/>
+        <label for="jsonAge">Enter age:  </label><input type="number" id="jsonAge" placeholder="33">
+        <br/>
+        <label for="jsonCity">Enter city:  </label><input type="text" id="jsonCity" placeholder="Spokane">
+        <br/>
+        <label for="jsonKey">Enter JSON name value:  </label><input type="text" id="jsonKey" placeholder="JSON1">
 
-                    </div>
-                    </div>
-                
-                </body>
-        <footer> 
+        <button onclick="JSONstore()">Store Locally</button>
+        <button onclick="storeSesh()">Store Session</button>
+        <br/>
+        <p id="jsonTest">This is where the data should be changed. Will need further tutorials about JSON and PHP </p>
+        <br/>
+        <label>Get JSON Object using key/name input above</label>
+        <button onclick="JSONget()">Get JSON</button>
+        <button onclick="seshGet()">Get Sesh</button>
+        <br>
+        <br/>
+        <p>Using JSON with PHP Server</p>
+        <button onclick="jsonPHP()">PHP GET</button>
+        <script>
+            function jsonPHP() {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var myObj = JSON.parse(this.responseText);
+                        document.getElementById("jsonTest").innerHTML = myObj.name;
+                    }
+                };
+                xmlhttp.open("GET", "php-demo.php", true);
+                xmlhttp.send();
+            }
+        </script>
+        <br>
+        <p>Using JSONP, this works around that PESKY CORS. Get the PHP file names jsonp_demo, loaded upon entry</p>
+        <script>
+            function myFunc(mObj) {
+                document.getElementById("jsonTest").innerHTML = mObj.name;
+            }
+        </script>
+        <br/>
+        <h3>WEB API</h3>
+        <p>Application Programming Interface</p>
+        <button onclick="getLocation()">Coordinates</button>
+        <p id="coords">The browser has a location API built in</p>
+        <script>
+            var x = document.getElementById("coords");
 
-        </footer>
-    </html>
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function showPosition(position) {
+                x.innerHTML = "Latitude: " + position.coords.latitude +
+                    "<br>Longitude: " + position.coords.longitude;
+            }
+        </script>
+        <hr/>
+        <div id="jquery">
+            <h1>JQUERY</h1>
+            <h2>Finding HTML Elements by Id</h2>
+            <p>Using JQUERY to find and maniplate DOM elements</p>
+            <p id="id01">Hello World!</p>
+            <p id="id02">Hello Sweden!</p>
+            <p id="id03">Hello Japan!</p>
+            <br>
+            <label>Multiply using JQUERY</label>
+            <p id="qA">4</p> x
+            <p id="qB">5</p>
+            <br/>
+            <button onclick="textSelJQ()">MULT</button>
+
+            <p id="qOut"> A + B = </p>
+            Change style using JQUERY
+            <button onclick="cssJQ()">to 35px</button>
+
+            <p id="demoJQUERY"></p>
+            <p id="numJQ"></p>
+            <script>
+                function cssJQ() {
+                    var myElement = $("#qOut");
+                    myElement.css("font-size", "35px");
+                }
+                $(document).ready(function() {
+                    var allParagraphs = $("p");
+                    var allClassesNamedIntro = $(".first");
+                    var allParagraphsInIntro = $("p.first");
+
+                    $("#numJQ").text("The amount of paragprahs in the doc is " + allParagraphs.length);
+                    var myElements = $("#id01");
+                    $("#demoJQUERY").text("The text from the id01 paragraph is: " + myElements[0].innerHTML);
+                });
+
+                function textSelJQ() {
+                    var myElementA = $("#qA");
+                    var myElementB = $("#qB");
+                    var numA = parseInt(myElementA.text());
+                    var numB = parseInt(myElementB.text());
+                    var total = myElementA.text() * myElementB.text();
+                    $("#qOut").text("A + B = " + total);
+                }
+            </script>
+
+        </div>
+    </div>
+
+</body>
+<footer>
+
+</footer>
+
+</html>
