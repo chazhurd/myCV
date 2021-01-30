@@ -968,10 +968,6 @@ function beforeGame() {
     drawLogo();
     var hb = document.getElementById("healthBar");
 
-    if (window.screen.width > 700) {
-        document.getElementById("myCover").style.width = "100%";
-        hb.style.width = "100%";
-    }
     let curLeft = document.getElementById("myContainer").style.left;
     let pI = curLeft.indexOf("p");
     curLeft = parseInt(curLeft.substr(0, pI));
@@ -981,7 +977,6 @@ function beforeGame() {
     curTop = curTop.substr(0, 2);
     curTop = parseInt(curTop) + 100;
     hb.style.top = curTop + "px";
-    hb.style.left = curLeft + "px";
 
 
     var wp = document.getElementById("weaponsOverload");
@@ -1130,14 +1125,7 @@ function checkNumOfEnemies() {
     }, 10);
 }
 
-var onresize = function(e) {
-    var hb = document.getElementById("healthBar");
-    let curLeft = document.getElementById("myContainer").style.left;
-    let pI = curLeft.indexOf("p");
-    curLeft = parseInt(curLeft.substr(0, pI));
-    hb.style.left = curLeft + "px";
-}
-window.addEventListener("resize", onresize);
+
 
 function soundOnOff() {
     var rando = Math.random();
