@@ -1019,7 +1019,6 @@ function commenceGame() {
     numOfDefeatedEnemies = 0;
     scoreDiv.innerText = "";
     scoreDiv.style.width = "30px";
-    scoreDiv.style.top = "420px";
     scoreDiv.style.left = "65px";
 
     var startGameDiv = document.getElementById("startGame");
