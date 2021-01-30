@@ -32,7 +32,7 @@
         <img src="imgs/fullHealth.png" alt="healthbar" id="healthBarImage">
     </div>
 
-    <div id="myCover" style="width: 90%; margin: auto;">
+    <div id="myCover" style="width: 90%; height: 600px; margin: auto; overflow-y: hidden;">
         <div id="myContainer" onload="setComponents()" style="margin: auto;">
             <div id="damageBorder" style="width: 100%; height:500px"><img src="imgs/damageBorder.png" width="340px" height="500px"></div>
             <div id="weaponsOverload" style="text-align: center; margin: auto;">Weapons Overload!<br>3 Shots Max</div>
@@ -52,6 +52,7 @@
             <div id="shoot">
                 <img src="imgs/shoot.svg" id="shootButton" alt="shoot" width="100px" height="100px" ontouchstart="shoot()">
             </div>
+            <div id="score" style="font-size: 24px; color: red;"></div>
             <div id="myAnimation"><img src="imgs/newHost.png" alt="idlePlane" id="jetImage" width="40px" height="60px"></div>
             <div id="restartGame">
                 <div id="restartQuestion">Restart Game?<br><button id="yesBut" onclick="restartGame()" class="buttons">Yes</button>
@@ -62,7 +63,6 @@
                 <p style="width: 20; display: inline; color: skyblue;">----</p>
                 <canvas id="myRightArrow" width="70" height="70" style="border:1px solid #ffffff; " onmousedown="moveJetRight()" onmouseup="stopRightMove()" ontouchstart="moveJetRight()" ontouchend="stopRightMove()"></canvas>
             </div>
-            <div id="score" style="font-size: 24px; color: red;"></div>
             <div id="sound" ontouchstart="soundOnOff()"><img src="imgs/soundOn.png" alt="soundOn" id="soundImage"></div>
 
         </div>

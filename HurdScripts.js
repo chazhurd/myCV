@@ -433,7 +433,6 @@ function shoot() {
 }
 
 function drawArrows() {
-    document.getElementById("score").style.display = "block";
     var can = document.getElementById("myLeftArrow");
     var cant = can.getContext("2d");
     cant.lineWidth = 1;
@@ -823,6 +822,7 @@ function flashDamage() {
     damageDiv = document.getElementById("damaged");
     dmgBorder.style.display = "block";
 
+
     var divTl = new TimelineMax();
     //--------------
     if (userShot) {
@@ -869,7 +869,6 @@ function lowerHealth() {
     var scoreDiv = document.getElementById("score");
     var db = document.getElementById("damageBorder");
     var restartDivTL = new TimelineMax();
-    var restartDiv = document.getElementById("restartGame");
 
     if (shotsTaken >= 1) {
         if (cycleLife === 1) {
@@ -902,17 +901,21 @@ function lowerHealth() {
             var outRestart = document.getElementById("restartGame");
             db.style.display = "none";
             restart.style.display = "block";
+            restart.zIndex = 0;
 
             outRestart.style.display = "block";
             outRestart.style.top = "100px";
 
+
+
+
             restartDivTL.fromTo(outRestart, .8, { width: "0px" }, { width: "200px" });
             restartDivTL.fromTo(outRestart, .8, { height: "20px" }, { height: "150px" });
             restartDivTL.fromTo(restart, 1, { opacity: "0" }, { opacity: "1" });
-
-            scoreDiv.style.top = "50px";
-            scoreDiv.style.left = "0";
-            scoreDiv.style.width = "100%";
+            scoreDiv.style.opacity = 0;
+            scoreDiv.style.width = "100px";
+            scoreDiv.style.left = "128px";
+            scoreDiv.style.top = "230px";
             scoreDiv.innerText = "Score: " + numOfDefeatedEnemies;
             restartDivTL.fromTo(scoreDiv, 1, { opacity: "0" }, { opacity: "1" });
 
@@ -1013,13 +1016,14 @@ function commenceGame() {
     cd.style.zIndex = 1;
 
 
-
-
     var scoreDiv = document.getElementById("score");
     numOfDefeatedEnemies = 0;
-    scoreDiv.innerText = "";
+    scoreDiv.innerText = "0";
     scoreDiv.style.width = "30px";
-    scoreDiv.style.left = "65px";
+    scoreDiv.style.top = "440px"
+    scoreDiv.style.left = "220px";
+    scoreDiv.style.display = "block";
+
 
     var startGameDiv = document.getElementById("startGame");
     var container = document.getElementById("myContainer");
