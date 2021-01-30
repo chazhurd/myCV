@@ -17,8 +17,9 @@ var enemyMaker;
 var justiceMaker;
 var debuggee;
 var enemyExplosion;
-
-
+var stayingAliveSong;
+var paused = false;
+var playing = false;
 var numOfEnemies = 0;
 var x = 30;
 var y = 17;
@@ -957,7 +958,7 @@ function restartGame() {
 }
 
 function finishGame() {
-    window.location.href = "http://www.chazhurd.com"
+    window.location.href = "http://www.chazhurd.com";
 }
 
 function beforeGame() {
@@ -998,6 +999,13 @@ function beforeGame() {
 }
 
 function commenceGame() {
+    if (!playing) {
+        document.getElementById("sound").style.display = "block";
+        stayingAliveSong = new Audio('stayingalive.mp3');
+        stayingAliveSong.play();
+        playing = true;
+    }
+
     var wp = document.getElementById("weaponsOverload");
     var cd = document.getElementById("damaged");
 
@@ -1127,3 +1135,17 @@ var onresize = function(e) {
     hb.style.left = curLeft + "px";
 }
 window.addEventListener("resize", onresize);
+
+function soundOnOff() {
+    var rando = Math.random();
+    if (!paused) {
+        stayingAliveSong.pause();
+        stayingAliveSong.currentTime = 0;
+        document.getElementById("soundImage").src = "imgs/soundOff.png";
+        paused = true;
+    } else {
+        stayingAliveSong.play();
+        document.getElementById("soundImage").src = "imgs/soundOn.png";
+        paused = false;
+    }
+}

@@ -296,3 +296,17 @@ li.bar a:hover {
     margin: 4px 2px;
     cursor: pointer;
 }
+
+#soundImage {
+    width: 30px;
+    height: 30px;
+}
+
+#sound {
+    display: none;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    left: 300px;
+    top: 350px;
+}
