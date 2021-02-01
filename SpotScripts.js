@@ -9,6 +9,9 @@ var d = 16;
 var procNum = 0;
 var arrowCounter = 0;
 var imageIndex = 1;
+var carouselMoving = true;
+var carousel;
+var moveCars = false;
 
 
 function main() {
@@ -16,6 +19,7 @@ function main() {
     drawLogo();
     siteAnimate();
     siteLayout();
+    startCarousel();
 
 }
 
@@ -31,8 +35,8 @@ function siteAnimate() {
     var openTl = new TimelineMax();
     var topText = document.getElementById("topNeon");
     var bottomText = document.getElementById("bottomNeon");
-
-
+    windowWidth = window.screen.width;
+    debugger;
     if (windowWidth > 700) {
         var randomBlink = setInterval(() => {
             var allowBlink = Math.random();
@@ -57,95 +61,6 @@ function siteAnimate() {
             }
         }, 1000);
     }
-
-    var devProc = setInterval(() => {
-            var rightArrow = document.getElementById("rightArrow");
-            var carouselImage = document.getElementById("myCarouselImage");
-
-
-            procNum++;
-            arrowCounter++;
-            /*
-                if (procNum === 0) {
-                    processImage.src = "imgs/Spot/DevProcess2.png";
-                } else if (procNum === 1) {
-                    processImage.src = "imgs/Spot/DevProcess2inc1.jpg";
-                } else if (procNum === 2) {
-                    processImage.src = "imgs/Spot/DevProcess2inc2.jpg";
-                } else if (procNum === 3) {
-                    processImage.src = "imgs/Spot/DevProcess2inc3.jpg";
-                } else {
-                    procNum = 0;
-                }
-            */
-            switch (parseInt(arrowCounter)) {
-                case (31):
-                    rightArrow.src = "imgs/Spot/r1.png";
-                    break;
-                case (32):
-                    rightArrow.src = "imgs/Spot/r2.png";
-                    break;
-                case (33):
-                    rightArrow.src = "imgs/Spot/r3.png";
-                    break
-                case (34):
-                    rightArrow.src = "imgs/Spot/r4.png";
-                    ++imageIndex;
-                    switch (parseInt(imageIndex)) {
-                        case (1):
-                            carouselImage.src = "imgs/Spot/prod1.jpg";
-                            break;
-                        case (2):
-                            carouselImage.src = "imgs/Spot/Problem1.jpg";
-                            break;
-                        case (3):
-                            carouselImage.src = "imgs/Spot/Problem2.jpg";
-                            break;
-                        case (4):
-                            carouselImage.src = "imgs/Spot/solution.jpg";
-                            break
-                        case (5):
-                            carouselImage.src = "imgs/Spot/howitworks.jpg";
-                            break;
-                        case (6):
-                            carouselImage.src = "imgs/Spot/dif1.jpg";
-                            break;
-                        case (7):
-                            carouselImage.src = "imgs/Spot/dif2.jpg";
-                            break
-                        case (8):
-                            carouselImage.src = "imgs/Spot/dif3.jpg";
-                            break;
-                        case (9):
-                            carouselImage.src = "imgs/Spot/diff4.jpg";
-                            break;
-                        case (10):
-                            carouselImage.src = "imgs/Spot/diff5.jpg";
-                            break
-                        case (11):
-                            carouselImage.src = "imgs/Spot/diff6.jpg";
-                            break;
-                        case (12):
-                            carouselImage.src = "imgs/Spot/Figma.png";
-                            break;
-                        case (13):
-                            carouselImage.src = "imgs/Spot/mDev.png";
-                            break
-                        case (14):
-                            carouselImage.src = "imgs/Spot/slack.png";
-                            break;
-                        case (15):
-                            carouselImage.src = "imgs/Spot/GitHub.png";
-                            imageIndex = 0;
-                            break;
-                    }
-
-                    arrowCounter = 0;
-                    break;
-            }
-        },
-        150);
-
 
 
 
@@ -272,3 +187,300 @@ function loaded() {
     }, 700);
     main();
 }
+
+function startCarousel() {
+
+    carousel = setInterval(() => {
+            var rightArrow = document.getElementById("rightArrow");
+            var carouselImage = document.getElementById("myCarouselImage");
+            arrowCounter++;
+            /*
+                if (procNum === 0) {
+                    processImage.src = "imgs/Spot/DevProcess2.png";
+                } else if (procNum === 1) {
+                    processImage.src = "imgs/Spot/DevProcess2inc1.jpg";
+                } else if (procNum === 2) {
+                    processImage.src = "imgs/Spot/DevProcess2inc2.jpg";
+                } else if (procNum === 3) {
+                    processImage.src = "imgs/Spot/DevProcess2inc3.jpg";
+                } else {
+                    procNum = 0;
+                }
+            */
+            switch (parseInt(arrowCounter)) {
+                case (31):
+                    rightArrow.src = "imgs/Spot/r1.png";
+                    break;
+                case (32):
+                    rightArrow.src = "imgs/Spot/r2.png";
+                    break;
+                case (33):
+                    rightArrow.src = "imgs/Spot/r3.png";
+                    break
+                case (34):
+                    rightArrow.src = "imgs/Spot/r4.png";
+                    ++imageIndex;
+                    switch (parseInt(imageIndex)) {
+                        case (1):
+                            carouselImage.src = "imgs/Spot/prod1.jpg";
+                            break;
+                        case (2):
+                            carouselImage.src = "imgs/Spot/Problem1.jpg";
+                            break;
+                        case (3):
+                            carouselImage.src = "imgs/Spot/Problem2.jpg";
+                            break;
+                        case (4):
+                            carouselImage.src = "imgs/Spot/solution.jpg";
+                            break
+                        case (5):
+                            carouselImage.src = "imgs/Spot/howitworks.jpg";
+                            break;
+                        case (6):
+                            carouselImage.src = "imgs/Spot/dif1.jpg";
+                            break;
+                        case (7):
+                            carouselImage.src = "imgs/Spot/dif2.jpg";
+                            break
+                        case (8):
+                            carouselImage.src = "imgs/Spot/dif3.jpg";
+                            break;
+                        case (9):
+                            carouselImage.src = "imgs/Spot/diff4.jpg";
+                            break;
+                        case (10):
+                            carouselImage.src = "imgs/Spot/diff5.jpg";
+                            break
+                        case (11):
+                            carouselImage.src = "imgs/Spot/diff6.jpg";
+                            break;
+                        case (12):
+                            carouselImage.src = "imgs/Spot/Figma.png";
+                            break;
+                        case (13):
+                            carouselImage.src = "imgs/Spot/mDev.png";
+                            break
+                        case (14):
+                            carouselImage.src = "imgs/Spot/slack.png";
+                            break;
+                        case (15):
+                            carouselImage.src = "imgs/Spot/GitHub.png";
+                            imageIndex = 0;
+                            break;
+                    }
+
+                    arrowCounter = 0;
+                    break;
+            }
+        },
+        150);
+}
+
+function carouselHint(event) {
+
+    var x = event.clientX;
+    var y = parseInt(event.clientY);
+    var carouselTl = new TimelineMax();
+    var hint = document.getElementById("carouselHint");
+    hint.style.left = x + "px";
+    hint.style.top = (y + 60) + "px";
+    carouselTl.fromTo(hint, .7, { opacity: 0 }, { opacity: 1 });
+    if (carouselMoving) {
+        hint.innerHTML = "Click To Pause";
+    } else {
+        hint.innerHTML = "Click To Resume";
+    }
+}
+
+function removeHint() {
+    var carouselTl = new TimelineMax();
+    var hint = document.getElementById("carouselHint");
+    carouselTl.fromTo(hint, .7, { opacity: 1 }, { opacity: 0 });
+}
+
+function carouselLeft() {
+    var leftArrow = document.getElementById("leftArrow");
+
+    var carouselImage = document.getElementById("myCarouselImage");
+    clearInterval(carousel);
+    carouselMoving = false;
+
+    if (imageIndex > 1) {
+        imageIndex--;
+    } else if (imageIndex === 1) {
+        imageIndex = 15;
+    }
+
+
+    switch (parseInt(imageIndex)) {
+        case (1):
+            carouselImage.src = "imgs/Spot/prod1.jpg";
+            break;
+        case (2):
+            carouselImage.src = "imgs/Spot/Problem1.jpg";
+            break;
+        case (3):
+            carouselImage.src = "imgs/Spot/Problem2.jpg";
+            break;
+        case (4):
+            carouselImage.src = "imgs/Spot/solution.jpg";
+            break
+        case (5):
+            carouselImage.src = "imgs/Spot/howitworks.jpg";
+            break;
+        case (6):
+            carouselImage.src = "imgs/Spot/dif1.jpg";
+            break;
+        case (7):
+            carouselImage.src = "imgs/Spot/dif2.jpg";
+            break
+        case (8):
+            carouselImage.src = "imgs/Spot/dif3.jpg";
+            break;
+        case (9):
+            carouselImage.src = "imgs/Spot/diff4.jpg";
+            break;
+        case (10):
+            carouselImage.src = "imgs/Spot/diff5.jpg";
+            break
+        case (11):
+            carouselImage.src = "imgs/Spot/diff6.jpg";
+            break;
+        case (12):
+            carouselImage.src = "imgs/Spot/Figma.png";
+            break;
+        case (13):
+            carouselImage.src = "imgs/Spot/mDev.png";
+            break
+        case (14):
+            carouselImage.src = "imgs/Spot/slack.png";
+            break;
+        case (15):
+            carouselImage.src = "imgs/Spot/GitHub.png";
+            break;
+    }
+
+    setTimeout(() => { leftArrow.src = "imgs/Spot/r1.png"; }, 100);
+    setTimeout(() => { leftArrow.src = "imgs/Spot/r2.png"; }, 200);
+    setTimeout(() => { leftArrow.src = "imgs/Spot/r3.png"; }, 300);
+    setTimeout(() => { leftArrow.src = "imgs/Spot/r4.png"; }, 400);
+
+}
+
+function carouselRight() {
+    var carouselImage = document.getElementById("myCarouselImage");
+    var rightArrow = document.getElementById("rightArrow");
+    clearInterval(carousel);
+    carouselMoving = false;
+
+    if (imageIndex < 15) {
+        imageIndex++;
+    } else if (imageIndex === 15) {
+        imageIndex = 1;
+    }
+
+
+    switch (parseInt(imageIndex)) {
+        case (1):
+            carouselImage.src = "imgs/Spot/prod1.jpg";
+            break;
+        case (2):
+            carouselImage.src = "imgs/Spot/Problem1.jpg";
+            break;
+        case (3):
+            carouselImage.src = "imgs/Spot/Problem2.jpg";
+            break;
+        case (4):
+            carouselImage.src = "imgs/Spot/solution.jpg";
+            break
+        case (5):
+            carouselImage.src = "imgs/Spot/howitworks.jpg";
+            break;
+        case (6):
+            carouselImage.src = "imgs/Spot/dif1.jpg";
+            break;
+        case (7):
+            carouselImage.src = "imgs/Spot/dif2.jpg";
+            break
+        case (8):
+            carouselImage.src = "imgs/Spot/dif3.jpg";
+            break;
+        case (9):
+            carouselImage.src = "imgs/Spot/diff4.jpg";
+            break;
+        case (10):
+            carouselImage.src = "imgs/Spot/diff5.jpg";
+            break
+        case (11):
+            carouselImage.src = "imgs/Spot/diff6.jpg";
+            break;
+        case (12):
+            carouselImage.src = "imgs/Spot/Figma.png";
+            break;
+        case (13):
+            carouselImage.src = "imgs/Spot/mDev.png";
+            break
+        case (14):
+            carouselImage.src = "imgs/Spot/slack.png";
+            break;
+        case (15):
+            carouselImage.src = "imgs/Spot/GitHub.png";
+            break;
+    }
+
+    setTimeout(() => { rightArrow.src = "imgs/Spot/r1.png"; }, 100);
+    setTimeout(() => { rightArrow.src = "imgs/Spot/r2.png"; }, 200);
+    setTimeout(() => { rightArrow.src = "imgs/Spot/r3.png"; }, 300);
+    setTimeout(() => { rightArrow.src = "imgs/Spot/r4.png"; }, 400);
+
+}
+
+function pauseCarousel() {
+    if (carouselMoving) {
+        clearInterval(carousel);
+        carouselMoving = false;
+    } else {
+        startCarousel();
+        carouselMoving = true;
+    }
+}
+
+function moveYellowCar() {
+
+    var yellowCar = document.getElementById("yellowCar");
+    var carTL = new TimelineMax();
+    moveCars = true;
+    carTL.fromTo(yellowCar, 3, { left: "1500px" }, { left: "-50px" });
+}
+
+function moveBrownCar() {
+
+    var brownCar = document.getElementById("brownCar");
+    var carTL = new TimelineMax();
+    carTL.fromTo(brownCar, 3, { left: "-50px" }, { left: "1500px" });
+
+}
+
+var checkViewport = setInterval(() => {
+
+
+    var myElement = document.getElementById('neonLine');
+    var bounding = myElement.getBoundingClientRect();
+    var myElementHeight = myElement.offsetHeight;
+    var myElementWidth = myElement.offsetWidth;
+
+    if (bounding.top >= (-myElementHeight + 20) &&
+        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) + myElementHeight && !moveCars) {
+
+        document.getElementById("debugger").innerHTML = "SEEEN";
+        moveYellowCar();
+        moveBrownCar();
+
+
+    } else {
+        document.getElementById("debugger").innerHTML = "NOT";
+        moveCars = false;
+
+    }
+
+}, 3000);
