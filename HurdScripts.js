@@ -985,9 +985,11 @@ function beforeGame() {
     var startContent = document.getElementById("startContent");
     var startGame = document.getElementById("startGame");
     restartDivTL.fromTo(startGame, .8, { width: "0px" }, { width: "250px" });
-    restartDivTL.fromTo(startGame, .8, { height: "20px" }, { height: "320px" });
+    restartDivTL.fromTo(startGame, .8, { height: "0px" }, { height: "320px" });
     restartDivTL.fromTo(startContent, 1, { opacity: "0" }, { opacity: "0.9" });
     startGame.style.alignItems = "center";
+
+    setTimeout(commenceGame, 8000);
 }
 
 function commenceGame() {

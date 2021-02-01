@@ -252,15 +252,19 @@ li.bar a:hover {
 #startGame {
     background-color: black;
     opacity: 0.8;
-    position: relative;
+    position: absolute;
     left: 50px;
     top: 20px;
     align-items: center;
+    z-index: 0;
 }
 
 #startContent {
     padding: 10px;
     text-align: center;
+    z-index: 0;
+    position: absolute;
+    height: 300px;
 }
 
 #countDown {
