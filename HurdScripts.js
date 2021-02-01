@@ -989,7 +989,6 @@ function beforeGame() {
     restartDivTL.fromTo(startContent, 1, { opacity: "0" }, { opacity: "0.9" });
     startGame.style.alignItems = "center";
 
-    setTimeout(commenceGame, 8000);
 }
 
 function commenceGame() {
