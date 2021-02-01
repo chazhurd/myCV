@@ -6,106 +6,149 @@ var a = 37;
 var b = 17;
 var c = 43;
 var d = 16;
+var procNum = 0;
+var arrowCounter = 0;
+var imageIndex = 1;
 
 
 function main() {
 
-
     drawLogo();
     siteAnimate();
+    siteLayout();
 
-    windowWidth = window.screen.width;
-
-    var rightArrow = document.getElementById("rightArrow");
-    var leftArrow = document.getElementById("leftArrow");
-
-    var carouselImage = document.getElementById("myCarouselImage");
-    let cILeft = carouselImage.style.left;
-    let pIndex = cILeft.indexOf("p");
-    cILeft = cILeft.substr(0, pIndex);
-
-    document.getElementById("debugger").innerHTML = "WINDOW " + windowWidth;
-
-
-    leftArrow.style.left = cILeft + "px";
-    if (windowWidth > 700) {
-        rightArrow.style.left = ((windowWidth / 2) + 280) + "px";
-
-    } else {
-        rightArrow.style.left = ((windowWidth / 2) + 120) + "px";
-    }
-
-    windowWidth = window.screen.width;
-    document.getElementById("neonContainer").style.display = "block";
-    document.getElementById("neonLine").style.display = "block";
-    var randomBlink = setInterval(() => {
-        var allowBlink = Math.random();
-        if (allowBlink < .5) {
-            var blinkTl = new TimelineMax();
-            var topText = document.getElementById("topNeon");
-            var bottomText = document.getElementById("bottomNeon");
-            blinkTl.fromTo(topText, 0.1, { opacity: "1" }, { opacity: "0.2" })
-                .fromTo(topText, 0.1, { opacity: "0.2" }, { opacity: "1" })
-                .fromTo(bottomText, 0.1, { opacity: "1" }, { opacity: "0.2" })
-                .fromTo(bottomText, 0.3, { opacity: "0.2" }, { opacity: "1" });
-        }
-    }, 4000);
-
-    var constantBlink = setInterval(() => {
-        var blinkWarn = new TimelineMax();
-        var warning = document.getElementById("warning");
-        if (warning.style.opacity === "0") {
-            blinkWarn.fromTo(warning, .7, { opacity: "0" }, { opacity: "1" });
-        } else {
-            blinkWarn.fromTo(warning, .7, { opacity: "1" }, { opacity: "0" });
-        }
-    }, 1000)
 }
 
-//var processImage = document.getElementById("devProc");
-var procNum = 0;
-var arrowCounter = 0;
+function siteLayout() {
 
-var devProc = setInterval(() => {
-    var rightArrow = document.getElementById("rightArrow");
+    document.getElementById("neonContainer").style.display = "block";
+    document.getElementById("neonLine").style.display = "block";
 
-    procNum++;
-    arrowCounter++;
-    /*
-        if (procNum === 0) {
-            processImage.src = "imgs/Spot/DevProcess2.png";
-        } else if (procNum === 1) {
-            processImage.src = "imgs/Spot/DevProcess2inc1.jpg";
-        } else if (procNum === 2) {
-            processImage.src = "imgs/Spot/DevProcess2inc2.jpg";
-        } else if (procNum === 3) {
-            processImage.src = "imgs/Spot/DevProcess2inc3.jpg";
-        } else {
-            procNum = 0;
-        }
-    */
-    switch (parseInt(arrowCounter)) {
-        case (31):
-            rightArrow.src = "imgs/Spot/r1.png";
-            break;
-        case (32):
-            rightArrow.src = "imgs/Spot/r2.png";
-            break;
-        case (33):
-            rightArrow.src = "imgs/Spot/r3.png";
-            break
-        case (34):
-            rightArrow.src = "imgs/Spot/r4.png";
-            arrowCounter = 0;
-            break;
-    }
-}, 150);
-
+}
 
 function siteAnimate() {
+
     var openTl = new TimelineMax();
     var topText = document.getElementById("topNeon");
     var bottomText = document.getElementById("bottomNeon");
+
+
+    if (windowWidth > 700) {
+        var randomBlink = setInterval(() => {
+            var allowBlink = Math.random();
+            if (allowBlink < .5) {
+                var blinkTl = new TimelineMax();
+                var topText = document.getElementById("topNeon");
+                var bottomText = document.getElementById("bottomNeon");
+                blinkTl.fromTo(topText, 0.1, { opacity: "1" }, { opacity: "0.2" })
+                    .fromTo(topText, 0.1, { opacity: "0.2" }, { opacity: "1" })
+                    .fromTo(bottomText, 0.1, { opacity: "1" }, { opacity: "0.2" })
+                    .fromTo(bottomText, 0.3, { opacity: "0.2" }, { opacity: "1" });
+            }
+        }, 4000);
+
+        var constantBlink = setInterval(() => {
+            var blinkWarn = new TimelineMax();
+            var warning = document.getElementById("warning");
+            if (warning.style.opacity === "0") {
+                blinkWarn.fromTo(warning, .7, { opacity: "0" }, { opacity: "1" });
+            } else {
+                blinkWarn.fromTo(warning, .7, { opacity: "1" }, { opacity: "0" });
+            }
+        }, 1000);
+    }
+
+    var devProc = setInterval(() => {
+            var rightArrow = document.getElementById("rightArrow");
+            var carouselImage = document.getElementById("myCarouselImage");
+
+
+            procNum++;
+            arrowCounter++;
+            /*
+                if (procNum === 0) {
+                    processImage.src = "imgs/Spot/DevProcess2.png";
+                } else if (procNum === 1) {
+                    processImage.src = "imgs/Spot/DevProcess2inc1.jpg";
+                } else if (procNum === 2) {
+                    processImage.src = "imgs/Spot/DevProcess2inc2.jpg";
+                } else if (procNum === 3) {
+                    processImage.src = "imgs/Spot/DevProcess2inc3.jpg";
+                } else {
+                    procNum = 0;
+                }
+            */
+            switch (parseInt(arrowCounter)) {
+                case (31):
+                    rightArrow.src = "imgs/Spot/r1.png";
+                    break;
+                case (32):
+                    rightArrow.src = "imgs/Spot/r2.png";
+                    break;
+                case (33):
+                    rightArrow.src = "imgs/Spot/r3.png";
+                    break
+                case (34):
+                    rightArrow.src = "imgs/Spot/r4.png";
+                    ++imageIndex;
+                    switch (parseInt(imageIndex)) {
+                        case (1):
+                            carouselImage.src = "imgs/Spot/prod1.jpg";
+                            break;
+                        case (2):
+                            carouselImage.src = "imgs/Spot/Problem1.jpg";
+                            break;
+                        case (3):
+                            carouselImage.src = "imgs/Spot/Problem2.jpg";
+                            break;
+                        case (4):
+                            carouselImage.src = "imgs/Spot/solution.jpg";
+                            break
+                        case (5):
+                            carouselImage.src = "imgs/Spot/howitworks.jpg";
+                            break;
+                        case (6):
+                            carouselImage.src = "imgs/Spot/dif1.jpg";
+                            break;
+                        case (7):
+                            carouselImage.src = "imgs/Spot/dif2.jpg";
+                            break
+                        case (8):
+                            carouselImage.src = "imgs/Spot/dif3.jpg";
+                            break;
+                        case (9):
+                            carouselImage.src = "imgs/Spot/diff4.jpg";
+                            break;
+                        case (10):
+                            carouselImage.src = "imgs/Spot/diff5.jpg";
+                            break
+                        case (11):
+                            carouselImage.src = "imgs/Spot/diff6.jpg";
+                            break;
+                        case (12):
+                            carouselImage.src = "imgs/Spot/Figma.png";
+                            break;
+                        case (13):
+                            carouselImage.src = "imgs/Spot/mDev.png";
+                            break
+                        case (14):
+                            carouselImage.src = "imgs/Spot/slack.png";
+                            break;
+                        case (15):
+                            carouselImage.src = "imgs/Spot/GitHub.png";
+                            imageIndex = 0;
+                            break;
+                    }
+
+                    arrowCounter = 0;
+                    break;
+            }
+        },
+        150);
+
+
+
+
     setTimeout(function() {
         openTl.fromTo(topText, 0.1, { opacity: "0" }, { opacity: ".3" })
             .fromTo(topText, 0.1, { opacity: ".3" }, { opacity: "0" })
@@ -195,30 +238,30 @@ function drawLogo() {
     }, 34);
 }
 //Banner above
-
+/*
 var onresize = function(e) {
-    //note i need to pass the event as an argument to the function
     width = e.target.outerWidth;
     windowWidth = width;
     height = e.target.outerHeight;
 
     var myVideo = document.getElementById("spotVideo");
-    var rightArrow = document.getElementById("rightArrow");
-    var leftArrow = document.getElementById("leftArrow");
+    var rightArrow = document.getElementById("rArrow");
+    var leftArrow = document.getElementById("lArrow");
     var carouselImage = document.getElementById("myCarouselImage")
 
-    document.getElementById("debugger").innerHTML = width;
+    document.getElementById("debugger").innerHTML = windowWidth;
 
-    if (width <= 600) {
+    if (width <= 700) {
         myVideo.style.width = width + "px";
         rightArrow.style.left = (width - 80) + "px";
         carouselImage.style.width = (width - 10) + "px";
     } else {
-        rightArrow.style.left = ((width / 2) + 250) + "px";
-        leftArrow.style.left = ((width / 2) - 250) + "px";
+        rightArrow.style.left = ((width / 2) + 280) + "px";
+        leftArrow.style.left = ((width / 2) - 350) + "px";
     }
 }
 window.addEventListener("resize", onresize);
+*/
 
 
 

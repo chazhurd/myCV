@@ -7,24 +7,12 @@
     #spotVideo {
         float: inline-end;
     }
-    #myCarouselImage {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 700px;
-    }
 }
 
 @media only screen and (max-width: 400px) {
     li.bar {
         float: center;
         z-index: 1;
-    }
-    #myCarouselImage {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 400px;
     }
     #spotVideo {
         display: block;
@@ -51,19 +39,6 @@ ol.bar {
     top: 0;
     left: 0;
     z-index: 1;
-}
-
-#mySlide {
-    width: 50%;
-    height: 300px;
-    background-color: red;
-    margin: auto;
-}
-
-#myCarousel {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
 }
 
 li.bar a {
@@ -148,16 +123,48 @@ h1 {
 }
 
 #rightArrow {
-    position: relative;
     height: 50px;
     width: 50px;
-    top: -180px;
 }
 
 #leftArrow {
     transform: scaleX(-1);
-    position: relative;
     height: 50px;
     width: 50px;
-    top: 180px;
+}
+
+#rArrow {
+    position: relative;
+    top: 100px;
+    left: -50px;
+}
+
+#lArrow {
+    position: relative;
+    top: 100px;
+    left: 50px;
+}
+
+.grid-containerG {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-gap: 10px;
+}
+
+.grid-containerG>div {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+}
+
+.gridG {
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    background-color: #2196F3;
+}
+
+.gridG>div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    font-size: 30px;
 }

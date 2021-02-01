@@ -966,17 +966,11 @@ function finishGame() {
 
 function beforeGame() {
     drawLogo();
-    var hb = document.getElementById("healthBar");
 
     let curLeft = document.getElementById("myContainer").style.left;
     let pI = curLeft.indexOf("p");
     curLeft = parseInt(curLeft.substr(0, pI));
 
-    hb.style.position = "absolute";
-    let curTop = hb.style.top;
-    curTop = curTop.substr(0, 2);
-    curTop = parseInt(curTop) + 100;
-    hb.style.top = curTop + "px";
 
 
     var wp = document.getElementById("weaponsOverload");
