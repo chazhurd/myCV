@@ -170,7 +170,7 @@ li.bar a:hover {
 #healthBar {
     z-index: 1;
     margin: auto;
-    height: 4px;
+    height: 20px;
 }
 
 #healthBarImage {
