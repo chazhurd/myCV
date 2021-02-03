@@ -36,7 +36,6 @@ function siteAnimate() {
     var topText = document.getElementById("topNeon");
     var bottomText = document.getElementById("bottomNeon");
     windowWidth = window.screen.width;
-    debugger;
     if (windowWidth > 700) {
         var randomBlink = setInterval(() => {
             var allowBlink = Math.random();
@@ -60,22 +59,22 @@ function siteAnimate() {
                 blinkWarn.fromTo(warning, .7, { opacity: "1" }, { opacity: "0" });
             }
         }, 1000);
+
+
+
+
+        setTimeout(function() {
+            openTl.fromTo(topText, 0.1, { opacity: "0" }, { opacity: ".3" })
+                .fromTo(topText, 0.1, { opacity: ".3" }, { opacity: "0" })
+                .fromTo(topText, 0.1, { opacity: "0" }, { opacity: ".5" })
+                .fromTo(topText, 0.1, { opacity: ".5" }, { opacity: "0" })
+                .fromTo(topText, 1, { opacity: "0" }, { opacity: "1" })
+                .fromTo(bottomText, 0.2, { opacity: "0.6" }, { opacity: "0" })
+                .fromTo(bottomText, 0.1, { opacity: "0" }, { opacity: "1" })
+                .fromTo(bottomText, 0.1, { opacity: "1" }, { opacity: "1" })
+                .fromTo(bottomText, 1, { opacity: "0" }, { opacity: "1" });
+        }, 1000);
     }
-
-
-
-    setTimeout(function() {
-        openTl.fromTo(topText, 0.1, { opacity: "0" }, { opacity: ".3" })
-            .fromTo(topText, 0.1, { opacity: ".3" }, { opacity: "0" })
-            .fromTo(topText, 0.1, { opacity: "0" }, { opacity: ".5" })
-            .fromTo(topText, 0.1, { opacity: ".5" }, { opacity: "0" })
-            .fromTo(topText, 1, { opacity: "0" }, { opacity: "1" })
-            .fromTo(bottomText, 0.2, { opacity: "0.6" }, { opacity: "0" })
-            .fromTo(bottomText, 0.1, { opacity: "0" }, { opacity: "1" })
-            .fromTo(bottomText, 0.1, { opacity: "1" }, { opacity: "1" })
-            .fromTo(bottomText, 1, { opacity: "0" }, { opacity: "1" });
-    }, 1000);
-
 }
 //Banner
 function drawLogo() {
@@ -472,15 +471,8 @@ var checkViewport = setInterval(() => {
     if (bounding.top >= (-myElementHeight + 20) &&
         bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) + myElementHeight && !moveCars) {
 
-        document.getElementById("debugger").innerHTML = "SEEEN";
-        moveYellowCar();
-        moveBrownCar();
-
-
-    } else {
-        document.getElementById("debugger").innerHTML = "NOT";
-        moveCars = false;
+        //document.getElementById("debugger").innerHTML = "@ top: " + bounding.top + "  -- @ Bottom " + bounding.bottom;
 
     }
 
-}, 3000);
+}, 50);
