@@ -7,6 +7,9 @@
     #spotVideo {
         float: inline-end;
     }
+    #loading {
+        max-width: 800px;
+    }
 }
 
 @media only screen and (max-width: 500px) {
@@ -22,6 +25,9 @@
     }
     .items {
         height: 250px;
+    }
+    #loading {
+        width: 100%;
     }
 }
 

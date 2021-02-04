@@ -192,20 +192,22 @@ function startCarousel() {
     carousel = setInterval(() => {
             var rightArrow = document.getElementById("rightArrow");
             var carouselImage = document.getElementById("myCarouselImage");
+            var processImage = document.getElementById("devProc");
             arrowCounter++;
-            /*
-                if (procNum === 0) {
-                    processImage.src = "imgs/Spot/DevProcess2.png";
-                } else if (procNum === 1) {
-                    processImage.src = "imgs/Spot/DevProcess2inc1.jpg";
-                } else if (procNum === 2) {
-                    processImage.src = "imgs/Spot/DevProcess2inc2.jpg";
-                } else if (procNum === 3) {
-                    processImage.src = "imgs/Spot/DevProcess2inc3.jpg";
-                } else {
-                    procNum = 0;
-                }
-            */
+            procNum++;
+
+            if (procNum === 0) {
+                processImage.src = "imgs/Spot/DevProcess2.png";
+            } else if (procNum === 1) {
+                processImage.src = "imgs/Spot/DevProcess2inc1.jpg";
+            } else if (procNum === 2) {
+                processImage.src = "imgs/Spot/DevProcess2inc2.jpg";
+            } else if (procNum === 3) {
+                processImage.src = "imgs/Spot/DevProcess2inc3.jpg";
+            } else {
+                procNum = 0;
+            }
+
             switch (parseInt(arrowCounter)) {
                 case (31):
                     rightArrow.src = "imgs/Spot/r1.png";
