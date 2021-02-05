@@ -36,7 +36,11 @@ function siteAnimate() {
     var topText = document.getElementById("topNeon");
     var bottomText = document.getElementById("bottomNeon");
     windowWidth = window.screen.width;
-    if (windowWidth > 700) {
+
+    if (parseInt(windowWidth) < 550) {
+        document.getElementById("spotVideo").style.width = windowWidth + "px";
+    }
+    if (parseInt(windowWidth) > 700) {
         var randomBlink = setInterval(() => {
             var allowBlink = Math.random();
             if (allowBlink < .5) {
@@ -183,6 +187,7 @@ function loaded() {
     setTimeout(function() {
         document.getElementById("loading").style.display = "none";
         document.getElementById("myApp").style.display = "block";
+        document.getElementById("spotFooter").style.display = "block";
     }, 700);
     main();
 }
@@ -461,20 +466,3 @@ function moveBrownCar() {
     carTL.fromTo(brownCar, 3, { left: "-50px" }, { left: "1500px" });
 
 }
-
-var checkViewport = setInterval(() => {
-
-
-    var myElement = document.getElementById('neonLine');
-    var bounding = myElement.getBoundingClientRect();
-    var myElementHeight = myElement.offsetHeight;
-    var myElementWidth = myElement.offsetWidth;
-
-    if (bounding.top >= (-myElementHeight + 20) &&
-        bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) + myElementHeight && !moveCars) {
-
-        //document.getElementById("debugger").innerHTML = "@ top: " + bounding.top + "  -- @ Bottom " + bounding.bottom;
-
-    }
-
-}, 50);

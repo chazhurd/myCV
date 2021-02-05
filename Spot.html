@@ -14,6 +14,7 @@
     <script src="SpotScripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js" integrity="sha512-8Wy4KH0O+AuzjMm1w5QfZ5j5/y8Q/kcUktK9mPUVaUoBvh3QPUZB822W/vy7ULqri3yR8daH3F58+Y8Z08qzeg==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineMax.min.js" integrity="sha512-lJDBw/vKlGO8aIZB8/6CY4lV+EMAL3qzViHid6wXjH/uDrqUl+uvfCROHXAEL0T/bgdAQHSuE68vRlcFHUdrUw==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <header>
@@ -21,7 +22,7 @@
 </header>
 
 <body id="body" onload="loaded()">
-    <div id="loading" style="margin: auto;"><img src="imgs/Spot/prod1.jpg" style="opacity: .3;margin-left: auto; margin-right: auto; margin-top: 100px; display: block; width: 800px"></div>
+    <div id="loading" style="width: 100%;"></div>
     <div id="myApp">
         <div style="width: 100%;">
             <ol class="bar">
@@ -51,9 +52,9 @@
         </div>-->
         <div id="carouselHint"></div>
         <div class="gridCarousel" style="max-width: 800px; margin: auto;">
-            <div class="items" style="position:relative; top: 100px; left: 20px"><img src="imgs/Spot/r4.png" id="leftArrow" width="50px" style="transform: scaleX(-1);" onclick="carouselLeft()"></div>
+            <div class="items" style="position:relative; top: 100px; left: 20px; cursor:pointer; height: 60px"><img src="imgs/Spot/r4.png" id="leftArrow" width="50px" style="transform: scaleX(-1);" onclick="carouselLeft()"></div>
             <div class="items" style="max-width: 700px;"><img src="imgs/Spot/prod1.jpg" id="myCarouselImage" height="300px" width="100%" class="items" onclick="pauseCarousel()" onmouseover="carouselHint(event)" onmouseout="removeHint()"></div>
-            <div class="items" style="position:relative; top: 100px; left: -20px"><img src="imgs/Spot/r4.png" id="rightArrow" width="50px" onclick="carouselRight()"></div>
+            <div class="items" style="position:relative; top: 100px; left: -20px; cursor:pointer; height: 60px"><img src="imgs/Spot/r4.png" id="rightArrow" width="50px" onclick="carouselRight()"></div>
         </div>
         <div id="carouselText"></div>
         <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="max-width: 800px; margin: auto;">
@@ -105,9 +106,11 @@
         </a>
     </div> -->
 
-        <h1 class="neonRed" id="neonLine"><img src="imgs/Spot/topYellowCar.png" id="yellowCar" class="cars">- - - - - - - - - - - - - -<img src="imgs/Spot/topBrownCar.png" id="brownCar" class="cars"></h1>
+        <h1 class="neonRed" id="neonLine">
+            <!--<img src="imgs/Spot/topYellowCar.png" id="yellowCar" class="cars">-->- - - - - - - - - - - - - -
+            <!--<img src="imgs/Spot/topBrownCar.png" id="brownCar" class="cars">--></h1>
 
-        <div id="spotV" style="background-color: rgb(34, 34, 34,0.3); color: skyblue; min-height: 300px; max-width: 800px; margin: auto; font-size: medium; font-family: Georgia, 'Times New Roman', Times, serif;">
+        <div id="spotV" style="background-color: rgb(34, 34, 34,0.3); color: skyblue; min-height: 285px; max-width: 800px; margin: auto; font-size: medium; font-family: Georgia, 'Times New Roman', Times, serif;">
             <section>
                 <iframe width="400" height="285" src="https://www.youtube.com/embed/ucvsTIVrhSg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="float: inline-end;" id="spotVideo"></iframe><br>Spot
                 was is a business idea I had while attending EWU. The desire for it came long before, however it manifested in 2019. I devOp'd a working prototype that is still being developed. All that you see here I put together myself. EWU gave me
@@ -152,7 +155,7 @@
 </body>
 
 <footer>
-
+    <div id="spotFooter" style="font-size: larger;">Contact us via: <a href="https://www.facebook.com/SpotParkingUSA"><i class="material-icons">facebook</i></a> / <a href="mailto: spotEastern@gmail.com"><i class="material-icons">mail_outline</i></a> </div>
 </footer>
 
 </html>
