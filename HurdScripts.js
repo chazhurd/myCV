@@ -1039,7 +1039,6 @@ var keys = "";
 
 function keyPressed(e) {
     var desktop = window.screen.width;
-    document.getElementById("debugger").innerHTML = desktop;
     if (parseInt(desktop) > 600) {
         var keynum;
 
