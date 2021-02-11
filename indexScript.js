@@ -35,10 +35,12 @@ var checkViewPort = setInterval(() => {
                     console.log("Were Out");
                 }
             } else {
+                var myElement = document.getElementById('animatedDiv');
                 myElement.style.left = "0px";
             }
         } catch {
-
+            var myElement = document.getElementById('animatedDiv');
+            myElement.style.left = "0px";
         }
 
 

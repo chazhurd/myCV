@@ -986,12 +986,12 @@ function beforeGame() {
 }
 
 function commenceGame() {
-    if (!playing) {
-        document.getElementById("sound").style.display = "block";
-        stayingAliveSong = new Audio('stayingalive.mp3');
-        stayingAliveSong.play();
-        playing = true;
-    }
+    /* if (!playing) {
+         document.getElementById("sound").style.display = "block";
+         stayingAliveSong = new Audio('stayingalive.mp3');
+         stayingAliveSong.play();
+         playing = true;
+     }*/
 
     var wp = document.getElementById("weaponsOverload");
     var cd = document.getElementById("damaged");
@@ -1038,46 +1038,51 @@ var keyRight = false;
 var keys = "";
 
 function keyPressed(e) {
-    var desktop = window.screen.width;
-    if (parseInt(desktop) > 600) {
-        var keynum;
+    try {
+        var desktop = window.screen.width;
+        if (parseInt(desktop) > 600) {
+            var keynum;
 
-        if (window.event) { // IE                  
-            keynum = e.keyCode;
-        } else if (e.which) { // Netscape/Firefox/Opera                 
-            keynum = e.which;
-        }
+            if (window.event) { // IE                  
+                keynum = e.keyCode;
+            } else if (e.which) { // Netscape/Firefox/Opera                 
+                keynum = e.which;
+            }
 
-        if (parseInt(keynum) === 65 && keyLeft === false) {
-            keys += "l";
+            if (parseInt(keynum) === 65 && keyLeft === false) {
+                keys += "l";
+            }
+            if (parseInt(keynum) === 68 && keyRight === false) {
+                keys += "r";
+            }
+            if (parseInt(keynum) === 32) {
+                keys += "s";
+            }
+            //a = 65
+            //d = 68
+            //space = 32
+            //for (var i = 0; i < keys.length; i++) {
+            if (keys.includes("l") && keyLeft === false) {
+                moveJetLeft();
+                keyLeft = true;
+            } else if (keys.includes("s")) {
+                shoot();
+            } else if (keys.includes("r") && keyRight === false) {
+                moveJetRight();
+                keyRight = true;
+            } else if (keys.includes("r") && keys.includes("s") && keyRight === false) {
+                moveJetRight();
+                shoot();
+            } else if (keys.includes("l") && keys.includes("s") && keyLeft === false) {
+                moveJetLeft();
+                shoot();
+            }
+            //}
         }
-        if (parseInt(keynum) === 68 && keyRight === false) {
-            keys += "r";
-        }
-        if (parseInt(keynum) === 32) {
-            keys += "s";
-        }
-        //a = 65
-        //d = 68
-        //space = 32
-        //for (var i = 0; i < keys.length; i++) {
-        if (keys.includes("l") && keyLeft === false) {
-            moveJetLeft();
-            keyLeft = true;
-        } else if (keys.includes("s")) {
-            shoot();
-        } else if (keys.includes("r") && keyRight === false) {
-            moveJetRight();
-            keyRight = true;
-        } else if (keys.includes("r") && keys.includes("s") && keyRight === false) {
-            moveJetRight();
-            shoot();
-        } else if (keys.includes("l") && keys.includes("s") && keyLeft === false) {
-            moveJetLeft();
-            shoot();
-        }
-        //}
+    } catch {
+
     }
+
 }
 
 
@@ -1086,29 +1091,32 @@ function keyupFunction(e) {
 
 
     var keynum;
-    var desktop = window.screen.width;
-    document.getElementById("debugger").innerHTML = desktop;
-    if (parseInt(desktop) > 600) {
+    try {
+        var desktop = window.screen.width;
+        if (parseInt(desktop) > 600) {
 
-        if (window.event) { // IE                  
-            keynum = e.keyCode;
-        } else if (e.which) { // Netscape/Firefox/Opera                 
-            keynum = e.which;
-        }
+            if (window.event) { // IE                  
+                keynum = e.keyCode;
+            } else if (e.which) { // Netscape/Firefox/Opera                 
+                keynum = e.which;
+            }
 
-        if (parseInt(keynum) === 65) {
-            keys = keys.replace("l", "");
-            keyLeft = false;
-            stopLeftMove();
+            if (parseInt(keynum) === 65) {
+                keys = keys.replace("l", "");
+                keyLeft = false;
+                stopLeftMove();
+            }
+            if (parseInt(keynum) === 68) {
+                keys = keys.replace("r", "");
+                keyRight = false;
+                stopRightMove();
+            }
+            if (parseInt(keynum) === 32) {
+                keys = keys.replace("s", "");
+            }
         }
-        if (parseInt(keynum) === 68) {
-            keys = keys.replace("r", "");
-            keyRight = false;
-            stopRightMove();
-        }
-        if (parseInt(keynum) === 32) {
-            keys = keys.replace("s", "");
-        }
+    } catch {
+
     }
 
 }
