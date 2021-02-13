@@ -51,12 +51,15 @@ function viewportAnimations() {
                         if (inside) {
                             divTl = new TimelineMax();
                             if (!placed) {
+
                                 divTl.fromTo(myElement, .7, { left: elementLeft, opacity: "0" }, { left: "0px", opacity: ".9" });
+                                setTimeout(() => { myElement.style.zIndex = "0"; }, 700);
                                 placed = true;
                             }
                         } else {
                             if (placed) {
-                                divTl.fromTo(myElement, .7, { left: elementLeft, opacity: ".9" }, { left: "450px", opacity: "0" });
+                                myElement.style.zIndex = "-1";
+                                divTl.fromTo(myElement, .7, { left: elementLeft, opacity: ".9", }, { left: "450px", opacity: "0" });
                                 placed = false;
                             }
                         }
