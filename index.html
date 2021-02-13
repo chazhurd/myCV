@@ -1,59 +1,79 @@
 <!DOCTYPE html>
 <html>
-<title>Chaz Hurd's Website</title>
-<meta name="description" content="Looking to hire a Software Engineer? Open this website and see if your business and I are a good match">
-<meta charset="UTF-8" />
-<meta name="Keywords" content="Chaz,Hurd,C.V, Software, Engineer" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto' />
-<script src="indexScript.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js" integrity="sha512-8Wy4KH0O+AuzjMm1w5QfZ5j5/y8Q/kcUktK9mPUVaUoBvh3QPUZB822W/vy7ULqri3yR8daH3F58+Y8Z08qzeg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineMax.min.js" integrity="sha512-lJDBw/vKlGO8aIZB8/6CY4lV+EMAL3qzViHid6wXjH/uDrqUl+uvfCROHXAEL0T/bgdAQHSuE68vRlcFHUdrUw==" crossorigin="anonymous"></script>
-<style>
-    html,
-    h1,
-    h3,
-    h6 {
-        font-family: "Roboto", sans-serif;
-        font-size: medium;
-    }
-    
-    h5 {
-        font-size: large;
-        font-family: "Roboto", sans-serif;
-    }
-    
-    h4 {
-        font-weight: bolder;
-        font-family: "Roboto", sans-serif;
-        font-size: medium;
-    }
-    
-    h2 {
-        font-size: larger;
-        font-family: "Roboto", sans-serif;
-    }
-    
-    #myBody {
-        font-family: "Roboto", sans-serif;
-        font-size: medium;
-        animation: myShades 5s ease 0s infinite alternate;
-    }
-    
-    @keyframes myShades {
-        0% {
-            background-color: black;
-        }
-        100% {
-            background-color: white;
-        }
-    }
-</style>
 
-<body id="myBody">
+<head>
+    <title>Chaz Hurd's Website</title>
+    <meta name="description" content="Looking to hire a Software Engineer? Open this website and see if your business and I are a good match">
+    <meta charset="UTF-8" />
+    <meta name="Keywords" content="Chaz,Hurd,C.V, Software, Engineer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="indexScript.js"></script>
+    <link rel="stylesheet" href="indexCSS.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js" integrity="sha512-8Wy4KH0O+AuzjMm1w5QfZ5j5/y8Q/kcUktK9mPUVaUoBvh3QPUZB822W/vy7ULqri3yR8daH3F58+Y8Z08qzeg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TimelineMax.min.js" integrity="sha512-lJDBw/vKlGO8aIZB8/6CY4lV+EMAL3qzViHid6wXjH/uDrqUl+uvfCROHXAEL0T/bgdAQHSuE68vRlcFHUdrUw==" crossorigin="anonymous"></script>
+    <style>
+        html,
+        h1,
+        h3,
+        h6 {
+            font-family: "Roboto", sans-serif;
+            font-size: medium;
+        }
+        
+        h5 {
+            font-size: large;
+            font-family: "Roboto", sans-serif;
+        }
+        
+        h4 {
+            font-weight: bolder;
+            font-family: "Roboto", sans-serif;
+            font-size: medium;
+        }
+        
+        h2 {
+            font-size: larger;
+            font-family: "Roboto", sans-serif;
+        }
+        
+        #myBody {
+            font-family: "Roboto", sans-serif;
+            font-size: medium;
+            animation: myShades 5s ease 0s infinite alternate;
+        }
+        
+        @keyframes myShades {
+            0% {
+                background-color: black;
+            }
+            100% {
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+
+<body id="myBody" onload="loadJS()">
     <div id="myCover">
+        <div style="width: 100%;">
+            <ol class="bar">
+                <li class="barr"> <canvas id="myCanvas2" width="60" height="40" style="border:1px solid #ffffff;"></canvas></li>
+                <li class="bar"><a href="index.html">My CV</a></li>
+                <li class="bar"><a href="#limit" onclick="alert('Coming Soon')">Projects</a></li>
+                <li class="bar"><a href="#classes" onclick="alert('Coming Soon')">About Me</a></li>
+
+            </ol>
+        </div>
         <!--<img src="imgs/introCover.gif" width="100%" height="vh" id="gifCover" style="position: relative;">-->
         <!-- Page Container -->
         <div class="w3-content w3-margin-top" style="max-width:1400px; position: relative;" id="content">
@@ -63,9 +83,9 @@
 
                 <!-- Left Column -->
                 <div class="w3-third">
-
+                    <br>
                     <div class="w3-white w3-text-grey w3-card-4">
-                        <p id="debugger"></p>
+
                         <div class="w3-display-container">
                             <img src="imgs/boyni/e3.jpg" style="width:100%" alt="PicOfChazHurd" id="myPic">
                             <br/><br/>
@@ -230,10 +250,10 @@
                             <a href="Spot.html "><img src="imgs/Spot/spotTight.png " alt="spotLogo " id="spotLogo " style="height: 150px; width: 150px; float: inline-end;padding: 10px; "></a>
                             <p>During my time at EWU an idea of mine came to life. I always enjoyed making money, especially in the most efficient way which made me think of this Application. The code is private however the page will give you an idea of
                                 what I have Dev'Op'd. <code style="color: grey; ">(BootStrap use example, current page is a w3 use example)</code>
-                                <ol>
+                                <ul>
                                     <li><a href="Spot.html ">Spot Parking App</a></li>
                                     <li><a href="https://www.spot-parking.com ">Spot-Parking.com</a></li>
-                                </ol>
+                                </ul>
                             </p>
                             <hr>
                         </div>
@@ -242,10 +262,10 @@
                             <h6 class="w3-text-teal "><i class="fa fa-calendar fa-fw w3-margin-right "></i>150 hours</h6>
                             <h4>Ecma Script 6</h4>
                             <p>The W3 schools tutorial taught me much of what I know. These pages were the <code>GOULOASH</code> of what I learned. This type of code reminds me much of my JavaFX, Android and WPF type of programming.
-                                <ol>
+                                <ul>
                                     <li><a href="ecmaScript.html ">EcmaScript6</a></li>
                                     <li><a href="truePlay.html ">CSS</a></li>
-                                </ol>
+                                </ul>
                             </p>
                             <hr>
                         </div>
@@ -254,7 +274,7 @@
                             <h6 class="w3-text-teal "><i class="fa fa-calendar fa-fw w3-margin-right "></i>1 hour</h6>
                             <h4 id="TD">These links certify that Chaz Hurd has passed each public TestDome exam, ranking in the top 10%</h4>
                             <p style="align-content: center; ">
-                                <ul style="background-color: rgba(0, 128, 128, 0.363); display: inline-block; width: 180px;" onmouseover="lightTestDome()" onmouseout="textBlack()">
+                                <ul id="TDTL" style="background-color: rgba(0, 128, 128, 0.5); display: inline-block; width: 180px;" onmouseover="lightTestDome()" onmouseout="textBlack()">
                                     <a href="https://app.testdome.com/cert/cf03e8a3acec41d1aad63c2b792ad5b8">
                                         <li>Java <i class="fa fa-coffee"></i></li>
                                     </a>
@@ -268,7 +288,7 @@
                                         <li>C# & SQL <i class="fa fa-mixcloud"></i> - <i class="fa fa-database"></i></li>
                                     </a>
                                 </ul>
-                                <ul style="background-color: rgba(0, 128, 128, 0.363); display: inline-block; width: 180px; margin-left: 100px;" onmouseover="lightLinkedIn()" onmouseout="textBlack()">
+                                <ul id="LITL" style="background-color: rgba(0, 128, 128, 0.5); display: inline-block; width: 180px; margin-left: 100px;" onmouseover="lightLinkedIn()" onmouseout="textBlack()">
                                     <a href="https://www.linkedin.com/in/chazhurd/">
                                         <li>Java <i class="fa fa-coffee"></i></li>
                                     </a>
@@ -280,24 +300,6 @@
                                     </a>
                                 </ul>
                                 <h4 id="LI">These links certify that Chaz Hurd has passed each public LinkedIn exam, ranking in the top 5-15%</h4>
-                                <script>
-                                    function lightTestDome() {
-                                        document.getElementById("TD").style.color = "teal";
-                                        document.getElementById("TD").style.background = "black";
-                                    }
-
-                                    function lightLinkedIn() {
-                                        document.getElementById("LI").style.color = "teal";
-                                        document.getElementById("LI").style.background = "black";
-                                    }
-
-                                    function textBlack() {
-                                        document.getElementById("LI").style.color = "black";
-                                        document.getElementById("TD").style.color = "black";
-                                        document.getElementById("LI").style.background = "none";
-                                        document.getElementById("TD").style.background = "none";
-                                    }
-                                </script>
                             </p>
                             <hr>
                         </div>

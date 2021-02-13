@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<head>
+    <style>
+        li {
+            float: left;
+            z-index: 1;
+        }
+        
+        ol {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            list-style-type: none;
+            background-color: #333;
+            position: -webkit-sticky;
+            /* Safari */
+            position: sticky;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        li.bar {
+            float: left;
+        }
+        
+        li.bar a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        li.bar a:hover {
+            background-color: rgba(0, 119, 255, 0.658);
+        }
+        
+        #myCanvas2 {
+            animation: myFirst 5s ease 0s infinite alternate;
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            z-index: 1;
+        }
+        
+        @keyframes myFirst {
+            0% {
+                background-color: #333;
+                border-color: #333
+            }
+            100% {
+                background-color: #333;
+                border-color: #333;
+            }
+        }
+    </style>
+    <script>
+        function drawLogo() {
+            var can = document.getElementById("myCanvas2");
+            var cantx = can.getContext("2d");
+            cantx.lineWidth = 1;
+            cantx.strokeStyle = 'white';
+
+            var myTimer = setInterval(function() {
+                if (timed < 1) {
+                    cantx.fillStyle = '#333';
+                    cantx.fillRect(0, 0, 60, 40);
+                    cantx.beginPath();
+                }
+                if (timed < 5) {
+                    cantx.moveTo(x, y);
+                    x -= 0.8;
+                    y -= 1.4;
+                    cantx.lineTo(x, y);
+                    cantx.stroke();
+                    timed++;
+                }
+                if (timed >= 5 && timed <= 15) {
+                    cantx.moveTo(x, y);
+                    x -= 0.6;
+                    y += 2;
+                    cantx.lineTo(x, y);
+                    cantx.stroke();
+                    timed++;
+                }
+                if (timed > 15 && timed <= 30) {
+                    cantx.moveTo(x, y);
+                    x += 2.2;
+                    y -= .9;
+                    cantx.lineTo(x, y);
+                    cantx.stroke();
+                    timed++;
+                }
+
+                if (timed > 30 && timed <= 37) {
+                    cantx.moveTo(a, b);
+                    a += 0;
+                    b += 2.5;
+                    cantx.lineTo(a, b);
+                    cantx.stroke();
+                    timed++;
+                }
+                if (timed > 37 && timed <= 44) {
+                    cantx.moveTo(c, d);
+                    c += 0;
+                    d += 2.5;
+                    cantx.lineTo(c, d);
+                    cantx.stroke();
+                    timed++;
+
+                }
+                if (timed >= 44 && timed <= 55) {
+                    timed++;
+                }
+                if (timed >= 55) {
+                    timed++;
+                    if (timed >= 65) {
+                        x = 30;
+                        y = 17;
+                        a = 37;
+                        b = 17;
+                        c = 43;
+                        d = 16;
+                        timed = 0;
+                    }
+                }
+            }, 34);
+        }
+    </script>
+
+</head>
+
+<body>
+    <div>
+        <div style="width: 100%;">
+            <ol class="bar">
+                <li class="bar"> check</li>
+                <li class="bar"><a href="index.html">My CV</a></li>
+                <li class="bar"><a href="#limit" onclick="alert('Coming Soon')">Projects</a></li>
+                <li class="bar"><a href="#classes" onclick="alert('Coming Soon')">About Me</a></li>
+
+            </ol>
+        </div>
+        <div><canvas id="myCanvas2" width="60" height="40" style="border:1px solid #ffffff;"></canvas></div>
+    </div>
+</body>
+<footer>
+
+</footer>

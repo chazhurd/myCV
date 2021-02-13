@@ -818,7 +818,6 @@ function flashDamage() {
 
 
     var divTl = new TimelineMax();
-    //--------------
     if (userShot) {
         var damTimer = 0;
         var dam = setInterval(function() {
