@@ -66,23 +66,29 @@ function viewportAnimations() {
                 /* end new game animation*/
 
                 divT = new TimelineMax();
-                //java aniation
+                //java animation
                 var javaExpBar = document.getElementById("javaExp");
                 var javaExpBarHeight = javaExpBar.offsetHeight;
                 var boundingJava = javaExpBar.getBoundingClientRect();
                 var javaHours = document.getElementById("javaHours");
+
                 if (boundingJava.top >= -javaExpBarHeight &&
                     boundingJava.bottom <= (window.innerHeight || document.documentElement.clientHeight) + javaExpBarHeight) {
                     if (!jTrig) {
                         jTrig = true;
                         divT.fromTo(javaExpBar, 1, { width: "0%" }, { width: "90%" }, "-=1");
-                        var j = 3000;
+                        var j = 0;
                         var jHours = setInterval(() => {
                             if (j < 3360) {
-                                j++;
-                                javaHours.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + j + " Hours";
-                                if (parseInt(j) === 3360) {
+                                if (j < 3000) {
+                                    j += 50;
                                     javaHours.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + j + " Hours";
+                                } else {
+                                    j = j + 4;
+                                    javaHours.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + j + " Hours";
+                                    if (parseInt(j) === 3360) {
+                                        javaHours.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + j + " Hours";
+                                    }
                                 }
                             } else {
                                 clearInterval(jHours);
@@ -96,12 +102,25 @@ function viewportAnimations() {
                 var cExpBar = document.getElementById("cExp");
                 var cExpBarHeight = cExpBar.offsetHeight;
                 var boundingC = cExpBar.getBoundingClientRect();
-
+                var cHoursD = document.getElementById("cHours");
                 if (boundingC.top >= -cExpBarHeight &&
                     boundingC.bottom <= (window.innerHeight || document.documentElement.clientHeight) + cExpBarHeight) {
                     if (!cTrig) {
                         cTrig = true;
                         divT.fromTo(cExpBar, 1, { width: "0%" }, { width: "55%" }, "-=1");
+                        var cs = 0;
+                        var cHours = setInterval(() => {
+                            if (cs < 240) {
+                                cs = cs + 2;
+                                cHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + cs + " Hours";
+                                if (parseInt(c) === 240) {
+                                    cHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + cs + " Hours";
+                                }
+                            } else {
+                                clearInterval(cHours);
+                            }
+
+                        }, 1);
                     }
                 }
 
@@ -109,12 +128,26 @@ function viewportAnimations() {
                 var sExpBar = document.getElementById("sExp");
                 var sExpBarHeight = cExpBar.offsetHeight;
                 var boundingS = sExpBar.getBoundingClientRect();
+                var sHoursD = document.getElementById("sHours");
 
                 if (boundingS.top >= -sExpBarHeight &&
                     boundingS.bottom <= (window.innerHeight || document.documentElement.clientHeight) + sExpBarHeight) {
                     if (!sTrig) {
                         sTrig = true;
                         divT.fromTo(sExpBar, 1, { width: "0%" }, { width: "80%" }, "-=1");
+                        var s = 0;
+                        var sHours = setInterval(() => {
+                            if (s < 210) {
+                                s = s + 2;
+                                sHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + s + " Hours";
+                                if (parseInt(s) === 210) {
+                                    sHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + s + " Hours";
+                                }
+                            } else {
+                                clearInterval(sHours);
+                            }
+
+                        }, 1);
                     }
                 }
 
@@ -122,12 +155,28 @@ function viewportAnimations() {
                 var hExpBar = document.getElementById("hExp");
                 var hExpBarHeight = hExpBar.offsetHeight;
                 var boundingH = hExpBar.getBoundingClientRect();
+                var hHoursD = document.getElementById("hHours");
+
 
                 if (boundingH.top >= -hExpBarHeight &&
                     boundingH.bottom <= (window.innerHeight || document.documentElement.clientHeight) + hExpBarHeight) {
                     if (!hTrig) {
                         hTrig = true;
                         divT.fromTo(hExpBar, 1, { width: "0%" }, { width: "70%" }, "-=1");
+
+                        var h = 0;
+                        var hHours = setInterval(() => {
+                            if (h < 310) {
+                                h = h + 2;
+                                hHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + h + " Hours";
+                                if (parseInt(h) === 310) {
+                                    hHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + h + " Hours";
+                                }
+                            } else {
+                                clearInterval(hHours);
+                            }
+
+                        }, 1);
                     }
                 }
                 //languages
