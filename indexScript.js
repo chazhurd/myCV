@@ -40,32 +40,27 @@ function viewportAnimations() {
 
 
                     /*new game animation*/
-                    if (windowWidth > 700) {
-                        if (bounding.top >= -myElementHeight + 150 &&
-                            bounding.bottom + 150 <= (window.innerHeight || document.documentElement.clientHeight) + myElementHeight) {
-                            inside = true;
-                        } else {
-                            inside = false;
-                        }
+                    if (bounding.top >= -myElementHeight + 150 &&
+                        bounding.bottom + 150 <= (window.innerHeight || document.documentElement.clientHeight) + myElementHeight) {
+                        inside = true;
+                    } else {
+                        inside = false;
+                    }
 
-                        if (inside) {
-                            divTl = new TimelineMax();
-                            if (!placed) {
+                    if (inside) {
+                        divTl = new TimelineMax();
+                        if (!placed) {
 
-                                divTl.fromTo(myElement, .7, { left: elementLeft, opacity: "0" }, { left: "0px", opacity: ".9" });
-                                setTimeout(() => { myElement.style.zIndex = "0"; }, 700);
-                                placed = true;
-                            }
-                        } else {
-                            if (placed) {
-                                myElement.style.zIndex = "-1";
-                                divTl.fromTo(myElement, .7, { left: elementLeft, opacity: ".9", }, { left: "450px", opacity: "0" });
-                                placed = false;
-                            }
+                            divTl.fromTo(myElement, .7, { left: elementLeft, opacity: "0" }, { left: "0px", opacity: ".9" });
+                            setTimeout(() => { myElement.style.zIndex = "0"; }, 700);
+                            placed = true;
                         }
                     } else {
-                        var myElement = document.getElementById('animatedDiv');
-                        myElement.style.left = "0px";
+                        if (placed) {
+                            myElement.style.zIndex = "-1";
+                            divTl.fromTo(myElement, .7, { left: elementLeft, opacity: ".9", }, { left: "450px", opacity: "0" });
+                            placed = false;
+                        }
                     }
                 }
                 /* end new game animation*/
@@ -75,11 +70,26 @@ function viewportAnimations() {
                 var javaExpBar = document.getElementById("javaExp");
                 var javaExpBarHeight = javaExpBar.offsetHeight;
                 var boundingJava = javaExpBar.getBoundingClientRect();
-                if (boundingJava.top >= -javaExpBarHeight + 50 &&
-                    boundingJava.bottom + 50 <= (window.innerHeight || document.documentElement.clientHeight) + javaExpBarHeight) {
+                var javaHours = document.getElementById("javaHours");
+                if (boundingJava.top >= -javaExpBarHeight &&
+                    boundingJava.bottom <= (window.innerHeight || document.documentElement.clientHeight) + javaExpBarHeight) {
                     if (!jTrig) {
                         jTrig = true;
                         divT.fromTo(javaExpBar, 1, { width: "0%" }, { width: "90%" }, "-=1");
+                        var j = 3000;
+                        var jHours = setInterval(() => {
+                            if (j < 3360) {
+                                j++;
+                                javaHours.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + j + " Hours";
+                                if (parseInt(j) === 3360) {
+                                    javaHours.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + j + " Hours";
+                                }
+                            } else {
+                                clearInterval(jHours);
+                            }
+
+                        }, 1);
+                        setTimeout(refreshBars, 1000);
                     }
                 }
                 //c animation
@@ -87,8 +97,8 @@ function viewportAnimations() {
                 var cExpBarHeight = cExpBar.offsetHeight;
                 var boundingC = cExpBar.getBoundingClientRect();
 
-                if (boundingC.top >= -cExpBarHeight + 50 &&
-                    boundingC.bottom + 50 <= (window.innerHeight || document.documentElement.clientHeight) + cExpBarHeight) {
+                if (boundingC.top >= -cExpBarHeight &&
+                    boundingC.bottom <= (window.innerHeight || document.documentElement.clientHeight) + cExpBarHeight) {
                     if (!cTrig) {
                         cTrig = true;
                         divT.fromTo(cExpBar, 1, { width: "0%" }, { width: "55%" }, "-=1");
@@ -100,8 +110,8 @@ function viewportAnimations() {
                 var sExpBarHeight = cExpBar.offsetHeight;
                 var boundingS = sExpBar.getBoundingClientRect();
 
-                if (boundingS.top >= -sExpBarHeight + 50 &&
-                    boundingS.bottom + 50 <= (window.innerHeight || document.documentElement.clientHeight) + sExpBarHeight) {
+                if (boundingS.top >= -sExpBarHeight &&
+                    boundingS.bottom <= (window.innerHeight || document.documentElement.clientHeight) + sExpBarHeight) {
                     if (!sTrig) {
                         sTrig = true;
                         divT.fromTo(sExpBar, 1, { width: "0%" }, { width: "80%" }, "-=1");
@@ -113,8 +123,8 @@ function viewportAnimations() {
                 var hExpBarHeight = hExpBar.offsetHeight;
                 var boundingH = hExpBar.getBoundingClientRect();
 
-                if (boundingH.top >= -hExpBarHeight + 50 &&
-                    boundingH.bottom + 50 <= (window.innerHeight || document.documentElement.clientHeight) + hExpBarHeight) {
+                if (boundingH.top >= -hExpBarHeight &&
+                    boundingH.bottom <= (window.innerHeight || document.documentElement.clientHeight) + hExpBarHeight) {
                     if (!hTrig) {
                         hTrig = true;
                         divT.fromTo(hExpBar, 1, { width: "0%" }, { width: "70%" }, "-=1");
@@ -222,17 +232,17 @@ function drawLogo() {
 }
 
 function lightTestDome() {
-    document.getElementById("TD").style.color = "teal";
-    document.getElementById("TD").style.background = "black";
-    document.getElementById("TDTL").style.color = "teal";
-    document.getElementById("TDTL").style.background = "black";
+    document.getElementById("TD").style.color = "white";
+    document.getElementById("TD").style.background = "rgba(0, 0, 0, 0.493)";
+    document.getElementById("TDTL").style.color = "white";
+    document.getElementById("TDTL").style.background = "rgba(0, 0, 0, 0.493)";
 }
 
 function lightLinkedIn() {
-    document.getElementById("LI").style.color = "teal";
-    document.getElementById("LI").style.background = "black";
-    document.getElementById("LITL").style.color = "teal";
-    document.getElementById("LITL").style.background = "black";
+    document.getElementById("LI").style.color = "white";
+    document.getElementById("LI").style.background = "rgba(0, 0, 0, 0.493)";
+    document.getElementById("LITL").style.color = "white";
+    document.getElementById("LITL").style.background = "rgba(0, 0, 0, 0.493)";
 }
 
 function textBlack() {
@@ -243,6 +253,69 @@ function textBlack() {
 
     document.getElementById("LITL").style.color = "black";
     document.getElementById("TDTL").style.color = "black";
-    document.getElementById("LITL").style.background = "rgba(0, 128, 128, 0.5)";
-    document.getElementById("TDTL").style.background = "rgba(0, 128, 128, 0.5)";
+    document.getElementById("LITL").style.background = "rgba(0, 128, 128, 0.158)";
+    document.getElementById("TDTL").style.background = "rgba(0, 128, 128, 0.158)";
+}
+
+function refreshBars() {
+    var barRefreshing = setInterval(() => {
+        var javaExpBar = document.getElementById("javaExp");
+        var javaExpBarHeight = javaExpBar.offsetHeight;
+        var boundingJava = javaExpBar.getBoundingClientRect();
+        if (!(boundingJava.top >= -javaExpBarHeight &&
+                boundingJava.bottom <= (window.innerHeight || document.documentElement.clientHeight) + javaExpBarHeight)) {
+            javaExpBar.style.width = "0px";
+            jTrig = false;
+        }
+        //c animation
+        var cExpBar = document.getElementById("cExp");
+        var cExpBarHeight = cExpBar.offsetHeight;
+        var boundingC = cExpBar.getBoundingClientRect();
+
+        if (!(boundingC.top >= -cExpBarHeight &&
+                boundingC.bottom <= (window.innerHeight || document.documentElement.clientHeight) + cExpBarHeight)) {
+            cExpBar.style.width = "0px";
+            cTrig = false;
+        }
+
+        //sql animation
+        var sExpBar = document.getElementById("sExp");
+        var sExpBarHeight = cExpBar.offsetHeight;
+        var boundingS = sExpBar.getBoundingClientRect();
+
+        if (!(boundingS.top >= -sExpBarHeight &&
+                boundingS.bottom <= (window.innerHeight || document.documentElement.clientHeight) + sExpBarHeight)) {
+            sExpBar.style.width = "0px";
+            sTrig = false;
+        }
+
+
+        //html/css/js animation
+        var hExpBar = document.getElementById("hExp");
+        var hExpBarHeight = hExpBar.offsetHeight;
+        var boundingH = hExpBar.getBoundingClientRect();
+
+        if (!(boundingH.top >= -hExpBarHeight &&
+                boundingH.bottom <= (window.innerHeight || document.documentElement.clientHeight) + hExpBarHeight)) {
+            hExpBar.style.width = "0px";
+            hTrig = false;
+        }
+        //languages
+        var eExpBar = document.getElementById("eExp");
+        var eExpBarHeight = eExpBar.offsetHeight;
+        var boundingE = eExpBar.getBoundingClientRect();
+
+        var fExpBar = document.getElementById("fExp");
+        var spExpBar = document.getElementById("spExp");
+
+        if (!(boundingE.top >= -eExpBarHeight &&
+                boundingE.bottom <= (window.innerHeight || document.documentElement.clientHeight) + eExpBarHeight)) {
+            lTrig = false;
+            eExpBar.style.width = "0px";
+            fExpBar.style.width = "0px";
+            spExpBar.style.width = "0px";
+
+        }
+    }, 750);
+
 }
