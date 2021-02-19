@@ -267,7 +267,7 @@ function myMove() {
     arrows.style.left = 10 + 'px';
     arrows.style.top = 420 + 'px';
     var shoot = document.getElementById("shoot");
-    shoot.style.left = 240 + 'px';
+    shoot.style.left = 230 + 'px';
     shoot.style.top = 400 + 'px';;
     moveTl.fromTo(elem, 0.5, { left: "-30px", opacity: "0" }, { left: "150px", opacity: "1" });
 }
@@ -897,7 +897,7 @@ function lowerHealth() {
             restart.zIndex = 0;
 
             outRestart.style.display = "block";
-            outRestart.style.top = "100px";
+            outRestart.style.top = "20%";
 
 
 

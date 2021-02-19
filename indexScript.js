@@ -13,11 +13,13 @@ cTrig = false;
 sTrig = false;
 hTrig = false;
 lTrig = false;
+hasAppeared = false;
 
 
 function loadJS() {
     drawLogo();
     viewportAnimations();
+    refreshBars();
 }
 
 function viewportAnimations() {
@@ -38,31 +40,38 @@ function viewportAnimations() {
                     var javaExpBarHeight = javaExpBar.offsetHeight;
                     var boundingJava = javaExpBar.getBoundingClientRect();
 
-
+                    console.log(windowWidth);
                     /*new game animation*/
-                    if (bounding.top >= -myElementHeight + 150 &&
-                        bounding.bottom + 150 <= (window.innerHeight || document.documentElement.clientHeight) + myElementHeight) {
-                        inside = true;
-                    } else {
-                        inside = false;
-                    }
+                    if (windowWidth > 500) {
+                        if (bounding.top >= -myElementHeight + 150 &&
+                            bounding.bottom + 150 <= (window.innerHeight || document.documentElement.clientHeight) + myElementHeight) {
+                            inside = true;
+                        } else {
+                            inside = false;
+                        }
 
-                    if (inside) {
-                        divTl = new TimelineMax();
-                        if (!placed) {
+                        if (inside) {
+                            divTl = new TimelineMax();
+                            if (!placed) {
 
-                            divTl.fromTo(myElement, .7, { left: elementLeft, opacity: "0" }, { left: "0px", opacity: ".9" });
-                            setTimeout(() => { myElement.style.zIndex = "0"; }, 700);
-                            placed = true;
+                                divTl.fromTo(myElement, .7, { left: elementLeft, opacity: "0" }, { left: "0px", opacity: ".9" });
+                                setTimeout(() => { myElement.style.zIndex = "0"; }, 700);
+                                placed = true;
+                            }
+                        } else {
+                            if (placed) {
+                                myElement.style.zIndex = "-1";
+                                divTl.fromTo(myElement, .7, { left: elementLeft, opacity: ".9", }, { left: "450px", opacity: "0" });
+                                placed = false;
+                            }
                         }
                     } else {
-                        if (placed) {
-                            myElement.style.zIndex = "-1";
-                            divTl.fromTo(myElement, .7, { left: elementLeft, opacity: ".9", }, { left: "450px", opacity: "0" });
-                            placed = false;
-                        }
+                        myElement.style.left = "0px";
+                        myElement.style.opacity = ".8";
+
                     }
                 }
+
                 /* end new game animation*/
 
                 divT = new TimelineMax();
