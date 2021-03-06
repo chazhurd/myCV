@@ -52,11 +52,22 @@ var goLeft = false;
 var aHit = false;
 var bHit = false;
 var hitCenter, hitLeft, hitRight = false;
-
-
+var ecounter = 0;
+var aPassed = true;
+var bPassed = true;
 var debugPasses = 0;
-
-
+var explosiveCountA = 0;
+var explosiveTimerA;
+var explosiveCountB = 0;
+var explosiveTimerB;
+var allShots = [];
+var shotID = "start";
+var start = 0;
+var enemyToggle = true;
+var keyLeft = false;
+var keyRight = false;
+var keys = "";
+var numOfEnemyShots = 0;
 
 //Banner
 function drawLogo() {
@@ -142,9 +153,7 @@ function hitDetectionHelper() {
         userShot = false;
     }
 }
-var ecounter = 0;
-var aPassed = true;
-var bPassed = true;
+
 
 function explodeEnemy() {
     if (aHit && aPassed) {
@@ -161,8 +170,7 @@ function explodeEnemy() {
         makeBexplode();
     }
 }
-var explosiveCountA = 0;
-var explosiveTimerA;
+
 
 function makeAexplode() {
     var myContainer = document.getElementById("myContainer");
@@ -196,8 +204,6 @@ function makeAexplode() {
 
 }
 
-var explosiveCountB = 0;
-var explosiveTimerB;
 
 function makeBexplode() {
     var enemyB = document.getElementById("B");
@@ -342,8 +348,6 @@ function checkEs() {
     }, 100);
 }
 
-var allShots = [];
-var shotID = "start";
 
 function letemKnow() {
     alert("This is a touch game not mouse game");
@@ -526,8 +530,7 @@ function moveClouds() {
         },
         10);
 }
-var start = 0;
-var enemyToggle = true;
+
 //creating enemies:
 function createEnemy() {
     if (numOfEnemies === 1 || numOfEnemies === 0) {
@@ -744,7 +747,6 @@ function hitDetection() {
 
 }
 
-var numOfEnemyShots = 0;
 
 function enemyAAttack() {
     var randomInterval = Math.random() * 500 + 1000;
@@ -1032,9 +1034,6 @@ function commenceGame() {
 
 }
 
-var keyLeft = false;
-var keyRight = false;
-var keys = "";
 
 function keyPressed(e) {
     try {

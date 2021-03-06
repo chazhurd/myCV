@@ -249,14 +249,28 @@ li.bar a:hover {
     width: 60px;
 }
 
-#startGame {
-    background-color: black;
-    opacity: 0.8;
-    position: absolute;
-    left: 11%;
-    top: 20px;
-    align-items: center;
-    z-index: 0;
+@media only screen and (max-width: 500px) {
+    #startGame {
+        background-color: black;
+        opacity: 0.8;
+        position: absolute;
+        left: 11%;
+        top: 20px;
+        align-items: center;
+        z-index: 0;
+    }
+}
+
+@media only screen and (min-width: 501px) {
+    #startGame {
+        background-color: black;
+        opacity: 0.8;
+        position: absolute;
+        left: 13.5%;
+        top: 20px;
+        align-items: center;
+        z-index: 0;
+    }
 }
 
 #startContent {
