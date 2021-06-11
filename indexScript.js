@@ -119,10 +119,10 @@ function viewportAnimations() {
                         divT.fromTo(cExpBar, 1, { width: "0%" }, { width: "55%" }, "-=1");
                         var cs = 0;
                         var cHours = setInterval(() => {
-                            if (cs < 240) {
+                            if (cs < 300) {
                                 cs = cs + 2;
                                 cHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + cs + " Hours";
-                                if (parseInt(c) === 240) {
+                                if (parseInt(c) === 300) {
                                     cHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + cs + " Hours";
                                 }
                             } else {
@@ -146,10 +146,10 @@ function viewportAnimations() {
                         divT.fromTo(sExpBar, 1, { width: "0%" }, { width: "80%" }, "-=1");
                         var s = 0;
                         var sHours = setInterval(() => {
-                            if (s < 210) {
+                            if (s < 240) {
                                 s = s + 2;
                                 sHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + s + " Hours";
-                                if (parseInt(s) === 210) {
+                                if (parseInt(s) === 240) {
                                     sHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + s + " Hours";
                                 }
                             } else {
@@ -175,10 +175,10 @@ function viewportAnimations() {
 
                         var h = 0;
                         var hHours = setInterval(() => {
-                            if (h < 310) {
+                            if (h < 370) {
                                 h = h + 2;
                                 hHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + h + " Hours";
-                                if (parseInt(h) === 310) {
+                                if (parseInt(h) === 370) {
                                     hHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + h + " Hours";
                                 }
                             } else {
