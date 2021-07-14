@@ -146,10 +146,10 @@ function viewportAnimations() {
                         divT.fromTo(sExpBar, 1, { width: "0%" }, { width: "80%" }, "-=1");
                         var s = 0;
                         var sHours = setInterval(() => {
-                            if (s < 240) {
+                            if (s < 260) {
                                 s = s + 2;
                                 sHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + s + " Hours";
-                                if (parseInt(s) === 240) {
+                                if (parseInt(s) === 260) {
                                     sHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + s + " Hours";
                                 }
                             } else {
@@ -175,10 +175,10 @@ function viewportAnimations() {
 
                         var h = 0;
                         var hHours = setInterval(() => {
-                            if (h < 370) {
+                            if (h < 550) {
                                 h = h + 2;
                                 hHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + h + " Hours";
-                                if (parseInt(h) === 370) {
+                                if (parseInt(h) === 550) {
                                     hHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + h + " Hours";
                                 }
                             } else {
