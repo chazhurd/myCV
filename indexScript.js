@@ -85,7 +85,7 @@ function viewportAnimations() {
                     boundingJava.bottom <= (window.innerHeight || document.documentElement.clientHeight) + javaExpBarHeight) {
                     if (!jTrig) {
                         jTrig = true;
-                        divT.fromTo(javaExpBar, 1, { width: "0%" }, { width: "90%" }, "-=1");
+                        divT.fromTo(javaExpBar, 1, { width: "0%" }, { width: "80%" }, "-=1");
                         var j = 0;
                         var jHours = setInterval(() => {
                             if (j < 3360) {
@@ -116,13 +116,13 @@ function viewportAnimations() {
                     boundingC.bottom <= (window.innerHeight || document.documentElement.clientHeight) + cExpBarHeight) {
                     if (!cTrig) {
                         cTrig = true;
-                        divT.fromTo(cExpBar, 1, { width: "0%" }, { width: "55%" }, "-=1");
+                        divT.fromTo(cExpBar, 1, { width: "0%" }, { width: "65%" }, "-=1");
                         var cs = 0;
                         var cHours = setInterval(() => {
-                            if (cs < 300) {
+                            if (cs < 400) {
                                 cs = cs + 2;
                                 cHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + cs + " Hours";
-                                if (parseInt(c) === 300) {
+                                if (parseInt(c) === 400) {
                                     cHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + cs + " Hours";
                                 }
                             } else {
@@ -143,13 +143,13 @@ function viewportAnimations() {
                     boundingS.bottom <= (window.innerHeight || document.documentElement.clientHeight) + sExpBarHeight) {
                     if (!sTrig) {
                         sTrig = true;
-                        divT.fromTo(sExpBar, 1, { width: "0%" }, { width: "80%" }, "-=1");
+                        divT.fromTo(sExpBar, 1, { width: "0%" }, { width: "85%" }, "-=1");
                         var s = 0;
                         var sHours = setInterval(() => {
-                            if (s < 260) {
+                            if (s < 360) {
                                 s = s + 2;
                                 sHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + s + " Hours";
-                                if (parseInt(s) === 260) {
+                                if (parseInt(s) === 360) {
                                     sHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + s + " Hours";
                                 }
                             } else {
