@@ -120,7 +120,7 @@ function viewportAnimations() {
                         var cs = 0;
                         var cHours = setInterval(() => {
                             if (cs < 1300) {
-                                cs = cs + 2;
+                                cs = cs + 4;
                                 cHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + cs + " Hours";
                                 if (parseInt(c) === 1300) {
                                     cHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + cs + " Hours";
@@ -146,10 +146,10 @@ function viewportAnimations() {
                         divT.fromTo(sExpBar, 1, { width: "0%" }, { width: "90%" }, "-=1");
                         var s = 0;
                         var sHours = setInterval(() => {
-                            if (s < 750) {
+                            if (s < 850) {
                                 s = s + 2;
                                 sHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + s + " Hours";
-                                if (parseInt(s) === 750) {
+                                if (parseInt(s) === 850) {
                                     sHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + s + " Hours";
                                 }
                             } else {
@@ -175,10 +175,10 @@ function viewportAnimations() {
 
                         var h = 0;
                         var hHours = setInterval(() => {
-                            if (h < 750) {
+                            if (h < 950) {
                                 h = h + 2;
                                 hHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + h + " Hours";
-                                if (parseInt(h) === 750) {
+                                if (parseInt(h) === 950) {
                                     hHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + h + " Hours";
                                 }
                             } else {
