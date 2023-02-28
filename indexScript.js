@@ -119,10 +119,10 @@ function viewportAnimations() {
                         divT.fromTo(cExpBar, 1, { width: "0%" }, { width: "70%" }, "-=1");
                         var cs = 0;
                         var cHours = setInterval(() => {
-                            if (cs < 1300) {
-                                cs = cs + 4;
+                            if (cs < 2600) {
+                                cs = cs + 50;
                                 cHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + cs + " Hours";
-                                if (parseInt(c) === 1300) {
+                                if (parseInt(c) === 2600) {
                                     cHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + cs + " Hours";
                                 }
                             } else {
@@ -146,10 +146,10 @@ function viewportAnimations() {
                         divT.fromTo(sExpBar, 1, { width: "0%" }, { width: "90%" }, "-=1");
                         var s = 0;
                         var sHours = setInterval(() => {
-                            if (s < 850) {
-                                s = s + 2;
+                            if (s < 1650) {
+                                s = s + 20;
                                 sHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + s + " Hours";
-                                if (parseInt(s) === 850) {
+                                if (parseInt(s) === 1650) {
                                     sHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + s + " Hours";
                                 }
                             } else {
@@ -175,10 +175,10 @@ function viewportAnimations() {
 
                         var h = 0;
                         var hHours = setInterval(() => {
-                            if (h < 950) {
-                                h = h + 2;
+                            if (h < 1850) {
+                                h = h + 20;
                                 hHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + h + " Hours";
-                                if (parseInt(h) === 950) {
+                                if (parseInt(h) === 1850) {
                                     hHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + h + " Hours";
                                 }
                             } else {
