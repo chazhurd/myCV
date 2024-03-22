@@ -175,10 +175,10 @@ function viewportAnimations() {
 
                         var h = 0;
                         var hHours = setInterval(() => {
-                            if (h < 950) {
-                                h = h + 2;
+                            if (h < 1900) {
+                                h = h + 20;
                                 hHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + h + " Hours";
-                                if (parseInt(h) === 950) {
+                                if (parseInt(h) === 1900) {
                                     hHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + h + " Hours";
                                 }
                             } else {
