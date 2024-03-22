@@ -119,10 +119,10 @@ function viewportAnimations() {
                         divT.fromTo(cExpBar, 1, { width: "0%" }, { width: "70%" }, "-=1");
                         var cs = 0;
                         var cHours = setInterval(() => {
-                            if (cs < 1300) {
-                                cs = cs + 4;
+                            if (cs < 3000) {
+                                cs = cs + 10;
                                 cHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + cs + " Hours";
-                                if (parseInt(c) === 1300) {
+                                if (parseInt(c) === 3000) {
                                     cHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + cs + " Hours";
                                 }
                             } else {
@@ -146,10 +146,10 @@ function viewportAnimations() {
                         divT.fromTo(sExpBar, 1, { width: "0%" }, { width: "90%" }, "-=1");
                         var s = 0;
                         var sHours = setInterval(() => {
-                            if (s < 850) {
+                            if (s < 1050) {
                                 s = s + 2;
                                 sHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + s + " Hours";
-                                if (parseInt(s) === 850) {
+                                if (parseInt(s) === 1050) {
                                     sHoursD.innerHTML = '<i class="fa fa-clock-o fa-fw w3-margin-right"></i>' + s + " Hours";
                                 }
                             } else {
